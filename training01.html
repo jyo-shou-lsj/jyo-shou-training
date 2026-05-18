@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<!-- saved from url=(0234)file:///C:/Users/hirofumi/Downloads/%E5%B8%B8%E7%AC%91%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97_%E8%99%90%E5%BE%85%E9%98%B2%E6%AD%A2%E8%BA%AB%E4%BD%93%E6%8B%98%E6%9D%9F%E9%81%A9%E6%AD%A3%E5%8C%96_%E8%87%AA%E5%AD%A6%E7%A0%94%E4%BF%AE_3.html -->
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>常笑グループ｜虐待防止・身体拘束適正化 自学研修</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&display=swap');
+
+  :root {
+    --primary: #1a3a5c;
+    --primary-light: #2d6aa0;
+    --accent: #e8450a;
+    --accent-soft: #f5a623;
+    --bg: #f4f6f8;
+    --surface: #ffffff;
+    --surface2: #eef2f7;
+    --text: #1a1f2e;
+    --text-muted: #5a6678;
+    --success: #1d8a4e;
+    --danger: #c0392b;
+    --warning: #d68910;
+    --border: #d0d8e4;
+    --shadow: 0 4px 20px rgba(26,58,92,0.12);
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* ===== HEADER ===== */
+  .site-header {
+    background: linear-gradient(135deg, var(--primary) 0%, #0d2540 60%, #162a45 100%);
+    color: #fff;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .header-logo {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 4px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+  .header-title {
+    flex: 1;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+  }
+  .header-badge {
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== PROGRESS ===== */
+  .progress-bar-wrap {
+    background: rgba(255,255,255,0.15);
+    height: 4px;
+  }
+  .progress-bar-fill {
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-soft), var(--accent));
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+
+  /* ===== LAYOUT ===== */
+  .app-layout {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 16px 60px;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 24px;
+  }
+
+  /* ===== SIDEBAR ===== */
+  .sidebar {
+    position: sticky;
+    top: 80px;
+    height: fit-content;
+  }
+  .sidebar-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .sidebar-title {
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 10px 16px;
+    letter-spacing: 0.08em;
+  }
+  .sidebar-nav { list-style: none; }
+  .sidebar-nav li { border-bottom: 1px solid var(--border); }
+  .sidebar-nav li:last-child { border-bottom: none; }
+  .sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 16px;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.83rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .sidebar-nav a:hover { background: var(--surface2); color: var(--primary); }
+  .sidebar-nav a.active { background: #eaf2fb; color: var(--primary); font-weight: 700; border-left: 3px solid var(--primary-light); }
+  .sidebar-nav .icon { font-size: 1rem; flex-shrink: 0; }
+  .sidebar-nav .check { margin-left: auto; color: var(--success); font-size: 0.9rem; display: none; }
+  .sidebar-nav .check.done { display: inline; }
+
+  /* ===== MAIN CONTENT ===== */
+  .main-content { min-width: 0; }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* ===== CARDS ===== */
+  .card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px 32px;
+    margin-bottom: 20px;
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--surface2);
+  }
+  .card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+  .card-icon.blue { background: #e3eefc; }
+  .card-icon.orange { background: #fdf0e3; }
+  .card-icon.red { background: #fde8e8; }
+  .card-icon.green { background: #e3f5ec; }
+  .card-icon.purple { background: #ede8fd; }
+
+  .section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .section-sub { font-size: 0.83rem; color: var(--text-muted); }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 20px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  h3::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1em;
+    background: var(--primary-light);
+    border-radius: 2px;
+  }
+
+  p { margin-bottom: 12px; font-size: 0.92rem; }
+
+  /* ===== INFO BOXES ===== */
+  .info-box {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 0.88rem;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .info-box.law { background: #e8f0fc; border-left: 4px solid #3b6fd4; }
+  .info-box.warn { background: #fff7e6; border-left: 4px solid var(--accent-soft); }
+  .info-box.danger { background: #fdeaea; border-left: 4px solid var(--danger); }
+  .info-box.success { background: #e6f7ef; border-left: 4px solid var(--success); }
+  .info-box-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+
+  /* ===== ABUSE TYPE GRID ===== */
+  .abuse-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .abuse-card {
+    border-radius: 10px;
+    padding: 16px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 2px solid transparent;
+  }
+  .abuse-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+  .abuse-card.selected { border-color: var(--primary-light); }
+  .abuse-card-type { font-weight: 700; font-size: 0.9rem; margin-bottom: 6px; }
+  .abuse-card-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+  .abuse-card-icon { font-size: 1.5rem; margin-bottom: 8px; }
+
+  .abuse-card.shintai { background: #fdeaea; }
+  .abuse-card.seiteki { background: #fdf0e8; }
+  .abuse-card.shinri { background: #e8eafd; }
+  .abuse-card.neglect { background: #e8f5fd; }
+  .abuse-card.keizai { background: #e8fde8; }
+
+  .abuse-detail {
+    display: none;
+    background: var(--surface2);
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 12px;
+    font-size: 0.85rem;
+  }
+  .abuse-detail.show { display: block; }
+  .abuse-detail ul { padding-left: 18px; }
+  .abuse-detail li { margin-bottom: 4px; }
+
+  /* ===== CHECKLIST ===== */
+  .checklist { list-style: none; margin: 12px 0; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-radius: 4px;
+    padding: 8px 6px;
+  }
+  .checklist li:hover { background: var(--surface2); }
+  .checklist .cb {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .checklist .cb.checked { background: var(--success); border-color: var(--success); color: #fff; }
+
+  /* ===== 3 REQUIREMENTS ===== */
+  .req-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .req-card {
+    background: linear-gradient(145deg, #1a3a5c, #2d6aa0);
+    color: #fff;
+    border-radius: 10px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .req-num { font-size: 2rem; font-weight: 900; opacity: 0.4; }
+  .req-label { font-size: 1rem; font-weight: 700; margin: 4px 0; }
+  .req-desc { font-size: 0.78rem; opacity: 0.85; line-height: 1.5; }
+
+  .plus4-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 14px 0;
+  }
+  .plus4-item {
+    background: var(--surface2);
+    border-radius: 8px;
+    padding: 14px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 0.85rem;
+  }
+  .plus4-num {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.8rem;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* ===== QUIZ ===== */
+  .quiz-card {
+    background: var(--surface);
+    border-radius: 10px;
+    border: 2px solid var(--border);
+    padding: 20px;
+    margin: 16px 0;
+  }
+  .quiz-q { font-weight: 700; font-size: 0.95rem; margin-bottom: 14px; color: var(--primary); }
+  .quiz-q .qnum {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 8px;
+  }
+  .quiz-options { list-style: none; }
+  .quiz-options li {
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .quiz-options li:hover { border-color: var(--primary-light); background: #f0f6ff; }
+  .quiz-options li.correct { border-color: var(--success); background: #e6f7ef; color: var(--success); font-weight: 700; }
+  .quiz-options li.wrong { border-color: var(--danger); background: #fdeaea; color: var(--danger); }
+  .quiz-options li.disabled { pointer-events: none; }
+  .quiz-feedback {
+    display: none;
+    margin-top: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.correct { background: #e6f7ef; color: #145a32; border-left: 4px solid var(--success); }
+  .quiz-feedback.wrong { background: #fdeaea; color: #7b241c; border-left: 4px solid var(--danger); }
+
+  /* ===== SCORE ===== */
+  .score-display {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: #fff;
+    border-radius: 12px;
+    margin: 20px 0;
+    display: none;
+  }
+  .score-display.show { display: block; }
+  .score-num { font-size: 3rem; font-weight: 900; }
+  .score-label { font-size: 1rem; opacity: 0.85; }
+
+  /* ===== FLOW DIAGRAM ===== */
+  .flow-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin: 20px 0;
+  }
+  .flow-step {
+    background: var(--primary);
+    color: #fff;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+  }
+  .flow-step.alt { background: var(--primary-light); }
+  .flow-step.action { background: var(--accent); }
+  .flow-step.end { background: var(--success); }
+  .flow-arrow {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    padding: 2px;
+  }
+  .flow-note {
+    font-size: 0.76rem;
+    opacity: 0.85;
+    font-weight: 400;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* ===== TABLE ===== */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin: 14px 0;
+  }
+  .data-table th {
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .data-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .data-table tr:nth-child(even) td { background: var(--surface2); }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-primary:hover { background: var(--primary-light); transform: translateY(-1px); }
+  .btn-accent { background: var(--accent); color: #fff; }
+  .btn-accent:hover { filter: brightness(1.1); transform: translateY(-1px); }
+  .btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+  .btn-outline:hover { background: var(--primary); color: #fff; }
+
+  .nav-btns {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  /* ===== CERTIFICATION ===== */
+  .cert-box {
+    border: 3px solid var(--primary);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    background: linear-gradient(135deg, #f8faff, #eef2f7);
+    margin: 20px 0;
+    display: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .cert-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(26,58,92,0.03) 40px,
+      rgba(26,58,92,0.03) 80px
+    );
+  }
+  .cert-box.show { display: block; }
+  .cert-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 6px;
+  }
+  .cert-sub { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px; }
+  .cert-name { font-size: 1.1rem; font-weight: 700; color: var(--accent); }
+  .cert-stamp {
+    display: inline-block;
+    border: 3px double var(--primary);
+    color: var(--primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 8px 20px;
+    border-radius: 4px;
+    margin-top: 16px;
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== OVERALL PROGRESS ===== */
+  .overall-progress {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+  }
+  .overall-progress-label { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 6px; display: flex; justify-content: space-between; }
+  .overall-progress-bar { background: var(--surface2); border-radius: 100px; height: 8px; overflow: hidden; }
+  .overall-progress-fill { height: 8px; background: linear-gradient(90deg, var(--primary-light), var(--accent)); border-radius: 100px; transition: width 0.5s; }
+
+  /* ===== HIGHLIGHT TAG ===== */
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin: 2px;
+  }
+  .tag.red { background: #fdeaea; color: var(--danger); }
+  .tag.blue { background: #e3eefc; color: var(--primary); }
+  .tag.orange { background: #fff0e0; color: #c47a0a; }
+  .tag.green { background: #e3f5ec; color: var(--success); }
+
+  @media (max-width: 768px) {
+    .app-layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .req-grid { grid-template-columns: 1fr; }
+    .plus4-grid { grid-template-columns: 1fr; }
+    .card { padding: 18px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-logo">常笑グループ</div>
+    <div class="header-title">虐待防止・身体拘束適正化 自学研修</div>
+    <div class="header-badge">令和8年度対応</div>
+  </div>
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-fill" id="progressBar" style="width: 14%;"></div>
+  </div>
+</header>
+
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="overall-progress">
+      <div class="overall-progress-label">
+        <span>研修進捗</span>
+        <span id="progressText">1 / 7 章</span>
+      </div>
+      <div class="overall-progress-bar">
+        <div class="overall-progress-fill" id="overallFill" style="width: 14%;"></div>
+      </div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-title">📚 目次</div>
+      <ul class="sidebar-nav">
+        <li><a class="active" onclick="showSection(0)"><span class="icon">🏠</span>はじめに<span class="check done" id="ch0">✓</span></a></li>
+        <li><a onclick="showSection(1)"><span class="icon">📖</span>第1章：虐待防止の基礎<span class="check" id="ch1">✓</span></a></li>
+        <li><a onclick="showSection(2)"><span class="icon">🔍</span>第2章：虐待の種類と対応<span class="check" id="ch2">✓</span></a></li>
+        <li><a onclick="showSection(3)"><span class="icon">🔒</span>第3章：身体拘束適正化<span class="check" id="ch3">✓</span></a></li>
+        <li><a onclick="showSection(4)"><span class="icon">📋</span>第4章：発生時の対応手順<span class="check" id="ch4">✓</span></a></li>
+        <li><a onclick="showSection(5)"><span class="icon">🏢</span>第5章：委員会と体制<span class="check" id="ch5">✓</span></a></li>
+        <li><a onclick="showSection(6)"><span class="icon">✏️</span>確認テスト<span class="check" id="ch6">✓</span></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- ===== SECTION 0: はじめに ===== -->
+    <section class="section active" id="sec0">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon blue">📘</div>
+          <div>
+            <div class="section-title">研修をはじめる前に</div>
+            <div class="section-sub">常笑グループ｜虐待防止・身体拘束適正化 自学研修</div>
+          </div>
+        </div>
+
+        <div class="info-box law">
+          <span class="info-box-icon">📌</span>
+          <div>本研修は、<strong>障害者虐待防止法</strong>（平成24年10月施行）および<strong>令和4年4月義務化</strong>の運営基準に基づき、令和8年度最新版として作成されています。すべての職員が年1回以上受講し、記録を保存してください。</div>
+        </div>
+
+        <h3>研修の目的</h3>
+        <p>利用者の人権を守り、虐待の発生と再発を防止するため、職員一人ひとりが正しい知識と対応力を身につけることを目的とします。</p>
+
+        <h3>研修の構成</h3>
+        <table class="data-table">
+          <thead>
+            <tr><th>章</th><th>内容</th><th>所要時間（目安）</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>第1章</td><td>虐待防止の基礎知識・法令</td><td>約10分</td></tr>
+            <tr><td>第2章</td><td>虐待の種類・サインと対応</td><td>約15分</td></tr>
+            <tr><td>第3章</td><td>身体拘束適正化の３要件</td><td>約10分</td></tr>
+            <tr><td>第4章</td><td>虐待発生時の対応フロー</td><td>約10分</td></tr>
+            <tr><td>第5章</td><td>委員会・組織体制</td><td>約8分</td></tr>
+            <tr><td>確認テスト</td><td>理解度チェック（10問）</td><td>約10分</td></tr>
+          </tbody>
+        </table>
+
+        <div class="info-box warn">
+          <span class="info-box-icon">⚠️</span>
+          <div>研修受講後は、<strong>受講記録に日付・氏名・所感を記入</strong>してください。未記録の場合、受講とみなされないことがあります。</div>
+        </div>
+
+        <div class="nav-btns">
+          <button class="btn btn-primary" onclick="showSection(1)">研修をはじめる →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 1: 基礎 ===== -->
+    <section class="section" id="sec1">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon blue">📖</div>
+          <div>
+            <div class="section-title">第1章｜虐待防止の基礎知識</div>
+            <div class="section-sub">法令の理解と義務化された取り組み</div>
+          </div>
+        </div>
+
+        <h3>障害者虐待防止法とは</h3>
+        <p>「障害者虐待の防止、障害者の養護者に対する支援等に関する法律」（障害者虐待防止法）は、<strong>平成24年（2012年）10月1日</strong>に施行されました。障害者の尊厳を守り、虐待を防止することを目的としています。</p>
+
+        <div class="info-box law">
+          <span class="info-box-icon">⚖️</span>
+          <div>
+            <strong>令和4年4月から義務化</strong>（全サービス対象）<br>
+            ①虐待防止委員会の設置・定期開催<br>
+            ②虐待防止のための職員研修（年1回以上）<br>
+            ③担当者（虐待防止マネジャー）の設置<br>
+            ④運営規程への虐待防止措置の明記
+          </div>
+        </div>
+
+        <h3>虐待防止措置未実施による減算（令和6年〜）</h3>
+        <p>令和6年4月からは、義務化された取り組みが未実施の場合、<strong>基本報酬が減算</strong>されます。事業所として適切な体制整備が必要です。</p>
+
+        <table class="data-table">
+          <thead>
+            <tr><th>未実施の内容</th><th>対象サービス</th><th>減算率</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>虐待防止委員会未設置</td><td>施設・通所系</td><td>基本報酬の5〜10%</td></tr>
+            <tr><td>職員研修未実施</td><td>全サービス</td><td>基本報酬の1〜5%</td></tr>
+            <tr><td>身体拘束適正化委員会未設置</td><td>施設・居住系</td><td>基本報酬の10%</td></tr>
+          </tbody>
+        </table>
+
+        <h3>なぜ虐待は起きるのか</h3>
+        <p>虐待は、特定の「悪い職員」だけが起こすものではありません。職場環境・組織体制・個人のストレスなど複合的な要因から発生します。</p>
+
+        <div class="plus4-grid">
+          <div class="plus4-item">
+            <div class="plus4-num">①</div>
+            <div><strong>職場環境の問題</strong><br>人手不足、過重労働、支援困難ケースの集中</div>
+          </div>
+          <div class="plus4-item">
+            <div class="plus4-num">②</div>
+            <div><strong>職員のストレス</strong><br>燃え尽き症候群、感情のコントロール不全</div>
+          </div>
+          <div class="plus4-item">
+            <div class="plus4-num">③</div>
+            <div><strong>組織の問題</strong><br>管理者の無関心、報告しにくい文化、閉鎖性</div>
+          </div>
+          <div class="plus4-item">
+            <div class="plus4-num">④</div>
+            <div><strong>知識・技術不足</strong><br>障害特性への誤解、支援方法の未習得</div>
+          </div>
+        </div>
+
+        <div class="info-box success">
+          <span class="info-box-icon">✅</span>
+          <div>「自分は虐待しない」という意識だけでは不十分です。職場全体で予防の仕組みをつくることが重要です。<strong>ヒヤリハット報告・チェックリスト・委員会</strong>を活用しましょう。</div>
+        </div>
+
+        <div class="nav-btns">
+          <button class="btn btn-outline" onclick="showSection(0)">← 戻る</button>
+          <button class="btn btn-primary" onclick="showSection(2)">次の章へ →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 2: 虐待の種類 ===== -->
+    <section class="section" id="sec2">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon orange">🔍</div>
+          <div>
+            <div class="section-title">第2章｜虐待の種類とサイン</div>
+            <div class="section-sub">5種類の虐待を正確に理解する</div>
+          </div>
+        </div>
+
+        <p>各カードをクリックすると、具体例とサインを確認できます。</p>
+
+        <div class="abuse-grid">
+          <div class="abuse-card shintai" onclick="toggleAbuse(&#39;shintai&#39;)">
+            <div class="abuse-card-icon">🤜</div>
+            <div class="abuse-card-type">①身体的虐待</div>
+            <div class="abuse-card-desc">暴行・体罰・不当な身体拘束</div>
+          </div>
+          <div class="abuse-card seiteki" onclick="toggleAbuse(&#39;seiteki&#39;)">
+            <div class="abuse-card-icon">⛔</div>
+            <div class="abuse-card-type">②性的虐待</div>
+            <div class="abuse-card-desc">性的行為の強要・わいせつ行為</div>
+          </div>
+          <div class="abuse-card shinri" onclick="toggleAbuse(&#39;shinri&#39;)">
+            <div class="abuse-card-icon">💬</div>
+            <div class="abuse-card-type">③心理的虐待</div>
+            <div class="abuse-card-desc">暴言・脅し・無視・差別</div>
+          </div>
+          <div class="abuse-card neglect" onclick="toggleAbuse(&#39;neglect&#39;)">
+            <div class="abuse-card-icon">🚫</div>
+            <div class="abuse-card-type">④ネグレクト</div>
+            <div class="abuse-card-desc">介護放棄・必要なケアを行わない</div>
+          </div>
+          <div class="abuse-card keizai" onclick="toggleAbuse(&#39;keizai&#39;)">
+            <div class="abuse-card-icon">💴</div>
+            <div class="abuse-card-type">⑤経済的虐待</div>
+            <div class="abuse-card-desc">財産の不当な処分・搾取</div>
+          </div>
+        </div>
+
+        <div class="abuse-detail" id="detail-shintai">
+          <strong>🤜 身体的虐待｜具体例</strong>
+          <ul>
+            <li>平手打ち・殴る・蹴る・つねる・壁に叩きつける</li>
+            <li>無理やり食物や飲み物を口に入れる</li>
+            <li>正当な理由なく身体を拘束する（縛る・ミトン・つなぎ服・隔離など）</li>
+            <li>医療的必要性に基づかない投薬による動作抑制</li>
+          </ul>
+          <br>
+          <strong>📍 発見のサイン</strong>
+          <ul>
+            <li>身体に小さな傷が頻繁にみられる</li>
+            <li>太もも内側・背中等に傷・ミミズ腫れがある</li>
+            <li>急におびえたり、こわがったりする</li>
+            <li>「施設に行きたがらない」「こわい」と訴える</li>
+          </ul>
+        </div>
+
+        <div class="abuse-detail" id="detail-seiteki">
+          <strong>⛔ 性的虐待｜具体例</strong>
+          <ul>
+            <li>性交・性器への接触・キス</li>
+            <li>裸にする・わいせつな映像を見せる</li>
+            <li>更衣・トイレ場面を盗撮・のぞき見する</li>
+            <li>表面上同意していても、本心からの同意かどうかを見極めることが重要</li>
+          </ul>
+          <br>
+          <strong>📍 発見のサイン</strong>
+          <ul>
+            <li>不自然な歩き方・座位保持が困難になる</li>
+            <li>肛門・性器からの出血・傷がみられる</li>
+            <li>卑猥な言葉を発するようになる</li>
+            <li>ひと目を避ける・一人でいたがる</li>
+          </ul>
+        </div>
+
+        <div class="abuse-detail" id="detail-shinri">
+          <strong>💬 心理的虐待｜具体例</strong>
+          <ul>
+            <li>「バカ」「あほ」など侮辱する言葉を浴びせる</li>
+            <li>怒鳴る・ののしる・悪口を言う</li>
+            <li>仲間に入れない・子ども扱いする</li>
+            <li>話しかけているのに意図的に無視する</li>
+            <li>机を叩く・椅子を蹴るなど言動による脅かし</li>
+          </ul>
+          <br>
+          <strong>📍 発見のサイン</strong>
+          <ul>
+            <li>かきむしり・かみつき等、攻撃的な態度がみられる</li>
+            <li>パニック症状・おびえ・わめく・叫ぶ</li>
+            <li>自傷行為がみられる</li>
+            <li>無力感・あきらめ・なげやりな様子</li>
+          </ul>
+        </div>
+
+        <div class="abuse-detail" id="detail-neglect">
+          <strong>🚫 ネグレクト｜具体例</strong>
+          <ul>
+            <li>食事・水分を十分に与えない</li>
+            <li>入浴させない・汚れた服を着させ続ける</li>
+            <li>排泄の介助をしない・髪や爪が伸び放題</li>
+            <li>病気・けがをしても受診させない</li>
+            <li>必要な福祉サービスを受けさせない・制限する</li>
+          </ul>
+          <br>
+          <strong>📍 発見のサイン</strong>
+          <ul>
+            <li>身体から異臭・汚れがひどい・爪が伸びて汚い</li>
+            <li>ずっと同じ服を着ている</li>
+            <li>過度に空腹を訴える・よそではガツガツ食べる</li>
+            <li>学校や職場に出てこない</li>
+          </ul>
+        </div>
+
+        <div class="abuse-detail" id="detail-keizai">
+          <strong>💴 経済的虐待｜具体例</strong>
+          <ul>
+            <li>養護者が年金や賃金を渡さない</li>
+            <li>本人の同意なしに財産・預貯金を処分・運用する</li>
+            <li>日常生活に必要な金銭を渡さない・使わせない</li>
+            <li>利用者の預かり金を着服する</li>
+          </ul>
+          <br>
+          <strong>📍 発見のサイン</strong>
+          <ul>
+            <li>働いているのに貧しい身なりでお金を使っていない</li>
+            <li>年金・賃金がどう管理されているか本人が知らない</li>
+            <li>サービス利用料・生活費の支払いができない</li>
+            <li>資産保有状況と生活状況の落差が激しい</li>
+          </ul>
+        </div>
+
+        <div class="info-box danger" style="margin-top:20px;">
+          <span class="info-box-icon">❗</span>
+          <div><strong>不適切な関わり（グレーゾーン）に注意！</strong><br>
+          明らかな虐待ではなくても、「ちょっと待って」を長時間放置する・感情的に大きな声を出す・利用者の話を聞かないなどの行為も、繰り返されることで虐待につながります。日常の関わり方を常に振り返りましょう。</div>
+        </div>
+
+        <div class="nav-btns">
+          <button class="btn btn-outline" onclick="showSection(1)">← 戻る</button>
+          <button class="btn btn-primary" onclick="showSection(3)">次の章へ →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 3: 身体拘束 ===== -->
+    <section class="section" id="sec3">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon red">🔒</div>
+          <div>
+            <div class="section-title">第3章｜身体拘束適正化</div>
+            <div class="section-sub">３要件＋手続きの４原則</div>
+          </div>
+        </div>
+
+        <h3>身体拘束とは</h3>
+        <p>「正当な理由なく障害者の身体を拘束すること」は身体的虐待に該当します。以下がその具体例です。</p>
+
+        <ul class="checklist" id="restraintList">
+          <li onclick="checkItem(this)"><span class="cb">✓</span>車いすやベッドに縛り付ける</li>
+          <li onclick="checkItem(this)"><span class="cb">✓</span>手指の機能を制限するためミトン型手袋をつける</li>
+          <li onclick="checkItem(this)"><span class="cb">✓</span>行動を制限するために介護衣（つなぎ服）を着せる</li>
+          <li onclick="checkItem(this)"><span class="cb">✓</span>支援者が自分の体で利用者を押さえつけて行動を制限する</li>
+          <li onclick="checkItem(this)"><span class="cb">✓</span>行動を落ち着かせるために向精神薬を過剰に服薬させる</li>
+          <li onclick="checkItem(this)"><span class="cb">✓</span>自分の意思で開けることのできない居室等に隔離する</li>
+        </ul>
+
+        <h3>やむを得ない場合の３要件</h3>
+        <p>緊急やむを得ない場合のみ、以下の３要件をすべて満たした場合に限り、身体拘束が認められます。</p>
+
+        <div class="req-grid">
+          <div class="req-card">
+            <div class="req-num">①</div>
+            <div class="req-label">切迫性</div>
+            <div class="req-desc">本人・他の利用者の生命・身体に危険が晒される可能性が高い</div>
+          </div>
+          <div class="req-card">
+            <div class="req-num">②</div>
+            <div class="req-label">非代替性</div>
+            <div class="req-desc">身体拘束以外に代替できる介助方法がないこと</div>
+          </div>
+          <div class="req-card">
+            <div class="req-num">③</div>
+            <div class="req-label">一時性</div>
+            <div class="req-desc">身体拘束は一時的なものであること</div>
+          </div>
+        </div>
+
+        <div class="info-box danger">
+          <span class="info-box-icon">❗</span>
+          <div><strong>３要件はすべて同時に満たす必要があります。</strong>1つでも欠けている場合は認められません。また、常にこれらの要件を見直し、廃止に向けて取り組むことが義務です。</div>
+        </div>
+
+        <h3>手続きの４原則（３要件＋４）</h3>
+
+        <div class="plus4-grid">
+          <div class="plus4-item">
+            <div class="plus4-num">①</div>
+            <div><strong>組織による決定と計画書への記載</strong><br>管理者等が出席した会議で組織として決定。計画書に様態・時間・緊急やむを得ない理由を記載する。</div>
+          </div>
+          <div class="plus4-item">
+            <div class="plus4-num">②</div>
+            <div><strong>本人・家族への説明と同意</strong><br>目的・理由・時間・期間等について説明し、同意を得る。</div>
+          </div>
+          <div class="plus4-item">
+            <div class="plus4-num">③</div>
+            <div><strong>必要な事項の記録</strong><br>様態・時間・その際の利用者の心身状況・緊急やむを得ない理由を記録する。</div>
+          </div>
+          <div class="plus4-item">
+            <div class="plus4-num">④</div>
+            <div><strong>定期的な評価と廃止への取り組み</strong><br>身体拘束の継続を定期的に評価し、廃止に向けて検討を続ける。</div>
+          </div>
+        </div>
+
+        <h3>身体拘束適正化委員会（令和6年義務化）</h3>
+        <table class="data-table">
+          <thead>
+            <tr><th>取り組み</th><th>頻度・要件</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>身体拘束適正化委員会の開催</td><td>年1回以上（定期的に）</td></tr>
+            <tr><td>結果の従業者への周知</td><td>毎回の委員会後</td></tr>
+            <tr><td>身体拘束適正化指針の整備</td><td>作成・更新・閲覧可能状態</td></tr>
+            <tr><td>定期的な研修</td><td>年1回以上（新規採用時は必須）</td></tr>
+          </tbody>
+        </table>
+
+        <div class="nav-btns">
+          <button class="btn btn-outline" onclick="showSection(2)">← 戻る</button>
+          <button class="btn btn-primary" onclick="showSection(4)">次の章へ →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 4: 対応手順 ===== -->
+    <section class="section" id="sec4">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon green">📋</div>
+          <div>
+            <div class="section-title">第4章｜虐待発生時の対応手順</div>
+            <div class="section-sub">発見・通報から解決までのフロー</div>
+          </div>
+        </div>
+
+        <h3>虐待発見・通報時の対応フロー</h3>
+
+        <div class="flow-wrap">
+          <div class="flow-step">🔍 虐待の発見・通報<span class="flow-note">職員・利用者・家族・外部からの通報</span></div>
+          <div class="flow-arrow">▼</div>
+          <div class="flow-step alt">📞 虐待防止マネジャーへ報告<span class="flow-note">速やかに、口頭＋書面（報告書作成）</span></div>
+          <div class="flow-arrow">▼</div>
+          <div class="flow-step">🛡️ 利用者の安全確保（最優先）<span class="flow-note">被虐待者の保護・医療的対応が必要な場合は即対応</span></div>
+          <div class="flow-arrow">▼</div>
+          <div class="flow-step alt">📊 事実確認・調査<span class="flow-note">虐待防止責任者・マネジャーによる調査（10日以内に通報者へ連絡）</span></div>
+          <div class="flow-arrow">▼</div>
+          <div class="flow-step action">🏛️ 市町村虐待防止センターへ報告<span class="flow-note">虐待が確認された場合は速やかに行政報告</span></div>
+          <div class="flow-arrow">▼</div>
+          <div class="flow-step">🤝 話し合い・解決策の検討<span class="flow-note">通報から14日以内に実施</span></div>
+          <div class="flow-arrow">▼</div>
+          <div class="flow-step alt">📄 改善策の実施と記録<span class="flow-note">被虐待者・保護者・行政へ改善結果を報告（30日以内）</span></div>
+          <div class="flow-arrow">▼</div>
+          <div class="flow-step end">✅ 再発防止・委員会での振り返り<span class="flow-note">原因分析・マニュアル見直し・研修実施</span></div>
+        </div>
+
+        <h3>職員が心がけること</h3>
+        <div class="plus4-grid">
+          <div class="plus4-item">
+            <div class="plus4-num">①</div>
+            <div><strong>「見て見ぬふり」をしない</strong><br>疑わしい状況を発見したら必ず報告。通報は義務であり、職員を守る権利でもある。</div>
+          </div>
+          <div class="plus4-item">
+            <div class="plus4-num">②</div>
+            <div><strong>早期発見・早期対応</strong><br>サインに気づいたら即座に上長や虐待防止マネジャーに相談する。</div>
+          </div>
+          <div class="plus4-item">
+            <div class="plus4-num">③</div>
+            <div><strong>記録の重要性</strong><br>発見時の状況、利用者の様子、自分が行った対応などを具体的に記録する。</div>
+          </div>
+          <div class="plus4-item">
+            <div class="plus4-num">④</div>
+            <div><strong>守秘義務の遵守</strong><br>通報者・被虐待者の情報は許可なく第三者に漏らしてはならない。</div>
+          </div>
+        </div>
+
+        <div class="info-box law">
+          <span class="info-box-icon">📌</span>
+          <div>
+            <strong>通報者保護</strong>：虐待を通報したことを理由として、解雇その他不利益な取り扱いをすることは禁止されています（障害者虐待防止法第16条）。安心して通報してください。
+          </div>
+        </div>
+
+        <div class="nav-btns">
+          <button class="btn btn-outline" onclick="showSection(3)">← 戻る</button>
+          <button class="btn btn-primary" onclick="showSection(5)">次の章へ →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 5: 委員会 ===== -->
+    <section class="section" id="sec5">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon purple">🏢</div>
+          <div>
+            <div class="section-title">第5章｜虐待防止委員会と体制</div>
+            <div class="section-sub">常笑グループの組織的取り組み</div>
+          </div>
+        </div>
+
+        <h3>常笑グループの虐待防止体制</h3>
+        <table class="data-table">
+          <thead>
+            <tr><th>役職</th><th>職務内容</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>虐待防止責任者</strong><br><span style="font-size:0.78rem;color:var(--text-muted)">（各事業所管理者）</span></td>
+              <td>・規程の制定・遵守確認<br>・委員会の主宰<br>・行政への報告<br>・被虐待者・保護者への説明</td>
+            </tr>
+            <tr>
+              <td><strong>虐待防止マネジャー</strong></td>
+              <td>・職員チェックリストの実施・集計<br>・研修の企画・実施<br>・ヒヤリハット事例の報告・分析<br>・虐待発生時の内容精査・責任者への報告</td>
+            </tr>
+            <tr>
+              <td><strong>虐待防止受付担当者</strong></td>
+              <td>・利用者・家族からの通報受付<br>・通報内容の記録・マネジャーへの連絡</td>
+            </tr>
+            <tr>
+              <td><strong>各職員</strong></td>
+              <td>・自己チェックリストの実施<br>・疑わしい状況の速やかな報告<br>・研修への参加・倫理綱領の遵守</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>虐待防止委員会の役割</h3>
+
+        <div class="plus4-grid">
+          <div class="plus4-item">
+            <div class="plus4-num">①</div>
+            <div><strong>虐待防止計画の策定</strong><br>研修計画・マニュアル整備・チェックリスト作成・掲示物作成</div>
+          </div>
+          <div class="plus4-item">
+            <div class="plus4-num">②</div>
+            <div><strong>モニタリング・チェック</strong><br>職場環境の確認・自己点検結果の集計・報告</div>
+          </div>
+          <div class="plus4-item">
+            <div class="plus4-num">③</div>
+            <div><strong>虐待事案の検証</strong><br>発生時の事実確認・原因分析・再発防止策の検討</div>
+          </div>
+          <div class="plus4-item">
+            <div class="plus4-num">④</div>
+            <div><strong>研修・啓発活動</strong><br>定期研修（年1回以上）・新規職員研修・事例検討会</div>
+          </div>
+        </div>
+
+        <h3>自己チェックリストの活用</h3>
+        <p>以下のような自己点検を定期的に行いましょう。</p>
+
+        <ul class="checklist">
+          <li onclick="checkItem(this)"><span class="cb">✓</span>利用者に対して尊重した言葉遣いができているか</li>
+          <li onclick="checkItem(this)"><span class="cb">✓</span>利用者の気持ちに寄り添った支援ができているか</li>
+          <li onclick="checkItem(this)"><span class="cb">✓</span>感情的にならず冷静に対応できているか</li>
+          <li onclick="checkItem(this)"><span class="cb">✓</span>利用者の訴えに対して適切に対応しているか</li>
+          <li onclick="checkItem(this)"><span class="cb">✓</span>虐待に当たる行為を行っていないか日々振り返っているか</li>
+          <li onclick="checkItem(this)"><span class="cb">✓</span>ヒヤリハットがあれば報告・共有しているか</li>
+          <li onclick="checkItem(this)"><span class="cb">✓</span>利用者の財産・金銭管理を適切に行っているか</li>
+          <li onclick="checkItem(this)"><span class="cb">✓</span>身体拘束を行う場合は３要件を確認しているか</li>
+        </ul>
+
+        <div class="nav-btns">
+          <button class="btn btn-outline" onclick="showSection(4)">← 戻る</button>
+          <button class="btn btn-accent" onclick="showSection(6)">確認テストへ →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 6: 確認テスト ===== -->
+    <section class="section" id="sec6">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon orange">✏️</div>
+          <div>
+            <div class="section-title">確認テスト</div>
+            <div class="section-sub">全10問｜理解度チェック</div>
+          </div>
+        </div>
+
+        <!-- Q1 -->
+        <div class="quiz-card" id="q1">
+          <div class="quiz-q"><span class="qnum">Q1</span>障害者虐待防止法が施行された年はいつですか？</div>
+          <ul class="quiz-options">
+            <li onclick="answer(this,&#39;q1&#39;,false)">📌 平成20年（2008年）</li>
+            <li onclick="answer(this,&#39;q1&#39;,true)">📌 平成24年（2012年）</li>
+            <li onclick="answer(this,&#39;q1&#39;,false)">📌 平成28年（2016年）</li>
+            <li onclick="answer(this,&#39;q1&#39;,false)">📌 令和4年（2022年）</li>
+          </ul>
+          <div class="quiz-feedback" id="fb1"></div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="quiz-card" id="q2">
+          <div class="quiz-q"><span class="qnum">Q2</span>虐待防止委員会の設置が全サービス事業所で義務化されたのはいつからですか？</div>
+          <ul class="quiz-options">
+            <li onclick="answer(this,&#39;q2&#39;,false)">📌 令和3年4月（努力義務）から</li>
+            <li onclick="answer(this,&#39;q2&#39;,true)">📌 令和4年4月から</li>
+            <li onclick="answer(this,&#39;q2&#39;,false)">📌 令和6年4月から</li>
+            <li onclick="answer(this,&#39;q2&#39;,false)">📌 令和8年4月から</li>
+          </ul>
+          <div class="quiz-feedback" id="fb2"></div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="quiz-card" id="q3">
+          <div class="quiz-q"><span class="qnum">Q3</span>身体拘束が「やむを得ない場合」に認められるための３要件として正しい組み合わせはどれですか？</div>
+          <ul class="quiz-options">
+            <li onclick="answer(this,&#39;q3&#39;,false)">📌 切迫性・必要性・経済性</li>
+            <li onclick="answer(this,&#39;q3&#39;,false)">📌 緊急性・合理性・一時性</li>
+            <li onclick="answer(this,&#39;q3&#39;,true)">📌 切迫性・非代替性・一時性</li>
+            <li onclick="answer(this,&#39;q3&#39;,false)">📌 必要性・安全性・合理性</li>
+          </ul>
+          <div class="quiz-feedback" id="fb3"></div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="quiz-card" id="q4">
+          <div class="quiz-q"><span class="qnum">Q4</span>次のうち、身体的虐待に該当するものはどれですか？</div>
+          <ul class="quiz-options">
+            <li onclick="answer(this,&#39;q4&#39;,false)">📌 利用者の財産を不当に処分する</li>
+            <li onclick="answer(this,&#39;q4&#39;,false)">📌 利用者に対して「バカ」と呼ぶ</li>
+            <li onclick="answer(this,&#39;q4&#39;,true)">📌 正当な理由なく利用者をミトン型手袋で拘束する</li>
+            <li onclick="answer(this,&#39;q4&#39;,false)">📌 利用者の食事の介助をしない</li>
+          </ul>
+          <div class="quiz-feedback" id="fb4"></div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="quiz-card" id="q5">
+          <div class="quiz-q"><span class="qnum">Q5</span>職員が虐待を発見・通報した場合、虐待防止法上どのような保護がありますか？</div>
+          <ul class="quiz-options">
+            <li onclick="answer(this,&#39;q5&#39;,false)">📌 特に保護規定はなく、職員の自己責任</li>
+            <li onclick="answer(this,&#39;q5&#39;,true)">📌 通報を理由とした解雇・不利益な取り扱いは禁止</li>
+            <li onclick="answer(this,&#39;q5&#39;,false)">📌 通報者は匿名でなければならない</li>
+            <li onclick="answer(this,&#39;q5&#39;,false)">📌 通報は管理者の許可を得てから行う必要がある</li>
+          </ul>
+          <div class="quiz-feedback" id="fb5"></div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="quiz-card" id="q6">
+          <div class="quiz-q"><span class="qnum">Q6</span>虐待の通報があった場合、通報者への通知（報告受付の連絡）は何日以内に行う必要がありますか？</div>
+          <ul class="quiz-options">
+            <li onclick="answer(this,&#39;q6&#39;,false)">📌 3日以内</li>
+            <li onclick="answer(this,&#39;q6&#39;,false)">📌 7日以内</li>
+            <li onclick="answer(this,&#39;q6&#39;,true)">📌 10日以内</li>
+            <li onclick="answer(this,&#39;q6&#39;,false)">📌 30日以内</li>
+          </ul>
+          <div class="quiz-feedback" id="fb6"></div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="quiz-card" id="q7">
+          <div class="quiz-q"><span class="qnum">Q7</span>「利用者に呼ばれたが、用事があり1時間後に対応した」という行為は何に該当しますか？</div>
+          <ul class="quiz-options">
+            <li onclick="answer(this,&#39;q7&#39;,false)">📌 身体的虐待</li>
+            <li onclick="answer(this,&#39;q7&#39;,false)">📌 経済的虐待</li>
+            <li onclick="answer(this,&#39;q7&#39;,false)">📌 心理的虐待</li>
+            <li onclick="answer(this,&#39;q7&#39;,true)">📌 ネグレクト（介護放棄）</li>
+          </ul>
+          <div class="quiz-feedback" id="fb7"></div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="quiz-card" id="q8">
+          <div class="quiz-q"><span class="qnum">Q8</span>身体拘束を行う場合、必ず行わなければならない記録に含まれないものはどれですか？</div>
+          <ul class="quiz-options">
+            <li onclick="answer(this,&#39;q8&#39;,false)">📌 身体拘束の様態と時間</li>
+            <li onclick="answer(this,&#39;q8&#39;,false)">📌 その際の利用者の心身の状況</li>
+            <li onclick="answer(this,&#39;q8&#39;,false)">📌 緊急やむを得ない理由</li>
+            <li onclick="answer(this,&#39;q8&#39;,true)">📌 拘束を行った職員の個人的な感想</li>
+          </ul>
+          <div class="quiz-feedback" id="fb8"></div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="quiz-card" id="q9">
+          <div class="quiz-q"><span class="qnum">Q9</span>身体拘束適正化委員会は最低でも年に何回以上開催する必要がありますか？</div>
+          <ul class="quiz-options">
+            <li onclick="answer(this,&#39;q9&#39;,true)">📌 年1回以上</li>
+            <li onclick="answer(this,&#39;q9&#39;,false)">📌 年2回以上</li>
+            <li onclick="answer(this,&#39;q9&#39;,false)">📌 年4回以上</li>
+            <li onclick="answer(this,&#39;q9&#39;,false)">📌 毎月1回</li>
+          </ul>
+          <div class="quiz-feedback" id="fb9"></div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="quiz-card" id="q10">
+          <div class="quiz-q"><span class="qnum">Q10</span>虐待防止のため、職員が日常的に取り組むべきこととして最も適切なものはどれですか？</div>
+          <ul class="quiz-options">
+            <li onclick="answer(this,&#39;q10&#39;,false)">📌 問題が起きたときだけ対応すれば十分</li>
+            <li onclick="answer(this,&#39;q10&#39;,false)">📌 ヒヤリハットは軽微なので報告しなくてよい</li>
+            <li onclick="answer(this,&#39;q10&#39;,true)">📌 自己チェックリストや研修を通じて日常的に振り返りを行う</li>
+            <li onclick="answer(this,&#39;q10&#39;,false)">📌 虐待の対応は管理者だけが行えばよい</li>
+          </ul>
+          <div class="quiz-feedback" id="fb10"></div>
+        </div>
+
+        <div class="score-display" id="scoreDisplay">
+          <div style="font-size:1.1rem;margin-bottom:8px;">テスト結果</div>
+          <div class="score-num" id="scoreNum">0/10</div>
+          <div class="score-label" id="scoreLabel"></div>
+        </div>
+
+        <div class="cert-box" id="certBox">
+          <div class="cert-title">🏆 研修修了証</div>
+          <div class="cert-sub">以下の方が虐待防止・身体拘束適正化 自学研修を修了したことを証明します</div>
+          <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:8px;">受講日：<span id="certDate"></span></div>
+          <div class="cert-name">研修修了</div>
+          <div style="margin-top:16px;font-size:0.8rem;color:var(--text-muted);">常笑グループ｜虐待防止・身体拘束適正化 自学研修（令和8年度版）</div>
+          <div class="cert-stamp">常笑グループ 確認済</div>
+        </div>
+
+        <div class="nav-btns">
+          <button class="btn btn-outline" onclick="showSection(5)">← 戻る</button>
+          <button class="btn btn-primary" onclick="checkScore()" id="checkBtn">採点する</button>
+          <button class="btn btn-accent" onclick="printCert()" id="printBtn" style="display:none">🖨️ 修了証を印刷</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  let completedSections = new Set();
+  let answers = {};
+  let correctAnswers = {};
+
+  const feedbacks = {
+    q1: { correct: "✅ 正解！障害者虐待防止法は平成24年（2012年）10月1日に施行されました。", wrong: "❌ 不正解。障害者虐待防止法は平成24年（2012年）10月1日に施行されました。" },
+    q2: { correct: "✅ 正解！令和3年度は努力義務、令和4年4月から全サービスで義務化されました。", wrong: "❌ 不正解。令和4年4月から全サービスで義務化されました（令和3年度は努力義務）。" },
+    q3: { correct: "✅ 正解！切迫性・非代替性・一時性の３要件すべてを満たす場合のみ認められます。", wrong: "❌ 不正解。身体拘束の３要件は「切迫性」「非代替性」「一時性」です。" },
+    q4: { correct: "✅ 正解！正当な理由なく身体を拘束することは身体的虐待に該当します。", wrong: "❌ 不正解。正当な理由なくミトン型手袋で拘束することは身体的虐待です。「バカ」は心理的虐待、財産処分は経済的虐待、食事介助をしないはネグレクトです。" },
+    q5: { correct: "✅ 正解！通報を理由とした解雇や不利益な取り扱いは障害者虐待防止法で禁止されています。", wrong: "❌ 不正解。通報者は法律で保護されており、通報を理由とした解雇・不利益な取り扱いは禁止されています。" },
+    q6: { correct: "✅ 正解！通報受付から10日以内に通報者へ報告を受けた旨を通知する必要があります。", wrong: "❌ 不正解。虐待通報の受付から10日以内に通報者へ通知しなければなりません。" },
+    q7: { correct: "✅ 正解！必要な介護・世話を行わないことはネグレクト（介護放棄・放任）にあたります。「ちょっと」が1時間になる状況は放置に当たります。", wrong: "❌ 不正解。利用者の訴えを長時間放置することはネグレクト（介護放棄・放任）に該当します。" },
+    q8: { correct: "✅ 正解！記録すべき内容は「様態と時間」「利用者の心身の状況」「緊急やむを得ない理由」です。職員の個人的な感想は記録義務の対象ではありません。", wrong: "❌ 不正解。記録すべき内容は様態と時間・利用者の心身状況・緊急やむを得ない理由であり、職員個人の感想は含まれません。" },
+    q9: { correct: "✅ 正解！身体拘束適正化委員会は年1回以上の定期開催が義務付けられています。", wrong: "❌ 不正解。身体拘束適正化委員会の定期開催は年1回以上です。" },
+    q10: { correct: "✅ 正解！自己チェックリストや研修を通じた日常的な振り返りが虐待防止の基本です。", wrong: "❌ 不正解。虐待防止は問題が起きてからの対応だけでなく、日常的な自己点検・研修・報告が重要です。" },
+  };
+
+  function showSection(idx) {
+    document.querySelectorAll('.section').forEach((s,i) => {
+      s.classList.toggle('active', i === idx);
+    });
+    document.querySelectorAll('.sidebar-nav a').forEach((a,i) => {
+      a.classList.toggle('active', i === idx);
+    });
+    completedSections.add(idx);
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function updateProgress() {
+    const total = 7;
+    const done = completedSections.size;
+    const pct = Math.round((done / total) * 100);
+    document.getElementById('progressBar').style.width = pct + '%';
+    document.getElementById('progressText').textContent = done + ' / ' + total + ' 章';
+    document.getElementById('overallFill').style.width = pct + '%';
+
+    completedSections.forEach(idx => {
+      const chk = document.getElementById('ch' + idx);
+      if (chk) chk.classList.add('done');
+    });
+  }
+
+  function toggleAbuse(type) {
+    const detail = document.getElementById('detail-' + type);
+    const isShow = detail.classList.contains('show');
+    document.querySelectorAll('.abuse-detail').forEach(d => d.classList.remove('show'));
+    if (!isShow) detail.classList.add('show');
+  }
+
+  function checkItem(el) {
+    const cb = el.querySelector('.cb');
+    cb.classList.toggle('checked');
+  }
+
+  let answered = {};
+  let score = 0;
+  let totalAnswered = 0;
+
+  function answer(el, qid, isCorrect) {
+    if (answered[qid]) return;
+    answered[qid] = true;
+    totalAnswered++;
+
+    const options = el.closest('.quiz-options').querySelectorAll('li');
+    options.forEach(opt => opt.classList.add('disabled'));
+
+    if (isCorrect) {
+      el.classList.add('correct');
+      score++;
+    } else {
+      el.classList.add('wrong');
+      // find correct
+      options.forEach(opt => {
+        // re-check by finding the correct one
+      });
+    }
+
+    const fb = document.getElementById('fb' + qid.replace('q',''));
+    fb.textContent = isCorrect ? feedbacks[qid].correct : feedbacks[qid].wrong;
+    fb.className = 'quiz-feedback show ' + (isCorrect ? 'correct' : 'wrong');
+
+    if (totalAnswered === 10) {
+      document.getElementById('checkBtn').style.display = 'none';
+      showScore();
+    }
+  }
+
+  function checkScore() {
+    showScore();
+  }
+
+  function showScore() {
+    const pct = Math.round((score / 10) * 100);
+    const disp = document.getElementById('scoreDisplay');
+    disp.classList.add('show');
+    document.getElementById('scoreNum').textContent = score + '/10';
+
+    let label = '';
+    if (pct >= 80) {
+      label = '🎉 優秀です！研修修了です。修了証を印刷してください。';
+      showCert();
+      document.getElementById('printBtn').style.display = 'inline-flex';
+    } else if (pct >= 60) {
+      label = '📖 もう少しです。不正解だった問題を復習しましょう。';
+    } else {
+      label = '❌ 再学習が必要です。各章をもう一度読み返してください。';
+    }
+    document.getElementById('scoreLabel').textContent = label;
+    completedSections.add(6);
+    updateProgress();
+  }
+
+  function showCert() {
+    const cert = document.getElementById('certBox');
+    const now = new Date();
+    const y = now.getFullYear();
+    const m = now.getMonth() + 1;
+    const d = now.getDate();
+    // Convert to 和暦
+    const reiwa = y - 2018;
+    document.getElementById('certDate').textContent = `令和${reiwa}年${m}月${d}日`;
+    cert.classList.add('show');
+  }
+
+  function printCert() {
+    window.print();
+  }
+
+  // Init
+  completedSections.add(0);
+  updateProgress();
+</script>
+
+
+</body></html>
