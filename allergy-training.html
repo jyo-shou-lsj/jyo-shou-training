@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社常笑｜アレルギー対応研修 自学教材</title>
+<style>
+  :root{
+    --primary:#E8852B;        /* 常笑オレンジ（笑顔・あたたかさ） */
+    --primary-dark:#C96A14;
+    --primary-soft:#FCF1E4;
+    --accent:#1F8A8F;         /* 安心のティール */
+    --accent-soft:#E5F2F2;
+    --danger:#C0392B;
+    --danger-soft:#FBEAE8;
+    --ink:#2C2A26;
+    --ink-soft:#6B665E;
+    --line:#E8E2D8;
+    --bg:#FBF8F3;
+    --card:#FFFFFF;
+    --ok:#3A8A4A;
+    --ok-soft:#E8F3EA;
+    --radius:16px;
+    --shadow:0 2px 14px rgba(60,50,30,.07);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;
+  }
+  /* ===== Progress bar ===== */
+  #progressWrap{position:fixed;top:0;left:0;right:0;height:6px;background:var(--line);z-index:200}
+  #progressBar{height:100%;width:0;background:linear-gradient(90deg,var(--primary),var(--accent));transition:width .4s ease}
+  /* ===== Layout ===== */
+  .shell{display:flex;min-height:100vh}
+  /* ===== Sidebar ===== */
+  #sidebar{
+    width:280px;flex-shrink:0;background:var(--card);border-right:1px solid var(--line);
+    position:sticky;top:0;height:100vh;overflow-y:auto;padding:22px 0 40px;
+  }
+  .brand{padding:14px 22px 18px}
+  .brand .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;color:var(--primary-dark)}
+  .brand .logo .mark{width:34px;height:34px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center;font-size:18px;flex-shrink:0}
+  .brand .sub{font-size:12px;color:var(--ink-soft);margin-top:6px;line-height:1.5}
+  nav{margin-top:8px}
+  .nav-item{
+    display:flex;align-items:center;gap:11px;padding:9px 22px;cursor:pointer;color:var(--ink-soft);
+    font-size:14px;border-left:3px solid transparent;transition:.15s;
+  }
+  .nav-item:hover{background:var(--primary-soft);color:var(--ink)}
+  .nav-item.active{background:var(--primary-soft);color:var(--primary-dark);border-left-color:var(--primary);font-weight:700}
+  .nav-item .num{width:24px;height:24px;border-radius:7px;background:var(--bg);border:1px solid var(--line);display:grid;place-items:center;font-size:12px;font-weight:700;flex-shrink:0}
+  .nav-item.active .num{background:var(--primary);color:#fff;border-color:var(--primary)}
+  .nav-item.done .num{background:var(--ok);color:#fff;border-color:var(--ok)}
+  .nav-item.done .num::after{content:"✓"}
+  .nav-item.done .num span{display:none}
+  /* ===== Main ===== */
+  main{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;padding:40px 28px 120px}
+  .page{width:100%;max-width:760px;display:none;animation:fade .35s ease}
+  .page.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  /* ===== Typography ===== */
+  .eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--primary-dark);background:var(--primary-soft);padding:5px 12px;border-radius:999px;margin-bottom:14px}
+  h1{font-size:30px;line-height:1.4;font-weight:800;margin-bottom:8px;letter-spacing:.01em}
+  h2{font-size:23px;font-weight:800;margin:34px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--line);display:flex;align-items:center;gap:10px}
+  h2 .dot{width:10px;height:10px;border-radius:3px;background:var(--primary);flex-shrink:0}
+  h3{font-size:18px;font-weight:700;margin:24px 0 10px;color:var(--ink)}
+  p{margin:12px 0;color:#3a372f}
+  .lead{font-size:17px;color:var(--ink-soft)}
+  strong{color:var(--primary-dark)}
+  /* ===== Cards / callouts ===== */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;margin:18px 0;box-shadow:var(--shadow)}
+  .note{border-left:5px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:16px 20px;margin:18px 0}
+  .note .ttl{font-weight:800;color:var(--accent);margin-bottom:4px;font-size:15px}
+  .warn{border-left:5px solid var(--danger);background:var(--danger-soft);border-radius:12px;padding:16px 20px;margin:18px 0}
+  .warn .ttl{font-weight:800;color:var(--danger);margin-bottom:4px;font-size:15px}
+  .heart{border-left:5px solid var(--primary);background:var(--primary-soft);border-radius:12px;padding:16px 20px;margin:18px 0}
+  .heart .ttl{font-weight:800;color:var(--primary-dark);margin-bottom:4px;font-size:15px}
+  .pill-list{list-style:none;margin:14px 0}
+  .pill-list li{position:relative;padding:9px 0 9px 34px;border-bottom:1px dashed var(--line)}
+  .pill-list li:last-child{border-bottom:none}
+  .pill-list li::before{content:"✓";position:absolute;left:0;top:9px;width:22px;height:22px;border-radius:50%;background:var(--ok-soft);color:var(--ok);display:grid;place-items:center;font-size:13px;font-weight:800}
+  .num-list{counter-reset:n;list-style:none;margin:14px 0}
+  .num-list li{position:relative;padding:10px 0 10px 44px;border-bottom:1px dashed var(--line)}
+  .num-list li:last-child{border-bottom:none}
+  .num-list li::before{counter-increment:n;content:counter(n);position:absolute;left:0;top:9px;width:28px;height:28px;border-radius:8px;background:var(--primary);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:800}
+  /* ===== Hero ===== */
+  .hero{background:linear-gradient(135deg,var(--primary) 0%,#E8852B 55%,var(--accent) 130%);color:#fff;border-radius:22px;padding:40px 36px;box-shadow:var(--shadow);margin-bottom:8px}
+  .hero h1{color:#fff;font-size:32px}
+  .hero .tag{color:#fff;opacity:.95;font-size:17px;margin-top:6px;font-weight:600}
+  .hero .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .hero .meta span{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:600}
+  .key-msg{text-align:center;border:2px dashed var(--primary);border-radius:18px;padding:26px;margin:24px 0;background:var(--primary-soft)}
+  .key-msg .big{font-size:22px;font-weight:800;color:var(--primary-dark);line-height:1.6}
+  .key-msg .big em{font-style:normal;color:var(--danger);text-decoration:underline;text-decoration-color:rgba(192,57,43,.4);text-underline-offset:4px}
+  /* ===== Symptom grid ===== */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+  .sym{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .sym h4{font-size:15px;font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+  .sym .ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:16px}
+  .sym ul{list-style:none;font-size:14px;color:var(--ink-soft)}
+  .sym li{padding:3px 0 3px 16px;position:relative}
+  .sym li::before{content:"・";position:absolute;left:0;color:var(--primary)}
+  /* ===== 13 symptoms ===== */
+  .emergency{border:2px solid var(--danger);border-radius:18px;overflow:hidden;margin:20px 0}
+  .emergency .head{background:var(--danger);color:#fff;padding:14px 20px;font-weight:800;font-size:17px;display:flex;align-items:center;gap:10px}
+  .emergency .body{padding:8px 20px 18px;background:#fff}
+  .emergency .cat{font-weight:800;color:var(--danger);margin:14px 0 6px;font-size:14px;letter-spacing:.03em}
+  .emergency ul{list-style:none}
+  .emergency li{padding:6px 0 6px 28px;position:relative;font-size:15px;border-bottom:1px dashed var(--line)}
+  .emergency li::before{content:"!";position:absolute;left:0;top:6px;width:20px;height:20px;border-radius:50%;background:var(--danger-soft);color:var(--danger);font-weight:800;display:grid;place-items:center;font-size:12px}
+  /* ===== Flow ===== */
+  .flow{margin:18px 0}
+  .flow .step{display:flex;gap:16px;margin-bottom:4px}
+  .flow .n{flex-shrink:0;width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800;font-size:17px}
+  .flow .line{width:2px;background:var(--line);margin:4px auto;flex:1}
+  .flow .col{display:flex;flex-direction:column;align-items:center}
+  .flow .txt{padding-bottom:22px;flex:1}
+  .flow .txt b{display:block;font-size:16px;margin-bottom:3px}
+  .flow .txt span{font-size:14px;color:var(--ink-soft)}
+  /* ===== Principles ===== */
+  .principle{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--primary);border-radius:12px;padding:16px 18px;margin:12px 0;box-shadow:var(--shadow)}
+  .principle .pn{flex-shrink:0;width:36px;height:36px;border-radius:10px;background:var(--primary);color:#fff;font-weight:800;display:grid;place-items:center;font-size:17px}
+  .principle .pt{font-weight:800;font-size:17px}
+  /* ===== Checklist ===== */
+  .check{display:flex;align-items:flex-start;gap:13px;padding:15px 18px;border:1px solid var(--line);border-radius:13px;margin:10px 0;cursor:pointer;background:var(--card);transition:.15s}
+  .check:hover{border-color:var(--primary)}
+  .check.on{background:var(--ok-soft);border-color:var(--ok)}
+  .check input{display:none}
+  .check .box{flex-shrink:0;width:26px;height:26px;border:2px solid var(--line);border-radius:8px;display:grid;place-items:center;font-size:15px;color:transparent;transition:.15s;margin-top:1px}
+  .check.on .box{background:var(--ok);border-color:var(--ok);color:#fff}
+  .check .lbl{font-size:15px;font-weight:600}
+  .check.on .lbl{color:var(--ok)}
+  /* ===== Case study ===== */
+  .case{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:0;margin:18px 0;overflow:hidden;box-shadow:var(--shadow)}
+  .case .ch{background:var(--accent-soft);padding:14px 20px;font-weight:800;color:var(--accent);display:flex;align-items:center;gap:10px;font-size:16px}
+  .case .scn{padding:16px 20px 4px;font-size:15px}
+  .case .q{padding:4px 20px 14px;font-weight:700;color:var(--primary-dark)}
+  .case .reveal-btn{margin:0 20px 16px;padding:9px 18px;border:1.5px solid var(--accent);background:#fff;color:var(--accent);border-radius:999px;font-weight:700;cursor:pointer;font-size:14px;font-family:inherit}
+  .case .reveal-btn:hover{background:var(--accent);color:#fff}
+  .case .answer{display:none;padding:0 20px 18px}
+  .case .answer.show{display:block;animation:fade .3s ease}
+  .case .answer .ans-box{background:var(--ok-soft);border-radius:12px;padding:14px 18px;font-size:14.5px}
+  .case .answer .ans-box b{color:var(--ok)}
+  .crp{display:inline-block;font-size:12px;font-weight:800;padding:3px 10px;border-radius:6px;margin:2px 4px 2px 0}
+  .crp.c{background:#E5F2F2;color:#1F8A8F}
+  .crp.s{background:#FCF1E4;color:#C96A14}
+  .crp.r{background:#FBEAE8;color:#C0392B}
+  /* ===== Worksheet / textarea ===== */
+  .work label{display:block;font-weight:700;margin:18px 0 6px}
+  textarea,input[type=text]{width:100%;font-family:inherit;font-size:15px;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff;resize:vertical;color:var(--ink)}
+  textarea:focus,input[type=text]:focus{outline:none;border-color:var(--primary)}
+  textarea{min-height:80px}
+  /* ===== Test ===== */
+  .q-block{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0;box-shadow:var(--shadow)}
+  .q-block .qn{display:flex;gap:10px;font-weight:700;margin-bottom:12px}
+  .q-block .qn .badge{flex-shrink:0;background:var(--primary);color:#fff;border-radius:7px;padding:2px 9px;font-size:13px;height:fit-content}
+  .opts label{display:flex;align-items:center;gap:10px;padding:9px 13px;border:1.5px solid var(--line);border-radius:10px;margin:7px 0;cursor:pointer;font-size:15px;transition:.12s}
+  .opts label:hover{border-color:var(--primary)}
+  .opts input{accent-color:var(--primary);width:18px;height:18px}
+  .opts label.correct{background:var(--ok-soft);border-color:var(--ok)}
+  .opts label.wrong{background:var(--danger-soft);border-color:var(--danger)}
+  .explain{display:none;margin-top:10px;padding:11px 15px;border-radius:10px;background:var(--accent-soft);font-size:14px;border-left:4px solid var(--accent)}
+  .explain.show{display:block}
+  .explain b{color:var(--accent)}
+  .grade-btn,.btn{font-family:inherit;cursor:pointer;border:none;border-radius:999px;font-weight:800;font-size:16px;padding:14px 30px;transition:.15s}
+  .btn-primary{background:var(--primary);color:#fff;box-shadow:var(--shadow)}
+  .btn-primary:hover{background:var(--primary-dark)}
+  .btn-ghost{background:#fff;color:var(--primary-dark);border:1.5px solid var(--primary)}
+  .score-card{display:none;text-align:center;border-radius:18px;padding:28px;margin:20px 0}
+  .score-card.show{display:block;animation:fade .4s ease}
+  .score-card.pass{background:var(--ok-soft);border:2px solid var(--ok)}
+  .score-card.fail{background:var(--danger-soft);border:2px solid var(--danger)}
+  .score-card .pct{font-size:46px;font-weight:800;line-height:1}
+  .score-card.pass .pct{color:var(--ok)}
+  .score-card.fail .pct{color:var(--danger)}
+  /* ===== Nav buttons ===== */
+  .pager{display:flex;justify-content:space-between;gap:12px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+  .pager button{font-family:inherit;cursor:pointer;border-radius:12px;font-weight:700;font-size:15px;padding:12px 22px;border:1.5px solid var(--line);background:#fff;color:var(--ink)}
+  .pager button:hover:not(:disabled){border-color:var(--primary);color:var(--primary-dark)}
+  .pager button:disabled{opacity:.35;cursor:not-allowed}
+  .pager .next{background:var(--primary);color:#fff;border-color:var(--primary)}
+  .pager .next:hover{background:var(--primary-dark);color:#fff}
+  /* ===== Certificate ===== */
+  .cert{border:3px double var(--primary);border-radius:16px;padding:34px;text-align:center;background:linear-gradient(180deg,#fff,var(--primary-soft));margin:20px 0}
+  .cert .seal{width:64px;height:64px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center;font-size:30px;margin:0 auto 12px}
+  .cert h3{font-size:22px;color:var(--primary-dark)}
+  .cert .nm{font-size:24px;font-weight:800;border-bottom:2px solid var(--ink);display:inline-block;min-width:240px;padding:4px 20px;margin:14px 0}
+  /* ===== Modal ===== */
+  .modal-bg{display:none;position:fixed;inset:0;background:rgba(40,30,15,.55);z-index:300;place-items:center;padding:20px}
+  .modal-bg.show{display:grid;animation:fade .3s ease}
+  .modal{background:#fff;border-radius:22px;max-width:460px;width:100%;padding:34px 30px;text-align:center}
+  .modal .em{font-size:54px}
+  .modal h3{font-size:24px;margin:8px 0}
+  /* ===== misc ===== */
+  .ref{font-size:12px;color:var(--ink-soft);border-top:1px solid var(--line);margin-top:30px;padding-top:14px}
+  .menu-btn{display:none;position:fixed;top:14px;left:14px;z-index:210;background:var(--primary);color:#fff;border:none;border-radius:12px;width:46px;height:46px;font-size:22px;cursor:pointer;box-shadow:var(--shadow)}
+  .scrim{display:none}
+  .savehint{position:fixed;bottom:18px;right:18px;background:var(--ink);color:#fff;font-size:13px;padding:9px 16px;border-radius:999px;opacity:0;transition:.3s;z-index:120}
+  .savehint.show{opacity:.92}
+  @media(max-width:880px){
+    .menu-btn{display:grid;place-items:center}
+    #sidebar{position:fixed;left:0;top:0;z-index:215;transform:translateX(-100%);transition:.25s;box-shadow:0 0 40px rgba(0,0,0,.2)}
+    #sidebar.open{transform:none}
+    .scrim.show{display:block;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:212}
+    main{padding:64px 16px 100px}
+    .grid2{grid-template-columns:1fr}
+    .hero{padding:30px 22px}
+    .hero h1{font-size:25px}
+    h1{font-size:24px}
+  }
+  @media print{
+    #sidebar,#progressWrap,.pager,.menu-btn,.reveal-btn,.grade-btn,.savehint{display:none!important}
+    .page{display:block!important;max-width:100%;page-break-after:always}
+    main{padding:0}
+    .case .answer{display:block!important}
+  }
+</style>
+</head>
+<body>
+<div id="progressWrap"><div id="progressBar"></div></div>
+<button class="menu-btn" onclick="toggleNav()">☰</button>
+<div class="scrim" id="scrim" onclick="toggleNav()"></div>
+
+<div class="shell">
+  <aside id="sidebar">
+    <div class="brand">
+      <div class="logo"><span class="mark">笑</span>株式会社常笑</div>
+      <div class="sub">教育システム Level1 基礎研修④<br>アレルギー対応研修</div>
+    </div>
+    <nav id="nav"></nav>
+  </aside>
+
+  <main id="main">
+    <!-- 0 はじめに -->
+    <section class="page active" data-title="はじめに">
+      <div class="hero">
+        <div class="eyebrow" style="background:rgba(255,255,255,.2);color:#fff">Level1 基礎研修④</div>
+        <h1>アレルギー対応研修</h1>
+        <div class="tag">～子どもの命を守るのは知識ではなく確認～</div>
+        <div class="meta">
+          <span>🕐 約60分</span>
+          <span>👤 放デイ／児発 全職員</span>
+          <span>🎯 読む→考える→書く→行動する</span>
+        </div>
+      </div>
+
+      <div class="key-msg">
+        <div class="big">アレルギー事故は<br><em>「知らなかった」</em>ではなく<br><em>「確認不足」</em>から起こる。</div>
+        <p style="margin-top:14px;font-weight:700">毎日の確認が、子どもの命を守ります。</p>
+      </div>
+
+      <p class="lead">この研修は、事故を起こさないためだけの研修ではありません。<strong>子どもが安心して生活できる環境をつくる</strong>ための研修です。アレルギー対応は、子どもの安心・保護者の安心・職員の安心・事業所の信頼すべてにつながります。</p>
+
+      <div class="heart">
+        <div class="ttl">常笑の支援理念</div>
+        良い支援が子どもの笑顔をつくる ／ 良い支援が職員の笑顔をつくる ／ 療育は積み上げ ／ <strong>確認することは支援である</strong> ／ 安全な環境があるからこそ子どもは挑戦できる
+      </div>
+
+      <div class="note">
+        <div class="ttl">この教材の進め方</div>
+        左のメニュー、または下の「次へ」で進みます。チェックや記入は自動で保存され、次に開いたとき続きから学べます。最後に理解度テストと提出レポートがあります。
+      </div>
+
+      <div class="warn">
+        <div class="ttl">はじめにお願い</div>
+        本教材は職員研修用です。実際の対応は、各事業所のマニュアル・主治医の指示・生活管理指導表に従ってください。緊急時はためらわず<strong>119番</strong>に通報してください。
+      </div>
+    </section>
+
+    <!-- 1 学習目標 -->
+    <section class="page" data-title="①学習目標">
+      <div class="eyebrow">SECTION 01</div>
+      <h1>学習目標</h1>
+      <p class="lead">この研修を終えたとき、あなたは次の5つができるようになります。</p>
+      <ul class="num-list">
+        <li><b>アレルギーとは何か</b>を自分の言葉で説明できる</li>
+        <li>アレルギーの<b>初期症状を見逃さず</b>気づける</li>
+        <li>日々の支援の中で<b>誤食を防ぐ</b>行動がとれる</li>
+        <li>緊急時に<b>迷わず動く</b>手順がわかる</li>
+        <li>保護者と<b>必要な情報を共有</b>できる</li>
+      </ul>
+      <div class="heart">
+        <div class="ttl">この研修で一番伝えたいこと</div>
+        知識を増やすことがゴールではありません。<strong>「明日から毎日、確認を徹底しよう」</strong>と思えること。それがこの研修のゴールです。
+      </div>
+    </section>
+
+    <!-- 2 なぜ必要か -->
+    <section class="page" data-title="②なぜ必要か">
+      <div class="eyebrow">SECTION 02</div>
+      <h1>なぜこの研修が必要なのか</h1>
+      <p>おやつ、昼食、行事、外出。私たちの事業所では、子どもが食べる場面が毎日あります。その一つひとつに、アレルギーのリスクが隠れています。</p>
+      <p>アレルギー事故の多くは、知識のある人が起こします。「知らなかった」のではなく、<strong>「いつもの流れで、確認を一つ飛ばしてしまった」</strong>。事故はそこから起こります。</p>
+      <div class="card">
+        <h3>こんな"いつもの一場面"が、リスクになります</h3>
+        <ul class="pill-list">
+          <li>急いでいて、おやつの袋の表示を見ずに配ってしまった</li>
+          <li>子ども同士がお菓子を分け合っていることに気づかなかった</li>
+          <li>「たぶん大丈夫」と思い、誰にも確認しなかった</li>
+          <li>保護者からの変更連絡が、職員全員に伝わっていなかった</li>
+        </ul>
+      </div>
+      <div class="note">
+        <div class="ttl">確認は「疑うこと」ではありません</div>
+        確認は、子どもを守る<strong>支援そのもの</strong>です。常笑の理念「確認することは支援である」は、まさにこの場面のためにあります。
+      </div>
+    </section>
+
+    <!-- 3 食物アレルギーとは -->
+    <section class="page" data-title="③食物アレルギーとは">
+      <div class="eyebrow">SECTION 03</div>
+      <h1>食物アレルギーとは</h1>
+      <p class="lead">体の免疫が、特定の食べ物を「敵（異物）」と勘違いして過剰に反応してしまう状態です。本人の努力や気持ちの問題ではなく、体のしくみとして起こります。</p>
+      <p>ごく<strong>少量でも</strong>強い症状が出る子がいます。「少しだけなら大丈夫だろう」は通用しません。</p>
+
+      <h2><span class="dot"></span>表示が義務の8品目（特定原材料）</h2>
+      <p>症状が重くなりやすく、必ず食品表示される8品目です。<strong>「くるみ」は2025年4月から表示が完全に義務化</strong>されました。木の実類のアレルギーは近年とても増えています。</p>
+      <div class="card" style="text-align:center;font-size:18px;font-weight:800;color:var(--primary-dark);letter-spacing:.04em;line-height:2.2">
+        えび ・ かに ・ くるみ ・ 小麦<br>そば ・ 卵 ・ 乳 ・ 落花生（ピーナッツ）
+      </div>
+
+      <h2><span class="dot"></span>表示が推奨の20品目（準ずるもの）</h2>
+      <p>義務ではないため、表示されていないことがあります。だからこそ確認が大切です。</p>
+      <div class="card" style="font-size:14.5px;color:var(--ink-soft);line-height:2">
+        アーモンド／あわび／いか／いくら／オレンジ／カシューナッツ／キウイフルーツ／牛肉／ごま／さけ／さば／大豆／鶏肉／豚肉／バナナ／もも／やまいも／りんご／ゼラチン／マカダミアナッツ
+      </div>
+      <div class="note">
+        <div class="ttl">覚えておきたいこと</div>
+        子どもに多いのは<strong>鶏卵・牛乳・小麦・木の実類（くるみなど）</strong>です。「準ずるもの」は表示されないことがあるため、<strong>カシューナッツも今後、表示義務へ移行</strong>が検討されています。迷ったら必ず確認しましょう。
+      </div>
+    </section>
+
+    <!-- 4 主な症状 -->
+    <section class="page" data-title="④主な症状">
+      <div class="eyebrow">SECTION 04</div>
+      <h1>主な症状</h1>
+      <p class="lead">症状は体のいろいろな場所に、同時に・多彩に出ます。原因の食べ物をとってから<strong>2時間以内（多くは30分以内）</strong>に現れることが多いです。</p>
+      <div class="grid2">
+        <div class="sym"><h4><span class="ic" style="background:#FCE9D8">🖐️</span>皮膚</h4><ul><li>じんましん・赤み</li><li>かゆみ</li><li>腫れ</li></ul></div>
+        <div class="sym"><h4><span class="ic" style="background:#E5F2F2">👁️</span>目・口・鼻</h4><ul><li>目のかゆみ・充血</li><li>まぶたの腫れ</li><li>くしゃみ・鼻水</li><li>唇や口の中の違和感</li></ul></div>
+        <div class="sym"><h4><span class="ic" style="background:#E8F0FB">🫁</span>呼吸器</h4><ul><li>咳・声がかすれる</li><li>ゼーゼー・ヒューヒュー</li><li>息が苦しい</li></ul></div>
+        <div class="sym"><h4><span class="ic" style="background:#F3EAFB">🍽️</span>消化器</h4><ul><li>腹痛</li><li>吐き気・嘔吐</li><li>下痢</li></ul></div>
+      </div>
+      <div class="warn">
+        <div class="ttl">小さなサインを見逃さない</div>
+        「のどがかゆい」「お腹が痛い」「なんか元気がない」。子どもは<strong>うまく言葉にできません</strong>。いつもと違う様子は、体からのサインかもしれません。
+      </div>
+    </section>
+
+    <!-- 5 アナフィラキシー -->
+    <section class="page" data-title="⑤アナフィラキシー">
+      <div class="eyebrow">SECTION 05</div>
+      <h1>アナフィラキシーとは</h1>
+      <p class="lead">アレルギー症状が、<strong>複数の場所（皮膚・呼吸・お腹など）に同時に、急速に</strong>あらわれる状態のことです。</p>
+      <div class="card">
+        <h3>たとえば、こんなふうに重なります</h3>
+        <p style="text-align:center;font-weight:700;font-size:17px;line-height:2">
+          じんましん（皮膚）<span style="color:var(--primary)"> ＋ </span>咳・息苦しさ（呼吸）<br>
+          <span style="color:var(--primary)">↓</span><br>
+          これは「皮膚だけ」ではなく<span style="color:var(--danger)">アナフィラキシー</span>
+        </p>
+      </div>
+      <p>症状は<strong>急に変化します</strong>。さっきまで軽そうに見えても、数分で悪くなることがあります。だから「様子を見よう」ではなく、観察と準備を同時に始めます。</p>
+      <div class="note">
+        <div class="ttl">大切な考え方</div>
+        一つの症状の「軽い・重い」で判断しないこと。<strong>複数の場所に出ていないか</strong>、全身を見ることが命を守ります。
+      </div>
+    </section>
+
+    <!-- 6 アナフィラキシーショック -->
+    <section class="page" data-title="⑥ショックと13症状">
+      <div class="eyebrow">SECTION 06</div>
+      <h1>アナフィラキシーショック</h1>
+      <p class="lead">アナフィラキシーに、<strong>血圧の低下・意識がもうろうとする</strong>などが加わった、命に関わる状態です。急激に進むことがあり、一刻を争います。</p>
+      <div class="warn">
+        <div class="ttl">時間がいのち</div>
+        症状が出てから<strong>30分以内にアドレナリン（エピペン）を使えるか</strong>が、その後を大きく左右すると報告されています。「ショックになってから」では遅すぎます。
+      </div>
+
+      <h2><span class="dot"></span>緊急性が高い13の症状</h2>
+      <p>次の症状が<strong>1つでも</strong>あれば、迷わず緊急対応を始めます。エピペンが処方されている子なら<strong>直ちに使用し、119番</strong>へ。（日本小児アレルギー学会の基準）</p>
+      <div class="emergency">
+        <div class="head">⚠ 1つでもあれば → 緊急対応</div>
+        <div class="body">
+          <div class="cat">全身の症状</div>
+          <ul>
+            <li>ぐったりしている</li>
+            <li>意識がもうろうとしている</li>
+            <li>尿や便をもらす</li>
+            <li>脈が触れにくい・不規則</li>
+            <li>唇や爪が青白い</li>
+          </ul>
+          <div class="cat">呼吸器の症状</div>
+          <ul>
+            <li>のどや胸が締めつけられる</li>
+            <li>声がかすれる</li>
+            <li>犬が吠えるような咳</li>
+            <li>息がしにくい</li>
+            <li>持続する強い咳込み</li>
+            <li>ゼーゼーする呼吸（喘鳴）</li>
+          </ul>
+          <div class="cat">消化器の症状</div>
+          <ul>
+            <li>持続する強い（がまんできない）おなかの痛み</li>
+            <li>繰り返し吐き続ける</li>
+          </ul>
+        </div>
+      </div>
+      <div class="heart">
+        <div class="ttl">迷ったら、重いほうで動く</div>
+        「これって緊急かな…」と迷うこと自体が、緊急性が高いサインです。<strong>迷ったら様子を見ず、人を呼んで動く</strong>。それで失うものはありません。
+      </div>
+    </section>
+
+    <!-- 7 日常の予防 -->
+    <section class="page" data-title="⑦日常の予防">
+      <div class="eyebrow">SECTION 07</div>
+      <h1>日常の予防</h1>
+      <p class="lead">事故は緊急時ではなく、<strong>普段の準備</strong>で防げます。毎日のしくみが、いちばんの予防です。</p>
+      <ul class="num-list">
+        <li><b>生活管理指導表・指示書を確認する</b>　その子に何のアレルギーがあるか、対応はどうか。</li>
+        <li><b>情報を職員全員で共有する</b>　一人だけが知っている状態をなくす。</li>
+        <li><b>配膳・おやつはダブルチェック</b>　渡す前に、もう一人の目で確認する。</li>
+        <li><b>見える化する</b>　専用トレー・名札・色分けで「取り違え」を防ぐ。</li>
+        <li><b>除去食は動線を分ける</b>　調理から配膳まで、混ざらない流れをつくる。</li>
+      </ul>
+      <div class="note">
+        <div class="ttl">予防は「特別なこと」ではない</div>
+        毎日同じ確認を、同じ手順で。<strong>「療育は積み上げ」</strong>。地味な確認の積み重ねが、子どもの安全をつくります。
+      </div>
+    </section>
+
+    <!-- 8 誤食を防ぐ -->
+    <section class="page" data-title="⑧誤食を防ぐ">
+      <div class="eyebrow">SECTION 08</div>
+      <h1>誤食を防ぐ方法</h1>
+      <p class="lead">誤食（まちがえて食べてしまうこと）は、ちょっとした油断から起こります。次のポイントを毎日意識しましょう。</p>
+      <div class="card">
+        <ul class="pill-list">
+          <li><b>お菓子の交換・分け合いをさせない</b>　子ども同士のやり取りに気を配る。</li>
+          <li><b>食品表示を必ず読む</b>　「くるみ」など見落としやすい品目に注意。<br><span style="font-size:13px;color:var(--ink-soft)">※「卵→玉子」のような言い換え表記、「マヨネーズ（卵を含む）」のような表記にも注意。</span></li>
+          <li><b>新メニュー・新しい商品は事前に確認</b>　いつもと違うものほど確認する。</li>
+          <li><b>落ちた食べ物・床に注意</b>　拾い食いを防ぐ。</li>
+          <li><b>行事・外出・外食は特に注意</b>　外食メニューは表示義務がなく、情報が少ない。</li>
+        </ul>
+      </div>
+      <div class="warn">
+        <div class="ttl">「いつもと違う」ときこそ確認</div>
+        新しい職員、新しいおやつ、急な予定変更。<strong>変化のある日が、いちばん事故が起きやすい日</strong>です。
+      </div>
+    </section>
+
+    <!-- 9 緊急時対応 -->
+    <section class="page" data-title="⑨緊急時対応">
+      <div class="eyebrow">SECTION 09</div>
+      <h1>緊急時対応</h1>
+      <p class="lead">いざというとき、迷わず動けるように。流れを体で覚えておきましょう。</p>
+      <div class="card flow">
+        <div class="step">
+          <div class="col"><div class="n">1</div><div class="line"></div></div>
+          <div class="txt"><b>子どもから離れない・大声で人を呼ぶ</b><span>絶対に一人にしない。一人で抱え込まない。</span></div>
+        </div>
+        <div class="step">
+          <div class="col"><div class="n">2</div><div class="line"></div></div>
+          <div class="txt"><b>症状を観察する</b><span>「緊急性が高い13の症状」が1つでもあるか。</span></div>
+        </div>
+        <div class="step">
+          <div class="col"><div class="n">3</div><div class="line"></div></div>
+          <div class="txt"><b>1つでもあれば → エピペン＋119番</b><span>処方されていれば直ちにエピペンを使用し、救急車を要請。なくても直ちに119番。</span></div>
+        </div>
+        <div class="step">
+          <div class="col"><div class="n">4</div><div class="line"></div></div>
+          <div class="txt"><b>安静・体位・観察</b><span>立たせない・歩かせない。5分ごとに症状を観察。保護者・管理者へ連絡。</span></div>
+        </div>
+        <div class="step">
+          <div class="col"><div class="n">5</div></div>
+          <div class="txt"><b>改善しても必ず救急搬送</b><span>一度よくなっても再び悪化することがある（二相性反応）。必ず病院へ。</span></div>
+        </div>
+      </div>
+
+      <h2><span class="dot"></span>体位のポイント</h2>
+      <div class="card">
+        <ul class="pill-list">
+          <li><b>基本</b>：あお向けで、足を15〜30cmほど高くする</li>
+          <li><b>呼吸が苦しいとき</b>：上半身を少し起こして楽な姿勢に</li>
+          <li><b>吐き気・嘔吐・意識がないとき</b>：顔を横向きに（吐いたもので詰まらせない）</li>
+          <li><b>禁止</b>：急に立たせる・歩かせる・座らせて移動する</li>
+        </ul>
+      </div>
+
+      <h2><span class="dot"></span>エピペンの使い方</h2>
+      <div class="card">
+        <ul class="num-list">
+          <li>ケースから取り出し、オレンジ側を下に、青い安全キャップを外す</li>
+          <li>太ももの外側に、<b>オレンジ側を「カチッ」と音がするまで強く押し当て、5つ数える</b>（衣服の上からでOK）</li>
+          <li>離したらオレンジ部分が伸びているか確認。使ったら<b>必ず救急要請</b></li>
+        </ul>
+      </div>
+      <div class="warn">
+        <div class="ttl">エピペンは「早すぎて困る」ことはない</div>
+        迷ってためらう数分が命を左右します。緊急性が高い症状があれば、<strong>ショックを待たずに使う</strong>のが原則です。使用後に症状が改善しても、救急車は必ず呼びます。
+      </div>
+    </section>
+
+    <!-- 10 常笑で実践する確認 -->
+    <section class="page" data-title="⑩常笑の確認方法">
+      <div class="eyebrow">SECTION 10 ｜ 常笑オリジナル</div>
+      <h1>常笑で実践する確認方法</h1>
+      <h2><span class="dot"></span>常笑 アレルギー対応 5原則</h2>
+      <div class="principle"><div class="pn">1</div><div><div class="pt">知らないまま支援しない</div>その子のアレルギーを知らずに食事支援をしない。</div></div>
+      <div class="principle"><div class="pn">2</div><div><div class="pt">一人で判断しない</div>迷ったら必ず誰かに相談する。一人で抱え込まない。</div></div>
+      <div class="principle"><div class="pn">3</div><div><div class="pt">迷ったら確認する</div>「たぶん」で進めない。確認することは支援である。</div></div>
+      <div class="principle"><div class="pn">4</div><div><div class="pt">異変を感じたら様子を見ない</div>「ちょっとおかしい」で動く。様子見が手遅れを生む。</div></div>
+      <div class="principle"><div class="pn">5</div><div><div class="pt">子どもの命を最優先にする</div>段取りより、空気より、まず命。</div></div>
+
+      <h2><span class="dot"></span>毎日確認する5つ（明日からの実践）</h2>
+      <p>これは研修が終わったあと、<strong>毎日使うチェックリスト</strong>です。実際にチェックしてみましょう（自動保存されます）。</p>
+      <div id="daily5"></div>
+      <div class="heart">
+        <div class="ttl">確認することが、命を守る支援です</div>
+        この5つは難しいことではありません。でも、毎日続けることが子どもの命を守ります。<strong>確認は手間ではなく、いちばんやさしい支援</strong>です。
+      </div>
+    </section>
+
+    <!-- 11 ケーススタディ -->
+    <section class="page" data-title="⑪ケーススタディ">
+      <div class="eyebrow">SECTION 11</div>
+      <h1>ケーススタディ</h1>
+      <p class="lead">「現場ならどう動くか」を考えてみましょう。正解を見る前に、まず自分なりの答えを考えてみてください。キーワードは<span class="crp c">確認</span><span class="crp s">相談</span><span class="crp r">報告</span>です。</p>
+      <div id="cases"></div>
+    </section>
+
+    <!-- 12 個人ワーク -->
+    <section class="page" data-title="⑫個人ワーク">
+      <div class="eyebrow">SECTION 12</div>
+      <h1>個人ワーク</h1>
+      <p class="lead">自分の事業所に置きかえて考えます。記入は自動保存されます。</p>
+      <div class="card work">
+        <label>① 自分の事業所で起こりそうな事故は？</label>
+        <textarea data-key="w1" placeholder="例：おやつの時間に、子ども同士でお菓子を分け合っている…"></textarea>
+        <label>② その事故を防ぐには、どんな確認・しくみが必要？</label>
+        <textarea data-key="w2" placeholder="例：おやつ前に必ず名札とトレーを照合し、配る前にもう一人が確認する…"></textarea>
+        <label>③ 自分が明日から変えること（1つ）</label>
+        <textarea data-key="w3" placeholder="例：配る前に、声に出して名前とアレルギーを確認する…"></textarea>
+      </div>
+    </section>
+
+    <!-- 13 理解度テスト -->
+    <section class="page" data-title="⑬理解度テスト">
+      <div class="eyebrow">SECTION 13</div>
+      <h1>理解度テスト（全15問）</h1>
+      <p class="lead">学んだことを確認しましょう。すべて答えたら「採点する」を押してください。8割（12問）以上で合格です。</p>
+      <div id="quiz"></div>
+      <div style="text-align:center;margin-top:24px">
+        <button class="grade-btn btn-primary" onclick="gradeQuiz()">採点する</button>
+      </div>
+      <div class="score-card" id="scoreCard">
+        <div class="pct" id="scorePct"></div>
+        <p id="scoreMsg" style="font-weight:700;margin-top:8px"></p>
+        <button class="btn btn-ghost" style="margin-top:14px" onclick="resetQuiz()">もう一度挑戦する</button>
+      </div>
+      <div class="card work" style="margin-top:24px">
+        <label>最後の問題（記述）：安全な支援とは、どのような支援だと思いますか？</label>
+        <textarea data-key="q_essay" placeholder="あなたの言葉で書いてみましょう。"></textarea>
+      </div>
+    </section>
+
+    <!-- 14 提出レポート -->
+    <section class="page" data-title="⑭提出レポート">
+      <div class="eyebrow">SECTION 14</div>
+      <h1>提出レポート</h1>
+      <p class="lead">研修のしめくくりです。考えたことを言葉にして残しましょう。（印刷して提出できます）</p>
+      <div class="card work">
+        <label>① 学んだこと</label>
+        <textarea data-key="r1"></textarea>
+        <label>② 気づいたこと</label>
+        <textarea data-key="r2"></textarea>
+        <label>③ 自分の課題</label>
+        <textarea data-key="r3"></textarea>
+        <label>④ 事業所で改善したいこと</label>
+        <textarea data-key="r4"></textarea>
+        <label>⑤ 明日から実践すること</label>
+        <textarea data-key="r5"></textarea>
+        <div class="heart" style="margin-top:20px">
+          <div class="ttl" style="margin-bottom:10px">私の宣言</div>
+          <div style="font-size:16px;font-weight:700;display:flex;flex-wrap:wrap;align-items:center;gap:6px">
+            私は明日から「<input type="text" data-key="r_decl" style="flex:1;min-width:200px" placeholder="ここに書く">」を実践します。
+          </div>
+          <div style="margin-top:16px;display:flex;align-items:center;gap:10px">
+            <span style="font-weight:700">署名：</span>
+            <input type="text" data-key="r_sign" style="max-width:260px" placeholder="氏名">
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:20px">
+        <button class="btn btn-ghost" onclick="window.print()">🖨 このレポートを印刷する</button>
+      </div>
+    </section>
+
+    <!-- 15 修了チェック -->
+    <section class="page" data-title="⑮修了チェック">
+      <div class="eyebrow">SECTION 15</div>
+      <h1>修了チェック</h1>
+      <p class="lead">最後に、研修を終えたことを確認しましょう。</p>
+      <div id="finalCheck"></div>
+
+      <div class="cert" id="cert">
+        <div class="seal">笑</div>
+        <h3>修了証</h3>
+        <p>あなたは「アレルギー対応研修」を修了しました</p>
+        <div class="nm" id="certName">　　　　　　　　</div>
+        <p style="font-size:14px;color:var(--ink-soft)">株式会社常笑 教育システム ／ Level1 基礎研修④</p>
+        <p id="certDate" style="font-size:13px;color:var(--ink-soft);margin-top:8px"></p>
+      </div>
+
+      <div class="card" style="margin-top:24px">
+        <h3>管理者コメント欄</h3>
+        <textarea data-key="mgr_comment" placeholder="管理者が記入します" style="min-height:100px"></textarea>
+        <div style="margin-top:12px;display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+          <span>管理者署名：<input type="text" data-key="mgr_sign" style="max-width:200px"></span>
+          <span>日付：<input type="text" data-key="mgr_date" style="max-width:160px" placeholder="　年　月　日"></span>
+        </div>
+      </div>
+
+      <div class="key-msg" style="margin-top:30px">
+        <div class="big" style="font-size:19px">安全な環境があるからこそ、<br>子どもは挑戦できる。</div>
+        <p style="margin-top:14px">あなたの毎日の確認が、<strong>子どもの笑顔・職員の笑顔・保護者の安心</strong>をつくります。<br>今日学んだことを、明日からの一歩に。</p>
+      </div>
+      <div style="text-align:center;margin-top:10px">
+        <button class="btn btn-ghost" onclick="window.print()">🖨 修了証・レポートを印刷</button>
+      </div>
+    </section>
+
+    <div class="pager">
+      <button class="prev" onclick="go(-1)">← 前へ</button>
+      <button class="next" onclick="go(1)">次へ →</button>
+    </div>
+    <p class="ref">出典：消費者庁「食品表示基準（特定原材料）」／日本小児アレルギー学会「一般向けエピペン®の適応（緊急性が高い症状）」／厚生労働省「保育所におけるアレルギー対応ガイドライン」を参考に作成。本教材は研修用であり、実際の対応は各事業所のマニュアル・主治医の指示に従ってください。</p>
+  </main>
+</div>
+
+<div class="scrim" id="scrim2" onclick="toggleNav()"></div>
+<div class="modal-bg" id="modal">
+  <div class="modal">
+    <div class="em">🎉</div>
+    <h3>研修お疲れさまでした！</h3>
+    <p>今日学んだ「確認」を、明日からの支援に。<br>あなたの一歩が、子どもの命と笑顔を守ります。</p>
+    <button class="btn btn-primary" style="margin-top:18px" onclick="closeModal()">とじる</button>
+  </div>
+</div>
+<div class="savehint" id="savehint">✓ 保存しました</div>
+
+<script>
+/* ===== 安全なストレージ（GitHub Pages では永続保存、プレビュー環境では一時保存） ===== */
+const store=(()=>{let mem={},ok=false;try{const k="__jt";localStorage.setItem(k,"1");localStorage.removeItem(k);ok=true;}catch(e){ok=false;}
+  return{get:k=>{try{return ok?localStorage.getItem(k):(k in mem?mem[k]:null);}catch(e){return k in mem?mem[k]:null;}},
+         set:(k,v)=>{try{ok?localStorage.setItem(k,v):mem[k]=v;}catch(e){mem[k]=v;}}};})();
+const KEY="josho_allergy_v1";
+let state=JSON.parse(store.get(KEY)||"{}");
+function save(){store.set(KEY,JSON.stringify(state));flashSave();}
+let saveTimer;function flashSave(){const h=document.getElementById("savehint");h.classList.add("show");clearTimeout(saveTimer);saveTimer=setTimeout(()=>h.classList.remove("show"),1200);}
+
+/* ===== ページ／ナビ ===== */
+const pages=[...document.querySelectorAll(".page")];
+let cur=state.cur||0;if(cur>=pages.length)cur=0;
+const nav=document.getElementById("nav");
+pages.forEach((p,i)=>{
+  const t=p.dataset.title;
+  const d=document.createElement("div");d.className="nav-item";d.dataset.i=i;
+  d.innerHTML=`<span class="num"><span>${i}</span></span><span>${t}</span>`;
+  d.onclick=()=>{showPage(i);if(window.innerWidth<=880)toggleNav();};
+  nav.appendChild(d);
+});
+function showPage(i){
+  cur=Math.max(0,Math.min(pages.length-1,i));
+  pages.forEach((p,n)=>p.classList.toggle("active",n===cur));
+  document.querySelectorAll(".nav-item").forEach((n,x)=>n.classList.toggle("active",x===cur));
+  state.cur=cur;state.visited=state.visited||{};state.visited[cur]=true;markDone();save();
+  document.getElementById("progressBar").style.width=((cur)/(pages.length-1)*100)+"%";
+  document.getElementById("main").scrollTop=0;window.scrollTo(0,0);
+  document.querySelector(".prev").disabled=(cur===0);
+  const nx=document.querySelector(".next");nx.textContent=(cur===pages.length-1)?"完了 🎉":"次へ →";
+  if(cur===pages.length-1)setTimeout(()=>{if(!state.celebrated){openModal();state.celebrated=true;save();}},400);
+}
+function go(d){if(d>0&&cur===pages.length-1){openModal();return;}showPage(cur+d);}
+function markDone(){document.querySelectorAll(".nav-item").forEach((n,x)=>{if(state.visited&&state.visited[x]&&x!==cur)n.classList.add("done");});}
+function toggleNav(){const s=document.getElementById("sidebar");s.classList.toggle("open");document.getElementById("scrim").classList.toggle("show",s.classList.contains("open"));}
+function openModal(){document.getElementById("modal").classList.add("show");}
+function closeModal(){document.getElementById("modal").classList.remove("show");}
+
+/* ===== 毎日確認5つ ===== */
+const daily=[
+ "今日利用する子どものアレルギーを確認した",
+ "食品表示を確認した",
+ "職員同士でダブルチェックした",
+ "食後30分は体調を観察した",
+ "保護者へ必要な報告をした"];
+const d5=document.getElementById("daily5");
+daily.forEach((t,i)=>{
+  const k="d"+i,on=state["chk_"+k]||false;
+  const el=document.createElement("label");el.className="check"+(on?" on":"");
+  el.innerHTML=`<input type="checkbox" ${on?"checked":""}><span class="box">✓</span><span class="lbl">${t}</span>`;
+  el.querySelector("input").onchange=e=>{el.classList.toggle("on",e.target.checked);state["chk_"+k]=e.target.checked;save();};
+  d5.appendChild(el);
+});
+
+/* ===== ケーススタディ ===== */
+const cases=[
+ {ic:"🍬",t:"子ども同士でお菓子の交換を始めた",scn:"おやつの時間。Aくんが持ってきたお菓子を、隣のBちゃんに「あげる」と渡そうとしています。Bちゃんには卵アレルギーがあります。",
+  ans:"<b>まず止める</b>—やり取りの間に入り、いったん受け取って交換を止めます。<br><b class='crp c'>確認</b>そのお菓子の表示を見て、卵が入っていないか確認。<br><b class='crp s'>相談</b>判断に迷えば、その場で他の職員に声をかける。<br><b class='crp r'>報告</b>ヒヤリとした出来事として、後で職員間・記録に残し共有。<br>※交換そのものを日頃から「しない約束」にしておくと、より安全です。"},
+ {ic:"🧑‍🍼",t:"新しい職員がおやつを配ろうとしている",scn:"入って間もない職員が、トレーのおやつを子どもたちに配り始めようとしています。あなたはその子たちのアレルギー情報を把握しています。",
+  ans:"<b>配る前にひと声</b>—「配る前に、アレルギーの確認だけ一緒にしよう」と声をかける。<br><b class='crp c'>確認</b>名札・専用トレー・除去情報を一緒に照合。<br><b class='crp s'>相談</b>新人が分からない点はその場で一緒に確認する（責めない）。<br><b class='crp r'>報告</b>「新人にはダブルチェックを必ずつける」しくみを管理者と共有。<br>※新しい職員・新しい流れの日は、事故が起きやすい日です。"},
+ {ic:"📞",t:"保護者からアレルギー変更の連絡があった",scn:"送迎時に保護者から「最近、ナッツでも症状が出るようになって」と口頭で伝えられました。",
+  ans:"<b>その場で受け止め、必ず形に残す</b><br><b class='crp c'>確認</b>いつから・どんな症状か・医師の指示や指導表の更新があるかを確認。<br><b class='crp s'>相談</b>対応方針を管理者・関係職員と相談して決める。<br><b class='crp r'>報告</b>口頭だけで終わらせず、記録・個別ファイル・職員全員に共有。<br>※「自分は聞いた」で終わると、知らない職員が事故を起こします。"},
+ {ic:"😣",t:"「のどがかゆい」と言った",scn:"おやつの後、Cくんが「のど、なんかかゆい」とそわそわしています。ほかは元気そうに見えます。",
+  ans:"<b>軽く見ない・離れない</b>—のどの違和感は初期サインのことがあります。<br><b class='crp c'>確認</b>何を食べたか、ほかに症状(咳・じんましん・腹痛)がないか、全身を観察。<br><b class='crp s'>相談</b>一人で判断せず、すぐ他の職員を呼ぶ。<br><b class='crp r'>報告</b>変化を時刻とともに記録し、保護者・管理者へ連絡。<br>※「緊急性が高い13症状」が1つでも出たら、ためらわず緊急対応へ。"},
+ {ic:"😰",t:"顔色が悪くなってきた",scn:"食後しばらくして、Dちゃんの顔色が青白くなり、ぐったりしてきました。",
+  ans:"<b>これは緊急。様子を見ない</b>—「ぐったり」「唇や爪が青白い」は緊急性が高い症状です。<br>①離れず大声で人を呼ぶ ②エピペンがあれば直ちに使用 ③<b>119番</b> ④立たせず安静、足を高く、嘔吐時は顔を横向き ⑤5分ごとに観察し、改善しても必ず救急搬送。<br><b class='crp s'>相談</b>一人で抱えず役割分担。<b class='crp r'>報告</b>保護者へ連絡。<br>※迷う＝緊急のサイン。重いほうで動く。"},
+ {ic:"🚌",t:"外出先で誤食したかもしれない",scn:"公園イベントで他団体の差し入れがあり、Eくんが何かを口にした様子。アレルゲンが入っていたか分かりません。",
+  ans:"<b>不明なときは、最悪を想定して動く</b><br><b class='crp c'>確認</b>何を・どれくらい食べたか、表示や提供者にすぐ確認。本人の様子を観察。<br><b class='crp s'>相談</b>引率職員間で情報共有し、対応を決める。<br><b class='crp r'>報告</b>保護者へ速やかに連絡。症状が出ればためらわず119番。<br>※外出・外食は情報が少なく、事前確認と持ち出し品(指導表・連絡先・エピペン)が命綱。"}
+];
+const cc=document.getElementById("cases");
+cases.forEach((c,i)=>{
+  const el=document.createElement("div");el.className="case";
+  el.innerHTML=`<div class="ch"><span>${c.ic}</span>ケース${i+1}：${c.t}</div>
+   <div class="scn">${c.scn}</div>
+   <div class="q">▶ あなたなら、どう動きますか？</div>
+   <button class="reveal-btn">考えがまとまったら、対応例を見る</button>
+   <div class="answer"><div class="ans-box">${c.ans}</div></div>`;
+  const btn=el.querySelector(".reveal-btn"),ans=el.querySelector(".answer");
+  btn.onclick=()=>{ans.classList.toggle("show");btn.textContent=ans.classList.contains("show")?"とじる":"対応例を見る";};
+  cc.appendChild(el);
+});
+
+/* ===== 理解度テスト ===== */
+const quiz=[
+ {type:"○×",q:"アレルギー事故の多くは『知らなかった』ではなく『確認不足』から起こる。",o:["○ そのとおり","× ちがう"],a:0,e:"確認を一つ飛ばしたことが事故につながります。だから毎日の確認が大切です。"},
+ {type:"○×",q:"アレルギーは、食べ物がごく少量でも症状が出ることがある。",o:["○ ある","× ない"],a:0,e:"微量でも強い症状が出る子がいます。『少しなら大丈夫』は通用しません。"},
+ {type:"選択",q:"表示が義務の特定原材料は、現在いくつ？（くるみ追加後）",o:["5品目","7品目","8品目","10品目"],a:2,e:"くるみが加わり8品目です：えび・かに・くるみ・小麦・そば・卵・乳・落花生。"},
+ {type:"選択",q:"次のうち、子どもに多いアレルギーの代表でないものは？",o:["鶏卵","牛乳","食塩","小麦"],a:2,e:"食塩はアレルゲンではありません。鶏卵・牛乳・小麦・木の実類が代表的です。"},
+ {type:"○×",q:"アレルギー症状は、皮膚・呼吸・お腹など複数の場所に同時に出ることがある。",o:["○ ある","× ない"],a:0,e:"複数の場所に同時・急速に出るのがアナフィラキシーです。"},
+ {type:"選択",q:"アナフィラキシーで症状が出やすいのは、原因をとってからどのくらい？",o:["多くは2時間以内","半日後","翌日","1週間後"],a:0,e:"多くは2時間以内、しばしば30分以内に現れます。"},
+ {type:"ケース",q:"Aちゃんがおやつ後『のどがかゆい』と言った。ほかは元気そう。最も適切なのは？",o:["元気そうなので様子を見て放置","軽く見ず観察し、他の職員を呼んで全身を確認","『気のせい』と伝える","おやつをもう一つあげる"],a:1,e:"のどの違和感は初期サイン。離れず観察し、一人で判断しないのが原則です。"},
+ {type:"ケース",q:"食後にDちゃんがぐったりし、唇が青白い。最初にすべきことは？",o:["一人で抱えて別室へ運ぶ","しばらく一人で休ませる","離れず人を呼び、エピペンがあれば使い119番","保護者の到着を待つ"],a:2,e:"『ぐったり・唇が青白い』は緊急性が高い症状。離れず人を呼び、直ちに緊急対応です。"},
+ {type:"○×",q:"緊急性が高い症状が1つでもあれば、ショックになるのを待たずにエピペンを使うのが原則。",o:["○ そのとおり","× ショックを待つ"],a:0,e:"30分以内のアドレナリン投与が予後を左右します。ためらいが命を左右します。"},
+ {type:"○×",q:"エピペンを使って症状が改善したら、救急車は呼ばなくてよい。",o:["○ 呼ばなくてよい","× 必ず呼ぶ"],a:1,e:"改善しても再び悪化すること（二相性反応）があるため、必ず救急搬送します。"},
+ {type:"選択",q:"アナフィラキシーが疑われる子の体位として適切でないのは？",o:["あお向けで足を少し高くする","急に立たせて歩かせる","呼吸が苦しければ上半身を起こす","嘔吐時は顔を横向きにする"],a:1,e:"急に立たせる・歩かせるのは危険です。安静を保ちます。"},
+ {type:"選択",q:"誤食を防ぐ行動として、ふさわしくないのは？",o:["お菓子の交換をさせない","食品表示を必ず読む","『たぶん大丈夫』で配る","ダブルチェックする"],a:2,e:"『たぶん』で進めないこと。迷ったら確認が常笑の原則です。"},
+ {type:"ケース",q:"保護者から口頭で『最近ナッツでも症状が出る』と聞いた。最も適切なのは？",o:["自分だけが覚えておく","記録し、職員全員と管理者に共有する","次に会ったとき詳しく聞こうと後回し","聞かなかったことにする"],a:1,e:"口頭情報こそ記録・共有が命。『自分は聞いた』で終わると事故になります。"},
+ {type:"○×",q:"常笑5原則では『迷ったら一人で素早く判断する』ことを推奨している。",o:["○ そのとおり","× 一人で判断しない"],a:1,e:"5原則は『一人で判断しない』『迷ったら確認する』です。"},
+ {type:"選択",q:"この研修が最終的に目指すゴールは？",o:["専門用語を暗記すること","『明日から確認を徹底しよう』と行動が変わること","テストで満点を取ること","資料を読み終えること"],a:1,e:"知識で終わらせず、行動につなげること。それが常笑教育システムのゴールです。"}
+];
+const qz=document.getElementById("quiz");
+quiz.forEach((item,i)=>{
+  const b=document.createElement("div");b.className="q-block";b.dataset.i=i;
+  let opts=item.o.map((o,n)=>`<label data-n="${n}"><input type="radio" name="q${i}" value="${n}" ${state["quiz_"+i]==n?"checked":""}><span>${o}</span></label>`).join("");
+  b.innerHTML=`<div class="qn"><span class="badge">${item.type}</span><span>Q${i+1}. ${item.q}</span></div><div class="opts">${opts}</div><div class="explain"><b>解説</b>：${item.e}</div>`;
+  b.querySelectorAll("input").forEach(inp=>inp.onchange=()=>{state["quiz_"+i]=+inp.value;save();});
+  qz.appendChild(b);
+});
+function gradeQuiz(){
+  let correct=0,answered=0;
+  quiz.forEach((item,i)=>{
+    const b=qz.querySelector(`.q-block[data-i="${i}"]`);
+    const sel=state["quiz_"+i];
+    b.querySelectorAll(".opts label").forEach(l=>l.classList.remove("correct","wrong"));
+    if(sel!=null&&sel!==undefined){answered++;
+      const chosen=b.querySelector(`.opts label[data-n="${sel}"]`);
+      if(sel===item.a){correct++;chosen.classList.add("correct");}
+      else{chosen.classList.add("wrong");b.querySelector(`.opts label[data-n="${item.a}"]`).classList.add("correct");}
+    }
+    b.querySelector(".explain").classList.add("show");
+  });
+  const pct=Math.round(correct/quiz.length*100);
+  const card=document.getElementById("scoreCard"),pass=correct>=12;
+  card.className="score-card show "+(pass?"pass":"fail");
+  document.getElementById("scorePct").textContent=correct+" / "+quiz.length+"（"+pct+"%）";
+  document.getElementById("scoreMsg").textContent=pass?"合格です！明日からの確認に活かしましょう 🎉":"あと少し。もう一度、特に緊急時対応を見直してみましょう。";
+  state.quizScore=correct;save();
+  card.scrollIntoView({behavior:"smooth",block:"center"});
+}
+function resetQuiz(){quiz.forEach((it,i)=>{delete state["quiz_"+i];const b=qz.querySelector(`.q-block[data-i="${i}"]`);b.querySelectorAll("input").forEach(x=>x.checked=false);b.querySelectorAll(".opts label").forEach(l=>l.classList.remove("correct","wrong"));b.querySelector(".explain").classList.remove("show");});document.getElementById("scoreCard").className="score-card";save();window.scrollTo(0,document.getElementById("quiz").offsetTop-60);}
+
+/* ===== 修了チェック ===== */
+const finals=["教材をすべて読んだ","常笑5原則を理解した","緊急時の流れを言える","毎日確認する5つを実践すると決めた","提出レポートを記入した"];
+const fc=document.getElementById("finalCheck");
+finals.forEach((t,i)=>{
+  const k="f"+i,on=state["fin_"+k]||false;
+  const el=document.createElement("label");el.className="check"+(on?" on":"");
+  el.innerHTML=`<input type="checkbox" ${on?"checked":""}><span class="box">✓</span><span class="lbl">${t}</span>`;
+  el.querySelector("input").onchange=e=>{el.classList.toggle("on",e.target.checked);state["fin_"+k]=e.target.checked;save();updateCert();};
+  fc.appendChild(el);
+});
+function updateCert(){const nm=state["r_sign"]||"　　　　　　　　";document.getElementById("certName").textContent=nm;
+  const allDone=finals.every((t,i)=>state["fin_f"+i]);
+  document.getElementById("certDate").textContent=allDone?("修了日："+new Date().toLocaleDateString("ja-JP")):"";}
+
+/* ===== テキスト入力の保存・復元 ===== */
+document.querySelectorAll("[data-key]").forEach(el=>{
+  const k=el.dataset.key;
+  if(state[k]!=null)el.value=state[k];
+  el.addEventListener("input",()=>{state[k]=el.value;save();if(k==="r_sign")updateCert();});
+});
+
+/* ===== 初期化 ===== */
+markDone();showPage(cur);updateCert();
+</script>
+</body>
+</html>
