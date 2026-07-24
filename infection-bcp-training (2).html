@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>感染症BCP研修｜株式会社常笑教育システム</title>
+<style>
+  :root{
+    --main:#2b8a7c;
+    --main-dark:#1f6b60;
+    --accent:#f4a340;
+    --bg:#faf8f3;
+    --card:#ffffff;
+    --text:#333333;
+    --border:#e4ded0;
+    --danger:#d9534f;
+    --ok:#3d8b5f;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.8;
+  }
+  .layout{display:flex; min-height:100vh;}
+  #sidebar{
+    width:260px;
+    background:var(--main-dark);
+    color:#fff;
+    padding:20px 0;
+    position:fixed;
+    height:100vh;
+    overflow-y:auto;
+    transition:transform .3s;
+    z-index:100;
+  }
+  #sidebar h2{
+    font-size:15px;
+    padding:0 16px 14px;
+    border-bottom:1px solid rgba(255,255,255,.2);
+    margin:0 0 10px;
+  }
+  #sidebar .navitem{
+    display:block;
+    padding:9px 16px;
+    color:#e8f2ef;
+    text-decoration:none;
+    font-size:13px;
+    border-left:4px solid transparent;
+    cursor:pointer;
+  }
+  #sidebar .navitem.active{
+    background:rgba(255,255,255,.12);
+    border-left:4px solid var(--accent);
+    font-weight:bold;
+  }
+  #sidebar .navitem .chk{margin-right:6px;}
+  #progressWrap{padding:14px 16px;}
+  #progressBarBg{background:rgba(255,255,255,.2); border-radius:8px; height:10px; overflow:hidden;}
+  #progressBarFg{background:var(--accent); height:100%; width:0%; transition:width .4s;}
+  #progressLabel{font-size:12px; margin-top:6px; opacity:.9;}
+  #menuBtn{
+    display:none;
+    position:fixed; top:12px; left:12px; z-index:200;
+    background:var(--main-dark); color:#fff; border:none;
+    padding:10px 14px; border-radius:6px; font-size:14px;
+  }
+  main{
+    margin-left:260px;
+    flex:1;
+    padding:30px 40px 80px;
+    max-width:860px;
+  }
+  section{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:30px;
+    margin-bottom:30px;
+    scroll-margin-top:20px;
+  }
+  h1{color:var(--main-dark); font-size:26px;}
+  h2.sectionTitle{
+    color:var(--main-dark);
+    border-left:6px solid var(--main);
+    padding-left:12px;
+    font-size:20px;
+    margin-top:0;
+  }
+  h3{color:var(--main-dark); font-size:16px;}
+  .badge{
+    display:inline-block;
+    background:var(--main);
+    color:#fff;
+    font-size:12px;
+    padding:3px 10px;
+    border-radius:12px;
+    margin-bottom:10px;
+  }
+  .newbadge{
+    display:inline-block;
+    background:var(--accent);
+    color:#fff;
+    font-size:11px;
+    padding:2px 8px;
+    border-radius:10px;
+    margin-left:8px;
+  }
+  .principle-list{list-style:none; padding:0;}
+  .principle-list li{
+    background:#fff6ea;
+    border:1px solid #f0dcb0;
+    border-radius:8px;
+    padding:12px 16px;
+    margin-bottom:10px;
+    font-weight:bold;
+    color:#7a5417;
+  }
+  .principle-list li span.num{
+    display:inline-block;
+    background:var(--accent);
+    color:#fff;
+    width:24px; height:24px;
+    border-radius:50%;
+    text-align:center;
+    line-height:24px;
+    font-size:13px;
+    margin-right:8px;
+  }
+  .flow-step{
+    display:flex; align-items:flex-start; gap:12px;
+    background:#f2f8f6; border-radius:8px; padding:12px 16px; margin-bottom:8px;
+  }
+  .flow-step .stepnum{
+    background:var(--main); color:#fff; border-radius:50%;
+    width:28px; height:28px; min-width:28px; text-align:center; line-height:28px; font-size:13px;
+  }
+  .box{
+    background:#f2f8f6;
+    border:1px solid #d6e9e3;
+    border-radius:8px;
+    padding:16px;
+    margin:14px 0;
+  }
+  .warnbox{
+    background:#fdf1ef;
+    border:1px solid #f3c9c3;
+    border-radius:8px;
+    padding:16px;
+    margin:14px 0;
+  }
+  .tipbox{
+    background:#fffaf0;
+    border:1px dashed #e3c37a;
+    border-radius:8px;
+    padding:14px 16px;
+    margin:14px 0;
+    font-size:13.5px;
+  }
+  label.field{
+    display:block;
+    font-size:13.5px;
+    font-weight:bold;
+    margin:14px 0 4px;
+    color:var(--main-dark);
+  }
+  input[type=text], textarea, select{
+    width:100%;
+    padding:9px 10px;
+    border:1px solid var(--border);
+    border-radius:6px;
+    font-size:14px;
+    font-family:inherit;
+    background:#fffefb;
+  }
+  textarea{resize:vertical; min-height:70px;}
+  .caseCard{
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:18px;
+    margin-bottom:22px;
+    background:#fffefb;
+  }
+  .caseCard .caseTitle{font-weight:bold; color:var(--main-dark); margin-bottom:8px;}
+  .quiz{
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:14px 16px;
+    margin-bottom:14px;
+    background:#fffefb;
+  }
+  .quiz .qnum{font-weight:bold; color:var(--main-dark); margin-bottom:6px;}
+  .quiz label.opt{
+    display:block;
+    padding:6px 4px;
+    cursor:pointer;
+    font-size:14px;
+  }
+  button{
+    background:var(--main);
+    color:#fff;
+    border:none;
+    padding:11px 22px;
+    border-radius:8px;
+    font-size:14.5px;
+    cursor:pointer;
+    font-weight:bold;
+  }
+  button:hover{background:var(--main-dark);}
+  button.secondary{background:#928a76;}
+  .navBtns{display:flex; justify-content:space-between; margin-top:24px;}
+  .checklist label{display:block; margin-bottom:8px; font-size:14px;}
+  .completionBox{
+    text-align:center;
+    background:#f2f8f6;
+    border:2px dashed var(--main);
+    border-radius:12px;
+    padding:30px;
+  }
+  .quoteFinal{
+    background:var(--main-dark);
+    color:#fff;
+    border-radius:12px;
+    padding:30px;
+    text-align:center;
+    font-size:18px;
+    line-height:1.9;
+    margin-top:30px;
+  }
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13px;}
+  table th, table td{border:1px solid var(--border); padding:7px 8px; text-align:left;}
+  table th{background:#f2f8f6;}
+  @media (max-width:900px){
+    #sidebar{transform:translateX(-270px);}
+    #sidebar.open{transform:translateX(0);}
+    main{margin-left:0; padding:70px 16px 60px;}
+    #menuBtn{display:block;}
+  }
+</style>
+</head>
+<body>
+
+<button id="menuBtn" onclick="document.getElementById('sidebar').classList.toggle('open')">☰ 目次</button>
+
+<div class="layout">
+  <nav id="sidebar">
+    <h2>株式会社常笑<br>感染症BCP研修</h2>
+    <div id="progressWrap">
+      <div id="progressBarBg"><div id="progressBarFg"></div></div>
+      <div id="progressLabel">進捗 0%</div>
+    </div>
+    <a class="navitem" data-target="s1"><span class="chk">〇</span>① 学習目標</a>
+    <a class="navitem" data-target="s2"><span class="chk">〇</span>② BCPとは何か</a>
+    <a class="navitem" data-target="s3"><span class="chk">〇</span>③ なぜ感染症BCPが必要か</a>
+    <a class="navitem" data-target="s4"><span class="chk">〇</span>④ 感染症発生時に起こること</a>
+    <a class="navitem" data-target="s5"><span class="chk">〇</span>⑤ BCPの基本的な流れ</a>
+    <a class="navitem" data-target="s6"><span class="chk">〇</span>⑥ 感染防止の基本対策</a>
+    <a class="navitem" data-target="s7"><span class="chk">〇</span>⑦ 濃厚接触者への対応</a>
+    <a class="navitem" data-target="s8"><span class="chk">〇</span>⑧ 常笑の感染症BCPと5原則</a>
+    <a class="navitem" data-target="s9"><span class="chk">〇</span>⑨ 自分の事業所BCP確認ワーク</a>
+    <a class="navitem" data-target="s10"><span class="chk">〇</span>⑩ 自分の役割と業務優先順位</a>
+    <a class="navitem" data-target="s11"><span class="chk">〇</span>⑪ ケーススタディ</a>
+    <a class="navitem" data-target="s12"><span class="chk">〇</span>⑫ 個人ワーク</a>
+    <a class="navitem" data-target="s13"><span class="chk">〇</span>⑬ 理解度テスト</a>
+    <a class="navitem" data-target="s14"><span class="chk">〇</span>⑭ 提出レポート</a>
+    <a class="navitem" data-target="s15"><span class="chk">〇</span>⑮ 管理者コメント欄</a>
+    <a class="navitem" data-target="s16"><span class="chk">〇</span>⑯ 修了チェック</a>
+  </nav>
+
+  <main>
+    <h1>Level1 基礎研修⑤　感染症BCP研修</h1>
+    <p style="color:#777; margin-top:-6px;">～感染症が発生しても子どもたちへの支援を止めないために～<br>
+    株式会社常笑教育システム｜対象：放課後等デイサービス・児童発達支援 全職員｜研修時間：約60〜75分</p>
+
+    <!-- ① 学習目標 -->
+    <section id="s1">
+      <span class="badge">① 学習目標</span>
+      <h2 class="sectionTitle">この研修で身につけること</h2>
+      <div class="box">
+        <ol>
+          <li>BCPとは何かを理解する</li>
+          <li>なぜBCPが必要なのかを理解する</li>
+          <li>感染症発生時の基本的な流れを理解する</li>
+          <li>感染を広げないための基本的な対策（標準予防策・ゾーニング・コホーティング）を理解する</li>
+          <li>濃厚接触者への対応の考え方を理解する</li>
+          <li>自分の事業所のBCPを理解する</li>
+          <li>自分の役割と、出勤状況に応じた業務の優先順位を理解する</li>
+          <li>支援を継続するために必要な行動を理解する</li>
+        </ol>
+      </div>
+      <p>この研修は「BCPを知る」ための研修ではありません。<br>
+      <strong>感染症が発生した瞬間に、あなた自身が迷わず動けるようになること</strong>が目的です。</p>
+      <div class="box">
+        <strong>良い支援が子どもの笑顔をつくる。良い支援が職員の笑顔をつくる。</strong><br>
+        療育は積み上げです。安全な環境があるからこそ、子どもは安心して挑戦できます。<br>
+        感染症が発生しても支援を止めないことは、この理念を守ることでもあります。
+      </div>
+      <div class="navBtns"><span></span><button onclick="goTo('s2')">次へ ▶</button></div>
+    </section>
+
+    <!-- ② BCPとは -->
+    <section id="s2">
+      <span class="badge">② BCPとは何か</span>
+      <h2 class="sectionTitle">BCP（事業継続計画）とは</h2>
+      <p><strong>BCP（Business Continuity Plan／事業継続計画）</strong>とは、感染症や災害など、事業所に大きな影響を与える出来事が起きたときにも、必要な支援・サービスをできる限り止めずに続けるための、あらかじめ決めておく行動計画です。</p>
+      <div class="box">
+        <h3>ポイント</h3>
+        <ul>
+          <li>「起きたらどうするか」を<strong>事前に</strong>決めておくもの</li>
+          <li>管理者だけのものではなく、<strong>全職員が使うもの</strong></li>
+          <li>目的は「子どもたちへの支援を止めないこと」</li>
+        </ul>
+      </div>
+      <div class="tipbox">
+        <strong>BCPと感染対策マニュアルの違い</strong><br>
+        感染対策マニュアルは「消毒の仕方」「ケアの方法」など現場の手技を教えるものです。BCPは「誰が・何を・いつ決めるか」「連絡先」「人員確保」「業務の優先順位」など、<strong>組織として支援を止めない仕組み</strong>を定めるものです。両方があって初めて現場は機能します。
+      </div>
+      <p>BCPは分厚い書類として保管されがちですが、本当の目的は「その瞬間、誰が・何を・どうするか」を全員が迷わず動けることです。</p>
+      <div class="navBtns"><button class="secondary" onclick="goTo('s1')">◀ 戻る</button><button onclick="goTo('s3')">次へ ▶</button></div>
+    </section>
+
+    <!-- ③ なぜ必要か -->
+    <section id="s3">
+      <span class="badge">③ なぜ感染症BCPが必要なのか</span>
+      <h2 class="sectionTitle">感染症BCPが必要な理由</h2>
+      <ul>
+        <li>放課後等デイサービス・児童発達支援は、体調管理が難しい子どもたちが集団で過ごす場所であり、感染症が広がりやすい環境です。</li>
+        <li>感染症が発生すると、職員自身も感染・濃厚接触者となり、人手が急激に減る可能性があります。</li>
+        <li>支援が止まってしまうと、子どもたちの発達支援の積み上げが途切れ、保護者の就労にも大きな影響が出ます。</li>
+        <li>あらかじめ役割と行動が決まっていなければ、現場は混乱し、判断が遅れ、感染がさらに拡大します。</li>
+      </ul>
+      <div class="box">
+        <strong>自然災害との違い</strong><br>
+        地震などの自然災害は建物・設備への被害が中心ですが、感染症は「人」への影響が中心です。突発的な人員不足が起こりやすく、正確な情報収集とその都度の判断が特に重要になります。
+      </div>
+      <div class="warnbox">
+        <strong>BCPがないとどうなるか</strong><br>
+        「誰が指示を出すのか分からない」「誰に報告すればいいか分からない」「自分は何をすればいいか分からない」——このような迷いが、対応の遅れと感染拡大、そして支援停止につながります。
+      </div>
+      <div class="navBtns"><button class="secondary" onclick="goTo('s2')">◀ 戻る</button><button onclick="goTo('s4')">次へ ▶</button></div>
+    </section>
+
+    <!-- ④ 発生時に起こること -->
+    <section id="s4">
+      <span class="badge">④ 感染症が発生した時に何が起こるか</span>
+      <h2 class="sectionTitle">現場で実際に起こること</h2>
+      <div class="box">
+        <ul>
+          <li>利用者・職員に発熱や体調不良が出る</li>
+          <li>出勤できる職員が減り、通常の人員配置が組めなくなる</li>
+          <li>保護者からの問い合わせ・連絡が増える</li>
+          <li>消毒・清掃・隔離など、通常業務以外の対応が急増する</li>
+          <li>行政・保健所への報告が必要になる場合がある</li>
+          <li>誰かが判断し、誰かが動かなければ、現場は止まってしまう</li>
+        </ul>
+      </div>
+      <h3>注意すべき症状</h3>
+      <p>次のような症状がみられた場合、速やかに感染症を疑って対応します。</p>
+      <div class="tipbox">
+        発熱、咳・のどの痛みなどの風邪症状、頭痛、強いだるさ（倦怠感）、息苦しさ。加えて、嗅覚・味覚の異常を訴える場合もあります。「いつもと様子が違う」と感じたら、それも大切なサインです。
+      </div>
+      <h3>送迎前のチェックが第一の砦</h3>
+      <p>送迎車に乗る前に、本人・家族または職員が体温を確認し、発熱が見られる場合は利用を見合わせる、というルールを徹底することが、事業所内への感染の持ち込みを防ぐ最も基本的な対策です。</p>
+      <p>これらは「特別な誰か」に起こることではなく、<strong>あなた自身の事業所で、あなた自身の勤務日に</strong>起こり得ることです。</p>
+      <div class="navBtns"><button class="secondary" onclick="goTo('s3')">◀ 戻る</button><button onclick="goTo('s5')">次へ ▶</button></div>
+    </section>
+
+    <!-- ⑤ 基本的な流れ -->
+    <section id="s5">
+      <span class="badge">⑤ 感染症BCPの基本的な流れ</span>
+      <h2 class="sectionTitle">発生から支援継続までの基本フロー</h2>
+      <div class="flow-step"><div class="stepnum">1</div><div><strong>気づく</strong>：体調不良・発熱・症状に気づく（送迎前チェックを含む）</div></div>
+      <div class="flow-step"><div class="stepnum">2</div><div><strong>報告する</strong>：自分で判断せず、決められた相手にすぐ報告する</div></div>
+      <div class="flow-step"><div class="stepnum">3</div><div><strong>指揮者が判断する</strong>：BCP責任者・指揮者が状況を確認し、医療機関や保健所への連絡を含めた対応方針を決める</div></div>
+      <div class="flow-step"><div class="stepnum">4</div><div><strong>安全確保</strong>：隔離・別室対応、PPE着用、消毒など、利用者の安全を最優先に行動する</div></div>
+      <div class="flow-step"><div class="stepnum">5</div><div><strong>検査・濃厚接触者の特定</strong>：医療機関の指示に従い検査を行い、陽性の場合は保健所の指示のもと濃厚接触者を特定する</div></div>
+      <div class="flow-step"><div class="stepnum">6</div><div><strong>役割分担で対応</strong>：それぞれの役割にもとづき、仲間と協力して行動する</div></div>
+      <div class="flow-step"><div class="stepnum">7</div><div><strong>支援を止めない</strong>：業務の優先順位に沿って可能な範囲で支援を継続し、必要な報告・記録を行う</div></div>
+      <p>この流れの中で、あなたが必ず行うのは<strong>「①気づく」「②報告する」「⑥役割にもとづき行動する」</strong>です。</p>
+      <div class="navBtns"><button class="secondary" onclick="goTo('s4')">◀ 戻る</button><button onclick="goTo('s6')">次へ ▶</button></div>
+    </section>
+
+    <!-- ⑥ 感染防止の基本対策（新規） -->
+    <section id="s6">
+      <span class="badge">⑥ 感染防止の基本対策<span class="newbadge">NEW</span></span>
+      <h2 class="sectionTitle">「持ち込まない」「広げない」ための基本行動</h2>
+      <p>感染拡大防止の基本は、ウイルスを事業所に<strong>「持ち込まない」</strong>、事業所内で<strong>「広げない」</strong>ことです。専門知識がなくても、次の行動を徹底することで大きく防ぐことができます。</p>
+
+      <h3>① 標準予防策（誰にでも行う基本のケア）</h3>
+      <div class="box">
+        <ul>
+          <li><strong>手指衛生</strong>：流水と石けんで15秒以上の手洗い、または速乾性アルコール消毒液（アルコール濃度60〜80％程度）でしっかりすりこむ</li>
+          <li><strong>マスクの着用</strong>：職員は基本的に常時着用する</li>
+          <li><strong>換気</strong>：常時換気、または換気の回数を増やす</li>
+          <li><strong>距離の確保・パーテーション</strong>：複数の利用者が集まる場では距離をとる、ついたてを設置する</li>
+          <li><strong>ティッシュ等の処理</strong>：鼻汁・痰を含んだティッシュは感染物とみなし、すぐにゴミ箱へ捨てる</li>
+          <li><strong>吸引等の医療的ケア時</strong>：マスク・手袋・ゴーグル・エプロン等の防護具を着用する</li>
+        </ul>
+      </div>
+
+      <h3>② ゾーニング（区域を分ける）</h3>
+      <div class="box">
+        清潔なエリアと、感染（疑い）者がいるエリアを明確に分け、人や物の出入りを制限する考え方です。
+        <ul>
+          <li>感染者がいるエリアと、そうでないエリアで職員の担当を分ける（行き来しない）</li>
+          <li>感染者が使った物品は、そのエリア内で廃棄・消毒できるようにする</li>
+          <li>可能であれば更衣室もエリアごとに分ける</li>
+        </ul>
+      </div>
+
+      <h3>③ コホーティング（同じグループでまとめて対応）</h3>
+      <div class="box">
+        感染（疑い）者をまとめて、同じ職員がケアにあたることで、他の利用者への感染拡大を防ぐ考え方です。
+        <ul>
+          <li>感染（疑い）者は個室、または同じ部屋に集める</li>
+          <li>入退室時は手袋の有無にかかわらず手指衛生を行う</li>
+          <li>部屋を出る前に手袋・エプロンを外し、感染性廃棄物として処分する</li>
+        </ul>
+      </div>
+
+      <h3>④ 子どもたちの特性に配慮した工夫</h3>
+      <div class="tipbox">
+        マスクを自分で外せない、呼吸器の病気がある、誤って口に入れてしまう危険があるなど、マスク着用が難しい子どもも少なくありません。無理に着用させるのではなく、次のような工夫を検討します。
+        <ul>
+          <li>ウイルスについて「絵」など視覚的な方法で伝え、着用の大切さを分かりやすく説明する</li>
+          <li>本人の好きな柄・色のマスクを用意し、着用への抵抗感を減らす</li>
+          <li>マスクが難しい場合は、換気の徹底やパーテーションなど別の方法で代替する</li>
+        </ul>
+      </div>
+      <div class="navBtns"><button class="secondary" onclick="goTo('s5')">◀ 戻る</button><button onclick="goTo('s7')">次へ ▶</button></div>
+    </section>
+
+    <!-- ⑦ 濃厚接触者への対応（新規） -->
+    <section id="s7">
+      <span class="badge">⑦ 濃厚接触者への対応<span class="newbadge">NEW</span></span>
+      <h2 class="sectionTitle">濃厚接触者と判断された場合の対応</h2>
+      <p>保健所等により濃厚接触者と特定された場合、次のような対応が基本となります（詳細は必ず保健所の指示に従ってください）。</p>
+      <table>
+        <tr><th>対象</th><th>基本的な対応</th></tr>
+        <tr><td>利用者</td><td>健康状態の観察を徹底（期間の目安：14日間、詳細は保健所の指示に従う）。個室または別室での対応。可能な限り担当職員を分ける。</td></tr>
+        <tr><td>職員</td><td>自宅待機とし、保健所の指示に従う。職場復帰の時期も発熱等の症状の有無を踏まえ、保健所の指示に従う。</td></tr>
+      </table>
+      <div class="box">
+        <strong>あなたが行うこと</strong>
+        <ul>
+          <li>自分や家族が濃厚接触者となった可能性に気づいたら、すぐに報告する</li>
+          <li>担当している利用者に濃厚接触の疑いがあれば、決められた相手（管理者・指揮者）に報告する</li>
+          <li>自己判断で出勤・利用の可否を決めず、必ず指示を仰ぐ</li>
+        </ul>
+      </div>
+      <div class="navBtns"><button class="secondary" onclick="goTo('s6')">◀ 戻る</button><button onclick="goTo('s8')">次へ ▶</button></div>
+    </section>
+
+    <!-- ⑧ 常笑のBCPと5原則 -->
+    <section id="s8">
+      <span class="badge">⑧ 株式会社常笑の感染症BCP</span>
+      <h2 class="sectionTitle">常笑BCP5原則</h2>
+      <p>株式会社常笑では、感染症発生時に全職員が迷わず行動できるよう、次の5つの原則を定めています。研修の最後まで、繰り返し意識してください。</p>
+      <ul class="principle-list">
+        <li><span class="num">1</span>自分で判断しない</li>
+        <li><span class="num">2</span>まず報告する</li>
+        <li><span class="num">3</span>利用者の安全を最優先にする</li>
+        <li><span class="num">4</span>仲間と協力して行動する</li>
+        <li><span class="num">5</span>支援を止めない</li>
+      </ul>
+      <div class="box">
+        この5原則は、専門知識がなくても誰もが実践できるものです。「正しい医学的判断をすること」が求められているのではなく、<strong>「迷わず、決められた行動をとること」</strong>が求められています。
+      </div>
+      <div class="navBtns"><button class="secondary" onclick="goTo('s7')">◀ 戻る</button><button onclick="goTo('s9')">次へ ▶</button></div>
+    </section>
+
+    <!-- ⑨ 自分の事業所BCP確認ワーク -->
+    <section id="s9">
+      <span class="badge">⑨ 自分の事業所BCP確認ワーク</span>
+      <h2 class="sectionTitle">自分の事業所のBCPを開いて記入してください</h2>
+      <div class="warnbox">
+        このページは、あなたが所属する事業所の実際のBCP文書を手元に置きながら記入してください。事業所によって担当者・保管場所・備蓄量は異なります。
+      </div>
+      <div class="box">
+        <label class="field">自分の事業所名</label>
+        <input type="text" data-save="jigyosho_name" placeholder="例：〇〇放課後等デイサービス">
+
+        <label class="field">管理者</label>
+        <input type="text" data-save="kanrisha" placeholder="氏名">
+
+        <label class="field">BCP責任者</label>
+        <input type="text" data-save="bcp_sekininsha" placeholder="氏名">
+
+        <label class="field">感染症発生時の指揮者</label>
+        <input type="text" data-save="shikisha" placeholder="氏名">
+
+        <label class="field">自分が最初に報告する相手</label>
+        <input type="text" data-save="houkoku_aite" placeholder="氏名・役職">
+
+        <label class="field">自分の役割</label>
+        <input type="text" data-save="jibun_yakuwari" placeholder="例：消毒担当、記録担当 など">
+
+        <label class="field">自分の代行者</label>
+        <input type="text" data-save="daikousha" placeholder="氏名">
+
+        <label class="field">緊急連絡網の保管場所</label>
+        <input type="text" data-save="renrakumou_basho">
+
+        <label class="field">BCP保管場所</label>
+        <input type="text" data-save="bcp_basho">
+
+        <label class="field">PPE（個人防護具）保管場所</label>
+        <input type="text" data-save="ppe_basho">
+
+        <label class="field">消毒用品保管場所</label>
+        <input type="text" data-save="shoudoku_basho">
+
+        <label class="field">備蓄品保管場所と目安量（マスク・消毒液など）</label>
+        <input type="text" data-save="bichiku_basho" placeholder="例：倉庫／数日〜3か月分程度">
+
+        <label class="field">隔離場所（個室・別室）</label>
+        <input type="text" data-save="kakuri_basho">
+
+        <label class="field">保健所・行政・協力医療機関の連絡先</label>
+        <input type="text" data-save="hokenjo_renraku" placeholder="事業所の連絡リストを確認して記入">
+      </div>
+      <label class="field">感染者が発生した時、私は最初に何をしますか？</label>
+      <textarea data-save="saisho_koudou" placeholder="自分の言葉で書いてください"></textarea>
+      <div class="navBtns"><button class="secondary" onclick="goTo('s8')">◀ 戻る</button><button onclick="goTo('s10')">次へ ▶</button></div>
+    </section>
+
+    <!-- ⑩ 自分の役割・業務優先順位 -->
+    <section id="s10">
+      <span class="badge">⑩ 自分の役割と業務優先順位</span>
+      <h2 class="sectionTitle">感染症発生時、あなたは何を担当しますか</h2>
+      <p>前ページで確認した内容をもとに、自分が担う役割にチェックを入れてください（複数可）。</p>
+      <div class="box checklist">
+        <label><input type="checkbox" data-save="role_houkoku"> 報告・連絡担当</label>
+        <label><input type="checkbox" data-save="role_kakuri"> 隔離対応・利用者ケア担当</label>
+        <label><input type="checkbox" data-save="role_shoudoku"> 消毒・清掃担当</label>
+        <label><input type="checkbox" data-save="role_hogosha"> 保護者対応担当</label>
+        <label><input type="checkbox" data-save="role_kiroku"> 記録担当</label>
+        <label><input type="checkbox" data-save="role_shien"> 支援継続担当（子どもたちへの対応継続）</label>
+        <label><input type="checkbox" data-save="role_shiki"> 指揮・判断担当（管理者・BCP責任者）</label>
+      </div>
+
+      <h3>出勤できる職員数に応じた業務の優先順位</h3>
+      <p>職員が不足した場合は、子どもたちの健康・安全に関わる業務を最優先にしながら、業務を調整します。事業所ごとの分類はBCPで確認してください（一般的な考え方の例）。</p>
+      <table>
+        <tr><th>分類</th><th>考え方</th><th>業務の例</th></tr>
+        <tr><td><strong>継続業務</strong></td><td>優先的に継続する業務</td><td>医療的ケア、排泄支援、見守り、送迎、食事介助</td></tr>
+        <tr><td><strong>変更・縮小業務</strong></td><td>内容を縮小・変更して対応</td><td>行事・レクリエーション、外出活動</td></tr>
+        <tr><td><strong>休止業務</strong></td><td>一時的に休止する業務</td><td>研修会、家族会・交流会</td></tr>
+        <tr><td><strong>追加業務</strong></td><td>感染対策として新たに発生する業務</td><td>消毒、防護具の着用、レイアウト変更、電話での見守り連絡</td></tr>
+      </table>
+      <label class="field">自分の役割について、今の理解度・不安な点を書いてください</label>
+      <textarea data-save="role_note"></textarea>
+      <div class="navBtns"><button class="secondary" onclick="goTo('s9')">◀ 戻る</button><button onclick="goTo('s11')">次へ ▶</button></div>
+    </section>
+
+    <!-- ⑪ ケーススタディ -->
+    <section id="s11">
+      <span class="badge">⑪ ケーススタディ</span>
+      <h2 class="sectionTitle">現場でどう動くか考えてみましょう</h2>
+      <p>正解を暗記する問題ではありません。それぞれの場面で「誰に報告するか」「自分の役割は何か」「事業所BCPをどこで確認するか」を、自分の事業所に当てはめて書いてください。</p>
+
+      <div class="caseCard">
+        <div class="caseTitle">ケース1：利用者が来所時に発熱していた</div>
+        <label class="field">誰へ報告しますか</label><input type="text" data-save="case1_houkoku">
+        <label class="field">自分の役割は何ですか</label><input type="text" data-save="case1_yakuwari">
+        <label class="field">事業所BCPのどこを確認しますか</label><input type="text" data-save="case1_bcp">
+      </div>
+
+      <div class="caseCard">
+        <div class="caseTitle">ケース2：職員が陽性になった</div>
+        <label class="field">誰へ報告しますか</label><input type="text" data-save="case2_houkoku">
+        <label class="field">自分の役割は何ですか</label><input type="text" data-save="case2_yakuwari">
+        <label class="field">事業所BCPのどこを確認しますか</label><input type="text" data-save="case2_bcp">
+      </div>
+
+      <div class="caseCard">
+        <div class="caseTitle">ケース3：送迎中に利用者が体調不良となった</div>
+        <label class="field">誰へ報告しますか</label><input type="text" data-save="case3_houkoku">
+        <label class="field">自分の役割は何ですか</label><input type="text" data-save="case3_yakuwari">
+        <label class="field">事業所BCPのどこを確認しますか</label><input type="text" data-save="case3_bcp">
+      </div>
+
+      <div class="caseCard">
+        <div class="caseTitle">ケース4：管理者が不在だった</div>
+        <label class="field">誰へ報告しますか</label><input type="text" data-save="case4_houkoku">
+        <label class="field">自分の役割は何ですか</label><input type="text" data-save="case4_yakuwari">
+        <label class="field">事業所BCPのどこを確認しますか</label><input type="text" data-save="case4_bcp">
+      </div>
+
+      <div class="caseCard">
+        <div class="caseTitle">ケース5：同じクラスで感染者が複数出た</div>
+        <label class="field">誰へ報告しますか</label><input type="text" data-save="case5_houkoku">
+        <label class="field">自分の役割は何ですか</label><input type="text" data-save="case5_yakuwari">
+        <label class="field">事業所BCPのどこを確認しますか</label><input type="text" data-save="case5_bcp">
+      </div>
+
+      <div class="caseCard">
+        <div class="caseTitle">ケース6：保護者から感染の連絡が入った</div>
+        <label class="field">誰へ報告しますか</label><input type="text" data-save="case6_houkoku">
+        <label class="field">自分の役割は何ですか</label><input type="text" data-save="case6_yakuwari">
+        <label class="field">事業所BCPのどこを確認しますか</label><input type="text" data-save="case6_bcp">
+      </div>
+
+      <div class="caseCard">
+        <div class="caseTitle">ケース7：利用者が感染疑いとなった</div>
+        <label class="field">誰へ報告しますか</label><input type="text" data-save="case7_houkoku">
+        <label class="field">自分の役割は何ですか</label><input type="text" data-save="case7_yakuwari">
+        <label class="field">事業所BCPのどこを確認しますか</label><input type="text" data-save="case7_bcp">
+      </div>
+
+      <div class="caseCard">
+        <div class="caseTitle">ケース8：マスクの着用が難しい利用者に感染疑いが出た<span class="newbadge">NEW</span></div>
+        <label class="field">誰へ報告しますか</label><input type="text" data-save="case8_houkoku">
+        <label class="field">マスク以外にどんな工夫や対策ができますか</label><input type="text" data-save="case8_kufu">
+        <label class="field">事業所BCPのどこを確認しますか</label><input type="text" data-save="case8_bcp">
+      </div>
+
+      <div class="navBtns"><button class="secondary" onclick="goTo('s10')">◀ 戻る</button><button onclick="goTo('s12')">次へ ▶</button></div>
+    </section>
+
+    <!-- ⑫ 個人ワーク -->
+    <section id="s12">
+      <span class="badge">⑫ 個人ワーク</span>
+      <h2 class="sectionTitle">自分自身について考えてみましょう</h2>
+      <label class="field">自分の役割</label>
+      <textarea data-save="ind_yakuwari"></textarea>
+      <label class="field">自分が最初に行う行動</label>
+      <textarea data-save="ind_saisho"></textarea>
+      <label class="field">事業所で改善したいこと</label>
+      <textarea data-save="ind_kaizen"></textarea>
+      <label class="field">自分が不安に思うこと</label>
+      <textarea data-save="ind_fuan"></textarea>
+      <label class="field">BCPを読む中で気づいたこと</label>
+      <textarea data-save="ind_kizuki"></textarea>
+      <div class="navBtns"><button class="secondary" onclick="goTo('s11')">◀ 戻る</button><button onclick="goTo('s13')">次へ ▶</button></div>
+    </section>
+
+    <!-- ⑬ 理解度テスト -->
+    <section id="s13">
+      <span class="badge">⑬ 理解度テスト</span>
+      <h2 class="sectionTitle">理解度テスト（15問）</h2>
+
+      <div class="quiz"><div class="qnum">Q1（○×） BCPは管理者だけが理解していればよい。</div>
+        <label class="opt"><input type="radio" name="q1" data-save="q1"> ○</label>
+        <label class="opt"><input type="radio" name="q1" data-save="q1" value="x"> ×</label></div>
+
+      <div class="quiz"><div class="qnum">Q2（○×） 感染症に気づいたら、まず自分で判断して対応してよい。</div>
+        <label class="opt"><input type="radio" name="q2" data-save="q2"> ○</label>
+        <label class="opt"><input type="radio" name="q2" data-save="q2" value="x"> ×</label></div>
+
+      <div class="quiz"><div class="qnum">Q3（○×） BCPの目的は、支援をできる限り止めないことである。</div>
+        <label class="opt"><input type="radio" name="q3" data-save="q3"> ○</label>
+        <label class="opt"><input type="radio" name="q3" data-save="q3" value="x"> ×</label></div>
+
+      <div class="quiz"><div class="qnum">Q4（○×） 常笑BCP5原則の一つに「仲間と協力して行動する」がある。</div>
+        <label class="opt"><input type="radio" name="q4" data-save="q4"> ○</label>
+        <label class="opt"><input type="radio" name="q4" data-save="q4" value="x"> ×</label></div>
+
+      <div class="quiz"><div class="qnum">Q5（○×） コホーティングとは、感染（疑い）者をまとめて同じ職員がケアにあたる考え方である。</div>
+        <label class="opt"><input type="radio" name="q5" data-save="q5"> ○</label>
+        <label class="opt"><input type="radio" name="q5" data-save="q5" value="x"> ×</label></div>
+
+      <div class="quiz"><div class="qnum">Q6（選択） BCPとは何の略ですか。</div>
+        <label class="opt"><input type="radio" name="q6" data-save="q6" value="a"> Business Continuity Plan</label>
+        <label class="opt"><input type="radio" name="q6" data-save="q6" value="b"> Basic Care Program</label>
+        <label class="opt"><input type="radio" name="q6" data-save="q6" value="c"> Basic Company Policy</label></div>
+
+      <div class="quiz"><div class="qnum">Q7（選択） 感染症発生時、あなたが最初に行うべきことは？</div>
+        <label class="opt"><input type="radio" name="q7" data-save="q7" value="a"> 自己判断で消毒を始める</label>
+        <label class="opt"><input type="radio" name="q7" data-save="q7" value="b"> 決められた相手に報告する</label>
+        <label class="opt"><input type="radio" name="q7" data-save="q7" value="c"> 何もせず様子を見る</label></div>
+
+      <div class="quiz"><div class="qnum">Q8（選択） 常笑BCP5原則に含まれないものはどれですか。</div>
+        <label class="opt"><input type="radio" name="q8" data-save="q8" value="a"> 支援を止めない</label>
+        <label class="opt"><input type="radio" name="q8" data-save="q8" value="b"> 自分一人で対応を完結させる</label>
+        <label class="opt"><input type="radio" name="q8" data-save="q8" value="c"> まず報告する</label></div>
+
+      <div class="quiz"><div class="qnum">Q9（選択） ゾーニングの説明として正しいものはどれですか。</div>
+        <label class="opt"><input type="radio" name="q9" data-save="q9" value="a"> 清潔な区域と感染者がいる区域を分け、人や物の出入りを制限すること</label>
+        <label class="opt"><input type="radio" name="q9" data-save="q9" value="b"> 全職員が交代でどのエリアも担当すること</label>
+        <label class="opt"><input type="radio" name="q9" data-save="q9" value="c"> 全員に同じマスクを配ること</label></div>
+
+      <div class="quiz"><div class="qnum">Q10（選択） BCPを機能させるために最も大切なことはどれですか。</div>
+        <label class="opt"><input type="radio" name="q10" data-save="q10" value="a"> 全職員が自分の役割を理解していること</label>
+        <label class="opt"><input type="radio" name="q10" data-save="q10" value="b"> 分厚い書類を作成すること</label>
+        <label class="opt"><input type="radio" name="q10" data-save="q10" value="c"> 管理者だけが把握していること</label></div>
+
+      <div class="quiz"><div class="qnum">Q11（ケース） 送迎前に利用者の発熱に気づいた場合、あなたが最初にとるべき行動を書いてください。</div>
+        <textarea data-save="q11"></textarea></div>
+
+      <div class="quiz"><div class="qnum">Q12（ケース） マスクの着用が難しい利用者にどう配慮しますか。具体例を1つ書いてください。</div>
+        <textarea data-save="q12"></textarea></div>
+
+      <div class="quiz"><div class="qnum">Q13（記述） 自分の事業所のBCP保管場所を書いてください。</div>
+        <textarea data-save="q13"></textarea></div>
+
+      <div class="quiz"><div class="qnum">Q14（記述） BCPはなぜ必要だと思いますか？</div>
+        <textarea data-save="q14"></textarea></div>
+
+      <div class="quiz"><div class="qnum">Q15（記述） あなたの役割は何ですか？</div>
+        <textarea data-save="q15"></textarea></div>
+
+      <div class="navBtns"><button class="secondary" onclick="goTo('s12')">◀ 戻る</button><button onclick="goTo('s14')">次へ ▶</button></div>
+    </section>
+
+    <!-- ⑭ 提出レポート -->
+    <section id="s14">
+      <span class="badge">⑭ 提出レポート</span>
+      <h2 class="sectionTitle">研修レポート</h2>
+      <label class="field">① 今日学んだこと</label>
+      <textarea data-save="rep_manabi"></textarea>
+      <label class="field">② 自分の役割</label>
+      <textarea data-save="rep_yakuwari"></textarea>
+      <label class="field">③ 自分の課題</label>
+      <textarea data-save="rep_kadai"></textarea>
+      <label class="field">④ 事業所で改善したいこと</label>
+      <textarea data-save="rep_kaizen"></textarea>
+      <label class="field">⑤ 明日から実践すること</label>
+      <textarea data-save="rep_jissen"></textarea>
+
+      <div class="box" style="text-align:center; font-size:16px;">
+        私は明日から<br>
+        <input type="text" data-save="rep_chikai" style="text-align:center; font-weight:bold; margin:10px 0;" placeholder="ここに書いてください">
+        を実践します。
+      </div>
+
+      <label class="field">氏名（署名）</label>
+      <input type="text" data-save="rep_sign">
+      <label class="field">記入日</label>
+      <input type="text" data-save="rep_date" placeholder="例：2026年7月24日">
+
+      <div class="navBtns"><button class="secondary" onclick="goTo('s13')">◀ 戻る</button><button onclick="goTo('s15')">次へ ▶</button></div>
+    </section>
+
+    <!-- ⑮ 管理者コメント欄 -->
+    <section id="s15">
+      <span class="badge">⑮ 管理者コメント欄</span>
+      <h2 class="sectionTitle">管理者確認・コメント</h2>
+      <p style="color:#777;">※このページは管理者が記入する欄です。印刷して手書きでも構いません。</p>
+      <label class="field">受講者氏名</label>
+      <input type="text" data-save="admin_name">
+      <label class="field">事業所名</label>
+      <input type="text" data-save="admin_jigyosho">
+      <label class="field">管理者コメント</label>
+      <textarea data-save="admin_comment" placeholder="受講者のレポートを確認したうえでコメントを記入してください"></textarea>
+      <label class="field">確認日</label>
+      <input type="text" data-save="admin_date">
+      <label class="field">管理者署名</label>
+      <input type="text" data-save="admin_sign">
+      <div class="navBtns"><button class="secondary" onclick="goTo('s14')">◀ 戻る</button><button onclick="goTo('s16')">次へ ▶</button></div>
+    </section>
+
+    <!-- ⑯ 修了チェック -->
+    <section id="s16">
+      <span class="badge">⑯ 修了チェック</span>
+      <h2 class="sectionTitle">修了チェックシート</h2>
+      <div class="box checklist">
+        <label><input type="checkbox" data-save="fin_1"> BCPとは何かを理解した</label>
+        <label><input type="checkbox" data-save="fin_2"> なぜBCPが必要か理解した</label>
+        <label><input type="checkbox" data-save="fin_3"> 感染症発生時の基本的な流れを理解した</label>
+        <label><input type="checkbox" data-save="fin_4"> 標準予防策・ゾーニング・コホーティングの考え方を理解した</label>
+        <label><input type="checkbox" data-save="fin_5"> 濃厚接触者への対応の基本を理解した</label>
+        <label><input type="checkbox" data-save="fin_6"> 自分の事業所のBCPを確認した</label>
+        <label><input type="checkbox" data-save="fin_7"> 自分の役割と業務優先順位を理解した</label>
+        <label><input type="checkbox" data-save="fin_8"> 常笑BCP5原則を覚えた</label>
+        <label><input type="checkbox" data-save="fin_9"> ケーススタディに取り組んだ</label>
+        <label><input type="checkbox" data-save="fin_10"> 提出レポートを記入した</label>
+      </div>
+
+      <div class="completionBox" id="completionBox">
+        <h3>研修お疲れさまでした</h3>
+        <p>すべての項目にチェックが入ると、修了とみなされます。</p>
+        <button onclick="showCompletion()">修了状況を確認する</button>
+        <p id="completionResult" style="margin-top:14px; font-weight:bold;"></p>
+      </div>
+
+      <div class="box" style="margin-top:20px;">
+        <h3>毎日意識する5原則（再掲）</h3>
+        <ul class="principle-list">
+          <li><span class="num">1</span>自分で判断しない</li>
+          <li><span class="num">2</span>まず報告する</li>
+          <li><span class="num">3</span>利用者の安全を最優先にする</li>
+          <li><span class="num">4</span>仲間と協力して行動する</li>
+          <li><span class="num">5</span>支援を止めない</li>
+        </ul>
+      </div>
+
+      <div class="quoteFinal">
+        BCPは書類ではありません。<br>
+        子どもたちへの支援を止めないための約束です。
+      </div>
+
+      <div class="navBtns"><button class="secondary" onclick="goTo('s15')">◀ 戻る</button><span></span></div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+const sections = ['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12','s13','s14','s15','s16'];
+function goTo(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  markVisited(id);
+  if(window.innerWidth<=900) document.getElementById('sidebar').classList.remove('open');
+}
+document.querySelectorAll('.navitem').forEach(el=>{
+  el.addEventListener('click', ()=>goTo(el.dataset.target));
+});
+
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      document.querySelectorAll('.navitem').forEach(n=>n.classList.remove('active'));
+      const nav = document.querySelector('.navitem[data-target="'+entry.target.id+'"]');
+      if(nav) nav.classList.add('active');
+      markVisited(entry.target.id);
+    }
+  });
+},{threshold:0, rootMargin:'0px 0px -10% 0px'});
+sections.forEach(id=>observer.observe(document.getElementById(id)));
+
+const STORAGE_KEY = 'joshou_infection_bcp_training_v2';
+let data = {};
+let visited = {};
+
+function loadData(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw){
+      const parsed = JSON.parse(raw);
+      data = parsed.data || {};
+      visited = parsed.visited || {};
+    }
+  }catch(e){ console.warn('読み込みエラー', e); }
+}
+
+function saveData(){
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({data, visited}));
+  }catch(e){ console.warn('保存エラー', e); }
+  updateProgress();
+}
+
+function markVisited(id){
+  visited[id]=true;
+  saveData();
+}
+
+function updateProgress(){
+  const total = sections.length;
+  const done = sections.filter(id=>visited[id]).length;
+  const pct = Math.round(done/total*100);
+  document.getElementById('progressBarFg').style.width = pct+'%';
+  document.getElementById('progressLabel').textContent = '進捗 '+pct+'%';
+  sections.forEach(id=>{
+    const nav = document.querySelector('.navitem[data-target="'+id+'"] .chk');
+    if(nav) nav.textContent = visited[id] ? '✅' : '〇';
+  });
+}
+
+function bindInputs(){
+  document.querySelectorAll('[data-save]').forEach(el=>{
+    const key = el.dataset.save;
+    if(el.type==='checkbox'){
+      if(data[key]!==undefined) el.checked = data[key];
+      el.addEventListener('change', ()=>{ data[key]=el.checked; saveData(); });
+    } else if(el.type==='radio'){
+      if(data[key]!==undefined && data[key]===(el.value||'o')) el.checked = true;
+      el.addEventListener('change', ()=>{ data[key]= el.value || 'o'; saveData(); });
+    } else {
+      if(data[key]!==undefined) el.value = data[key];
+      el.addEventListener('input', ()=>{ data[key]=el.value; saveData(); });
+    }
+  });
+}
+
+function showCompletion(){
+  const total = sections.length;
+  const done = sections.filter(id=>visited[id]).length;
+  const el = document.getElementById('completionResult');
+  if(done>=total){
+    el.textContent = '✅ 全ページを確認しました。お疲れさまでした！このページを印刷またはスクリーンショットし、管理者へ提出してください。';
+    el.style.color = '#3d8b5f';
+  }else{
+    el.textContent = '⚠ まだ確認していないページがあります（進捗 '+Math.round(done/total*100)+'%）。すべてのページを開いてから、再度ご確認ください。';
+    el.style.color = '#d9534f';
+  }
+}
+
+loadData();
+bindInputs();
+updateProgress();
+if(sections.length>0 && !visited['s1']){ markVisited('s1'); }
+</script>
+
+</body>
+</html>
