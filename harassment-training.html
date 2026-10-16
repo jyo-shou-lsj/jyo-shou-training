@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ハラスメント防止研修</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--g:#1f7a4d;--g2:#e7f3ec;--g3:#0f4f31;--a:#d98a00;--a2:#fff4dc;--r:#b23b2e;--r2:#fcebe8;--b:#2f5f8a;--b2:#e8f0f8;--tx:#1d2521;--mu:#5c6b63;--ln:#d6e1da;--bg:#f6f8f6;--card:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--g:#5cc28e;--g2:#183527;--g3:#9fe0bd;--a:#f0b445;--a2:#3a2d10;--r:#ff8f80;--r2:#3a1f1b;--b:#8cb9e3;--b2:#1a2a3a;--tx:#e6ece8;--mu:#a3b2a9;--ln:#33423a;--bg:#111714;--card:#18201b}}
+:root[data-theme="dark"]{--g:#5cc28e;--g2:#183527;--g3:#9fe0bd;--a:#f0b445;--a2:#3a2d10;--r:#ff8f80;--r2:#3a1f1b;--b:#8cb9e3;--b2:#1a2a3a;--tx:#e6ece8;--mu:#a3b2a9;--ln:#33423a;--bg:#111714;--card:#18201b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;line-height:1.85;font-size:16px}
+header.top{background:var(--g3);color:#fff;padding:28px 20px 22px}
+:root[data-theme="dark"] header.top{background:#0c2a1c}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) header.top{background:#0c2a1c}}
+.top .org{font-size:13px;opacity:.85;letter-spacing:.05em}.top h1{margin:6px 0 4px;font-size:28px;line-height:1.3}.top .ser{display:inline-block;background:var(--a);color:#1d1400;font-weight:700;font-size:13px;padding:2px 10px;border-radius:3px}
+.top .sub{margin:4px 0 0;opacity:.9}
+.prog{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--ln);padding:8px 16px;display:flex;align-items:center;gap:12px;font-size:13px}
+.bar{flex:1;height:8px;background:var(--g2);border-radius:4px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:var(--g);transition:width .3s}
+#menu{display:none;border:1px solid var(--ln);background:var(--card);color:var(--tx);border-radius:4px;padding:4px 10px;font:inherit}
+.wrap{display:grid;grid-template-columns:270px 1fr;max-width:1240px;margin:0 auto}
+nav{position:sticky;top:41px;align-self:start;max-height:calc(100vh - 41px);overflow:auto;padding:16px 10px 40px;border-right:1px solid var(--ln)}
+nav a{display:flex;gap:8px;padding:6px 8px;border-radius:4px;color:var(--tx);text-decoration:none;font-size:13.5px;line-height:1.5}
+nav a:hover{background:var(--g2)}nav a .n{flex:0 0 58px;color:var(--mu);font-size:12px}
+nav a.v .n::before{content:"✓ ";color:var(--g);font-weight:700}nav a.cur{background:var(--g2);font-weight:700}
+nav .sep{margin:14px 8px 4px;font-size:12px;color:var(--a);font-weight:700;border-top:1px dashed var(--ln);padding-top:10px}
+main{padding:20px 28px 80px;min-width:0}
+.sec{background:var(--card);border:1px solid var(--ln);border-radius:8px;padding:24px 28px;margin:0 0 24px;scroll-margin-top:52px}
+.sec.mgr{border-top:4px solid var(--a)}
+.sec-h{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;border-bottom:2px solid var(--g);padding-bottom:10px;margin-bottom:16px}
+.sec-h h2{margin:0;font-size:22px;line-height:1.4;flex:1;min-width:200px}.no{color:var(--g);font-weight:700;font-size:14px}.time{font-size:12px;color:var(--mu);border:1px solid var(--ln);border-radius:10px;padding:0 8px}
+.aud{display:inline-block;background:var(--a2);color:var(--tx);font-size:13px;padding:2px 10px;border-radius:3px;margin:0 0 8px}
+h3{font-size:17px;margin:26px 0 10px;padding-left:10px;border-left:4px solid var(--a)}
+p{margin:8px 0}ul,ol{padding-left:1.5em;margin:8px 0}li{margin:3px 0}
+.tw{overflow-x:auto;margin:10px 0}table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:520px}
+th,td{border:1px solid var(--ln);padding:8px 10px;vertical-align:top;text-align:left}thead th{background:var(--g);color:#fff;font-weight:500;white-space:nowrap}
+:root[data-theme="dark"] thead th{color:#0c1a12}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) thead th{color:#0c1a12}}
+tbody th{background:var(--g2);font-weight:700;min-width:8em}
+.box{border-radius:6px;padding:12px 16px;margin:14px 0;border-left:5px solid}.box-h{font-weight:700;margin-bottom:4px}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:8px;color:#fff;vertical-align:2px}
+.box-law{background:var(--b2);border-color:var(--b)}.box-law .tag{background:var(--b)}
+.box-point{background:var(--g2);border-color:var(--g)}.box-point .tag{background:var(--g)}
+.box-warn{background:var(--r2);border-color:var(--r)}.box-warn .tag{background:var(--r)}
+.box-note{background:var(--a2);border-color:var(--a)}.box-note .tag{background:var(--a);color:#1d1400}
+.flow{list-style:none;padding:0;counter-reset:f}.flow li{position:relative;padding:8px 12px 8px 46px;margin:0 0 6px;background:var(--g2);border-radius:6px;counter-increment:f}
+.flow li::before{content:counter(f);position:absolute;left:10px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--g);color:#fff;font-weight:700;text-align:center;line-height:26px;font-size:13px}
+.flow li:not(:last-child)::after{content:"";position:absolute;left:22px;bottom:-7px;border:5px solid transparent;border-top-color:var(--g)}
+.flow b{display:block}.flow span{font-size:14.5px;color:var(--mu)}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0 18px}.cmp>div{border-radius:6px;padding:10px 14px}.cmp p{margin:4px 0;font-size:14.5px}
+.cmp-ng{background:var(--r2);border:1px solid var(--r)}.cmp-ok{background:var(--g2);border:1px solid var(--g)}.cmp-l{font-weight:700;font-size:13px}.cmp-ng .cmp-l{color:var(--r)}.cmp-ok .cmp-l{color:var(--g)}
+.work{display:block;margin:10px 0}.work span{display:block;font-weight:500;font-size:15px;margin-bottom:4px}
+textarea,input[type=text],input[type=date],select{width:100%;font:inherit;font-size:15px;color:var(--tx);background:var(--bg);border:1px solid var(--ln);border-radius:4px;padding:8px 10px}
+textarea:focus,input:focus,select:focus{outline:2px solid var(--a);outline-offset:0}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;margin:12px 0}.fields label span{display:block;font-size:13px;color:var(--mu)}.fields .wide{grid-column:1/-1}
+.case{border:1px solid var(--ln);border-radius:8px;padding:14px 18px;margin:16px 0;background:var(--bg)}.case-h{font-weight:700;color:var(--g3);font-size:16px}
+:root[data-theme="dark"] .case-h{color:var(--g)}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .case-h{color:var(--g)}}
+.scene{background:var(--card);border-left:4px solid var(--a);padding:8px 12px;border-radius:0 4px 4px 0}
+details{margin-top:10px}summary{cursor:pointer;color:var(--g);font-weight:700}.ans{background:var(--card);border:1px dashed var(--g);border-radius:6px;padding:8px 14px;margin-top:6px}
+.checks{list-style:none;padding:0}.checks li{padding:6px 10px;border-bottom:1px dotted var(--ln)}.checks input{transform:scale(1.2);margin-right:8px;accent-color:var(--g)}
+.qbox{border:1px solid var(--ln);border-radius:6px;padding:12px 16px;margin:12px 0}.q-h{display:flex;gap:8px;align-items:center}.qn{font-weight:700;color:var(--g)}.qt{font-size:11px;background:var(--a2);padding:0 8px;border-radius:3px}
+.q{font-weight:500}.opt{display:block;padding:6px 10px;margin:4px 0;border-radius:4px;cursor:pointer}.opt:hover{background:var(--g2)}.opt.ox{display:inline-block;min-width:80px;font-size:18px}
+.opt input{accent-color:var(--g);margin-right:6px}.res{font-weight:700;margin-top:4px}.res.ok{color:var(--g)}.res.ng{color:var(--r)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}button{font:inherit;font-weight:700;background:var(--g);color:#fff;border:0;border-radius:5px;padding:10px 22px;cursor:pointer}button.sub{background:transparent;color:var(--g);border:1px solid var(--g)}
+.score{background:var(--a2);border:2px solid var(--a);border-radius:8px;padding:14px 18px;font-size:17px}
+.decl{background:var(--a2);border:2px solid var(--a);border-radius:8px;padding:14px 18px;margin:18px 0}.decl-h{font-weight:700;color:var(--a)}.decl input{margin:4px 0;font-size:16px}
+.closing{background:var(--g3);border:0}.close-card{color:#fff;text-align:center;padding:24px 8px;font-size:18px;line-height:2.1}.close-card p{margin:8px 0}
+:root[data-theme="dark"] .closing{background:#0c2a1c}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .closing{background:#0c2a1c}}
+footer{text-align:center;color:var(--mu);font-size:12px;padding:20px}
+@media (max-width:860px){.wrap{display:block}nav{display:none;position:fixed;top:41px;left:0;right:0;bottom:0;max-height:none;background:var(--card);z-index:30;border:0}nav.open{display:block}#menu{display:inline-block}main{padding:16px}.sec{padding:18px 16px}.cmp,.fields{grid-template-columns:1fr}.top h1{font-size:23px}}
+@media print{nav,.prog,.btns,header.top,#menu{display:none!important}.wrap{display:block}main{padding:0}.sec{break-inside:auto;border:0;padding:0 0 12px}body{background:#fff;color:#000;font-size:11pt}details{display:block}details>*{display:block}textarea{border:1px solid #999;min-height:4em}.closing{background:#fff}.close-card{color:#000}}
+</style></head>
+<body>
+<header class="top"><div class="org">株式会社常笑教育システム</div><span class="ser">Level1 基礎研修⑧</span><h1>ハラスメント防止研修</h1><p class="sub">～お互いの尊厳を守り、安心して働ける職場をつくるために～</p></header>
+<div class="prog"><button id="menu" type="button" aria-label="目次">目次</button><span>進捗</span><div class="bar"><i id="pbar"></i></div><span id="ptxt">0%</span></div>
+<div class="wrap"><nav id="nav">
+<a href="#s0" data-id="s0"><span class="n">序</span><span>はじめに　研修の進め方</span></a>
+<a href="#s1" data-id="s1"><span class="n">第1章</span><span>株式会社常笑の理念とハラスメント防止</span></a>
+<a href="#s2" data-id="s2"><span class="n">第2章</span><span>法令・規程・指針の位置づけと令和8年10月の改正</span></a>
+<a href="#s3" data-id="s3"><span class="n">第3章</span><span>ハラスメントとは何か</span></a>
+<a href="#s4" data-id="s4"><span class="n">第4章</span><span>ハラスメントの6つの種類</span></a>
+<a href="#s5" data-id="s5"><span class="n">第5章</span><span>パワーハラスメント　――適切な指導との違い</span></a>
+<a href="#s6" data-id="s6"><span class="n">第6章</span><span>セクシュアルハラスメント</span></a>
+<a href="#s7" data-id="s7"><span class="n">第7章</span><span>妊娠・出産・育児・介護に関するハラスメント</span></a>
+<a href="#s8" data-id="s8"><span class="n">第8章</span><span>【改正重点①】カスタマーハラスメント</span></a>
+<a href="#s9" data-id="s9"><span class="n">第9章</span><span>【改正重点②】求職者等へのセクシュアルハラスメント</span></a>
+<a href="#s10" data-id="s10"><span class="n">第10章</span><span>相談窓口と報告体制</span></a>
+<a href="#s11" data-id="s11"><span class="n">第11章</span><span>株式会社常笑 ハラスメント防止5原則</span></a>
+<a href="#s12" data-id="s12"><span class="n">第12章</span><span>ケーススタディ（全職員向け8ケース）</span></a>
+<a href="#s13" data-id="s13"><span class="n">第13章</span><span>個人ワーク　自分の言動を振り返る</span></a>
+<a href="#s14" data-id="s14"><span class="n">第14章</span><span>理解度テスト</span></a>
+<a href="#s15" data-id="s15"><span class="n">第15章</span><span>提出レポート・修了確認</span></a>
+<div class="sep">追加研修（管理者・窓口・採用担当）</div><a href="#s16a" data-id="s16a"><span class="n">第16章-1</span><span>管理者の役割</span></a>
+<a href="#s16b" data-id="s16b"><span class="n">第16章-2</span><span>相談窓口担当者の対応演習</span></a>
+<a href="#s16c" data-id="s16c"><span class="n">第16章-3</span><span>採用担当者向け　面接の進め方とチェック</span></a>
+<a href="#s17" data-id="s17"><span class="n">結び</span><span>最後のメッセージ</span></a>
+</nav><main>
+<section id="s0" class="sec" data-title="はじめに　研修の進め方">
+  <div class="sec-h"><span class="no">序</span><h2>はじめに　研修の進め方</h2><span class="time">5分</span></div>
+  
+  <p>この研修は、ハラスメントについて「知識を覚える」ための研修ではありません。<strong>自分の言動を振り返り、ハラスメントを予防し、困ったときに一人で抱え込まずに相談・対応できるようになること</strong>が目的です。</p>
+<p>今回は、従来のパワーハラスメント・セクシュアルハラスメントに加え、<strong>2026年（令和8年）10月1日から事業主の義務となったカスタマーハラスメント対策と、求職者等へのセクシュアルハラスメント対策</strong>を重点的に学びます。</p>
+<h3>常笑の教育プロセス</h3>
+<ol class="flow"><li><b>読む</b><span>各章の本文を読み、基本を理解する</span></li><li><b>考える</b><span>ケーススタディで「何が問題か」を考える</span></li><li><b>自分の言動を振り返る</b><span>無意識の言動がないかを見つめ直す</span></li><li><b>相談体制を確認する</b><span>自分の事業所の相談窓口を確認し、記入する</span></li><li><b>書く</b><span>個人ワーク・理解度テスト・提出レポートに取り組む</span></li><li><b>行動する</b><span>明日から実践することを宣言し、職場で実行する</span></li></ol>
+<h3>研修の到達目標</h3>
+<ol><li>ハラスメントの意味と種類を説明できる</li><li>自分の言動が相手に与える影響を考えられる</li><li>適切な業務指導とパワーハラスメントの違いを理解できる</li><li>カスタマーハラスメントと正当な苦情の違いを理解できる</li><li>求職者等へのセクシュアルハラスメントを防止できる</li><li>自分の事業所の相談窓口を説明できる</li><li>ハラスメントを見聞きした際に適切な行動を取れる</li></ol>
+<h3>時間の目安</h3>
+<div class="tw"><table><thead><tr><th>区分</th><th>内容</th><th>時間</th></tr></thead><tbody><tr><th scope="row">全職員共通研修</th><td>序〜第15章（本文・ケーススタディ・個人ワーク・理解度テスト・提出レポート）</td><td>約90分</td></tr><tr><th scope="row">追加研修</th><td>第16章 管理者・相談窓口担当者・採用担当者向け</td><td>約30分</td></tr></tbody></table></div>
+<div class="box box-note"><div class="box-h"><span class="tag">確認</span>この教材の読み方（出典の区別）</div><p>本教材では、内容の根拠を次の3種類のマークで区別しています。</p><ul><li><strong>【法令】</strong> 法律・厚生労働省の指針で事業主に求められていること</li><li><strong>【法人規程】</strong> 株式会社常笑「ハラスメント防止規程」（令和8年10月1日改訂）で定めていること</li><li><strong>【事業所指針】</strong> 発達支援ルームLSJ KUMA「カスタマーハラスメント及び求職者へのセクシュアルハラスメント防止指針」（2026年10月1日策定）の内容のうち、全事業所共通の研修内容として扱うもの</li></ul><p>相談窓口担当者などの氏名は事業所ごとに異なります。第10章のワークで、自分の事業所の現任者を必ず確認してください。</p></div>
+  </section>
+<section id="s1" class="sec" data-title="株式会社常笑の理念とハラスメント防止">
+  <div class="sec-h"><span class="no">第1章</span><h2>株式会社常笑の理念とハラスメント防止</h2><span class="time">5分</span></div>
+  
+  <h3>常笑の理念・価値観</h3>
+<div class="tw"><table><thead><tr><th>キーワード</th><th>ハラスメント防止とのつながり</th></tr></thead><tbody><tr><th scope="row">夢現力</th><td>職員一人ひとりが夢を形にする力を発揮するには、萎縮せずに意見を言える職場が必要です。</td></tr><tr><th scope="row">笑顔</th><td>職員の笑顔は、安心と尊重のある職場から生まれます。</td></tr><tr><th scope="row">エンターテイナー人材</th><td>子どもや保護者を楽しませる力は、職員同士が支え合える環境で伸びます。</td></tr><tr><th scope="row">良い支援が子どもの笑顔をつくる</th><td>職員が安心して働けることが、落ち着いた良い支援の土台です。</td></tr><tr><th scope="row">良い支援が職員の笑顔をつくる</th><td>互いを尊重するチームでは、支援の手応えを分かち合えます。</td></tr><tr><th scope="row">療育は積み上げ</th><td>信頼関係も職場づくりも積み上げです。日々の言葉づかいの一つひとつが土台になります。</td></tr><tr><th scope="row">安全な環境があるからこそ、子どもは安心して挑戦できる</th><td>職員も同じです。安全・安心な職場だからこそ、挑戦し、学び、成長できます。</td></tr></tbody></table></div>
+<div class="box box-point"><div class="box-h"><span class="tag">ポイント</span>ハラスメント防止は「法令遵守」だけではありません</div><p>ハラスメントは、受けた人の心身を傷つけるだけでなく、チームの雰囲気を悪くし、職員の離職や支援の質の低下につながります。職員が緊張し、萎縮した状態では、子どもの小さな変化に気づく余裕もなくなります。</p><p><strong>職員が安心して働き、互いを尊重できる環境を整えることが、子どもへの良い支援につながる</strong>――これが、常笑がハラスメント防止に取り組む理由です。</p></div>
+  </section>
+<section id="s2" class="sec" data-title="法令・規程・指針の位置づけと令和8年10月の改正">
+  <div class="sec-h"><span class="no">第2章</span><h2>法令・規程・指針の位置づけと令和8年10月の改正</h2><span class="time">5分</span></div>
+  
+  <h3>3つのルールの関係</h3>
+<div class="tw"><table><thead><tr><th>区分</th><th>名称</th><th>役割</th></tr></thead><tbody><tr><th scope="row">【法令】</th><td>労働施策総合推進法、男女雇用機会均等法、育児・介護休業法 と各指針（厚生労働省）</td><td>事業主が必ず講じなければならない措置（義務）を定める</td></tr><tr><th scope="row">【法人規程】</th><td>株式会社常笑「ハラスメント防止規程」（令和4年4月1日施行、令和8年10月1日改訂）</td><td>全事業所・全職員に共通するルール。禁止行為、カスハラへの対応、相談窓口、懲戒等を定める</td></tr><tr><th scope="row">【事業所指針】</th><td>LSJ KUMA「カスタマーハラスメント及び求職者へのセクシュアルハラスメント防止指針」</td><td>法人規程を現場で運用するための具体的な手順（対応フロー、面接ルール、記録保管など）。基本方針と対応手順は全事業所共通の研修内容として扱う</td></tr></tbody></table></div>
+<h3>令和8年10月1日から何が変わったか</h3>
+<div class="box box-law"><div class="box-h"><span class="tag">法令</span>カスタマーハラスメント対策が事業主の義務に</div><p>改正労働施策総合推進法（令和7年法律第63号）により、2026年10月1日から、顧客等の言動に起因する問題（カスタマーハラスメント）について、事業主が雇用管理上の措置を講じることが義務になりました。具体的な内容は「事業主が職場における顧客等の言動に起因する問題に関して雇用管理上講ずべき措置等についての指針」（令和8年厚生労働省告示第51号）に示されています。</p></div>
+<div class="box box-law"><div class="box-h"><span class="tag">法令</span>求職者等へのセクシュアルハラスメント対策が事業主の義務に</div><p>改正男女雇用機会均等法により、同日から、求職活動等における性的な言動に起因する問題（いわゆる就活セクハラ）についても、事業主の措置が義務になりました。指針は「事業主が求職活動等における性的な言動に起因する問題に関して雇用管理上講ずべき措置等についての指針」（令和8年厚生労働省告示第52号）です。</p></div>
+<h3>事業主に求められる主な措置（共通の枠組み）</h3>
+<ol><li>方針を明確にし、職員に周知・啓発すること</li><li>相談に応じ、適切に対応するための体制を整えること</li><li>問題が起きたときに、迅速かつ適切に対応すること</li><li>相談者・行為者のプライバシーを守り、相談したことを理由とする不利益取扱いをしないこと（その周知を含む）</li></ol>
+<p>この研修そのものが、①の「周知・啓発」にあたります。そして職員にも、ハラスメント問題への関心と理解を深め、他の職員への言動に注意を払い、会社の措置に協力するよう努めることが求められています（事業所指針 第4章）。</p>
+  </section>
+<section id="s3" class="sec" data-title="ハラスメントとは何か">
+  <div class="sec-h"><span class="no">第3章</span><h2>ハラスメントとは何か</h2><span class="time">5分</span></div>
+  
+  <p>ハラスメント（harassment）とは、<strong>相手の意に反する言動によって、相手の尊厳を傷つけたり、不利益を与えたり、働く環境を悪くしたりすること</strong>です。日本語では「嫌がらせ」と訳されることが多いですが、「嫌がらせをしようと思ったかどうか」は関係ありません。</p>
+<h3>押さえておきたい7つのポイント</h3>
+<div class="tw"><table><thead><tr><th>ポイント</th><th>説明と例</th></tr></thead><tbody><tr><th scope="row">相手の尊厳を傷つける</th><td>「こんなこともできないの？」「だから○○さんはダメなんだ」など、人格や存在そのものを否定する言葉は、相手の尊厳を深く傷つけます。</td></tr><tr><th scope="row">職場環境が悪くなる</th><td>本人だけでなく、それを見聞きした周囲の職員も萎縮し、相談や報告がしにくい職場になります。</td></tr><tr><th scope="row">子どもへの支援にも影響する</th><td>職員が萎縮したり疲れ切ったりすると、ヒヤリハットの報告が減り、子どもの変化に気づく余裕がなくなります。職員の離職は、子どもにとって大切な「なじみの大人」を失うことにもなります。</td></tr><tr><th scope="row">悪意がなくても問題になり得る</th><td>「励ましのつもり」「冗談のつもり」「昔はこれが普通だった」でも、受け手が傷つき、職場環境が害されれば問題になり得ます。判断の基準は「言った側の意図」ではありません。</td></tr><tr><th scope="row">不快＝すべて法的ハラスメントではない</th><td>必要な業務指示や注意を受けて「嫌だな」と感じても、それが業務上必要かつ相当な範囲であれば、法的なハラスメントには該当しません。</td></tr><tr><th scope="row">相談と「認定」は別のもの</th><td>相談は「これってハラスメントかも」という段階でできます。最終的にハラスメントかどうかを判断（認定）するのは会社です【法人規程 第16条：最終的な事実認定は取締役会】。相談する人が判断する必要はありません。</td></tr><tr><th scope="row">職場は事業所の中だけではない</th><td>送迎車内、利用児童の家庭、研修先、業務の延長とみなされる懇親会なども「職場」に含まれます【法人規程 第2条7項】。</td></tr></tbody></table></div>
+<div class="cmp"><div class="cmp-ng"><div class="cmp-l">「言った側」の感覚</div><p>「冗談だよ」「期待してるから厳しく言ってる」「みんなの前で言った方が早い」</p></div><div class="cmp-ok"><div class="cmp-l">「受けた側」の感覚</div><p>「笑えない」「人前で恥をかかされた」「この職場で相談なんてできない」</p></div></div>
+<div class="box box-point"><div class="box-h"><span class="tag">ポイント</span>ここで考えてみましょう</div><p>あなたが最近、同僚や後輩にかけた言葉を一つ思い出してください。その言葉を、別の人から自分が言われたらどう感じるでしょうか。</p></div>
+  </section>
+<section id="s4" class="sec" data-title="ハラスメントの6つの種類">
+  <div class="sec-h"><span class="no">第4章</span><h2>ハラスメントの6つの種類</h2><span class="time">5分</span></div>
+  
+  <p>法人規程では、次の6種類（それに準ずる行為を含む）をハラスメントとして禁止・防止の対象にしています【法人規程 第1条・第2条】。詳しくは第5章以降で学びます。</p>
+<div class="tw"><table style="min-width:900px"><thead><tr><th>種類</th><th>定義（要点）</th><th>具体例</th><th>現場で起こり得る場面</th><th>予防するための行動</th><th>相談先</th></tr></thead><tbody><tr><th scope="row">① パワーハラスメント</th><td>優越的な関係を背景に、業務上必要かつ相当な範囲を超えた言動で、就業環境を害すること</td><td>人前での長時間の叱責、人格否定、無視、過大・過小な仕事の押し付け</td><td>送迎ミスや記録不備への指導、新人指導、職員会議</td><td>事実を確認し、人格ではなく行動について、具体的な改善方法を伝える</td><td>事業所の相談窓口／副窓口／法人本部</td></tr><tr><th scope="row">② セクシュアルハラスメント</th><td>性的な言動により、労働条件に不利益を与えたり、就業環境を害したりすること（同性間・性的指向や性自認にかかわらない）</td><td>性的な冗談、容姿への発言、交際関係の詮索、不必要な身体接触</td><td>休憩中の雑談、送迎車内、懇親会、個人LINE</td><td>性的な話題・容姿の話題を職場に持ち込まない</td><td>同上</td></tr><tr><th scope="row">③ 妊娠・出産に関するハラスメント</th><td>妊娠・出産したことや、それに関する制度の利用について、就業環境を害する言動</td><td>「妊娠したなら辞めたら？」「迷惑だ」などの発言</td><td>妊娠の報告時、業務調整の相談時</td><td>業務上の必要性に基づく調整は、本人の意向を聞きながら丁寧に行う</td><td>同上</td></tr><tr><th scope="row">④ 育児・介護休業等に関するハラスメント</th><td>育児・介護に関する制度や措置の利用を妨げたり、利用したことで嫌がらせをしたりすること</td><td>育休取得を思いとどまらせる発言、時短勤務者への嫌味</td><td>育休・時短・子の看護休暇・介護休業の申し出時</td><td>制度の利用は権利であると理解し、チームで業務を分担する</td><td>同上</td></tr><tr><th scope="row">⑤ カスタマーハラスメント</th><td>顧客等の言動で、社会通念上許容される範囲を超え、職員の就業環境を害するもの</td><td>長時間の威圧的な苦情、人格否定、脅迫、SNSでの職員攻撃、土下座の要求</td><td>送迎時、電話対応、面談、連絡帳、SNS</td><td>正当な苦情には誠実に対応し、一人で抱え込まずに報告する</td><td>直属の上長／相談窓口</td></tr><tr><th scope="row">⑥ 求職者等に対するセクシュアルハラスメント</th><td>職員による性的な言動により、求職者等の求職活動等が妨げられること</td><td>面接で結婚・交際を質問、容姿の評価、私的な食事への誘い、個人SNSの交換強要</td><td>面接、見学対応、実習、採用前後の連絡</td><td>採用に必要な事項だけを質問し、私的な連絡先を使わない</td><td>相談窓口（求職者からの相談も受け付ける）</td></tr></tbody></table></div>
+  </section>
+<section id="s5" class="sec" data-title="パワーハラスメント　――適切な指導との違い">
+  <div class="sec-h"><span class="no">第5章</span><h2>パワーハラスメント　――適切な指導との違い</h2><span class="time">10分</span></div>
+  
+  <h3>パワハラの3要素【法令】【法人規程 第2条】</h3>
+<p>次の3つの要素を<strong>すべて満たすもの</strong>が、職場におけるパワーハラスメントです。</p>
+<div class="tw"><table><thead><tr><th>要素</th><th>意味</th><th>福祉現場での例</th></tr></thead><tbody><tr><th scope="row">① 優越的な関係を背景とする言動</th><td>抵抗や拒否がしにくい関係を背景にしていること。上司から部下だけでなく、経験や専門知識の差、集団対個人も含む</td><td>管理者・児発管から職員、ベテランから新人、複数の職員から一人の職員</td></tr><tr><th scope="row">② 業務上必要かつ相当な範囲を超える言動</th><td>業務上明らかに必要のない言動、目的を大きく外れた言動、手段として不適当な言動</td><td>長時間・繰り返しの叱責、人格を否定する言葉、他の職員の前での見せしめ</td></tr><tr><th scope="row">③ 労働者の就業環境が害されること</th><td>身体的・精神的な苦痛を与え、能力の発揮に重大な悪影響が生じること</td><td>出勤が怖くなる、萎縮して報告ができなくなる、体調を崩す</td></tr></tbody></table></div>
+<h3>典型的な6類型（障害児通所支援の現場に置き換えると）【法人規程 第4条】</h3>
+<div class="tw"><table><thead><tr><th>類型</th><th>現場で起こり得る例</th></tr></thead><tbody><tr><th scope="row">身体的な攻撃</th><td>物を投げつける、机を叩いて威嚇する、肩を強く突く</td></tr><tr><th scope="row">精神的な攻撃</th><td>「こんなこともできないなら支援員失格」と人格を否定する／保護者や子どもの前で怒鳴る／ミスを長時間・繰り返し責める</td></tr><tr><th scope="row">人間関係からの切り離し</th><td>気に入らない職員だけを会議や情報共有のLINEグループから外す／挨拶や声かけを無視し続ける</td></tr><tr><th scope="row">過大な要求</th><td>新人に十分な指導をしないまま個別支援計画の作成をすべて任せ、できないと叱責する／明らかに無理な量の記録を勤務時間外に終わらせるよう命じる</td></tr><tr><th scope="row">過小な要求</th><td>支援員として採用した職員に、理由なく長期間、掃除や雑用しかさせない</td></tr><tr><th scope="row">個の侵害</th><td>休日の過ごし方や家族のこと、病歴などをしつこく詮索する／本人の了解なく個人的な事情を他の職員に話す</td></tr></tbody></table></div>
+<h3>必要な指導は避けなくてよい</h3>
+<p>支援の現場では、子どもの安全に関わることや、記録・送迎など、きちんと指導しなければならない場面がたくさんあります。<strong>パワハラを恐れて必要な指導をしないことは、子どもを守れず、職員の成長の機会も奪います。</strong> 大切なのは「指導するかどうか」ではなく、「どう指導するか」です。</p>
+<div class="box box-point"><div class="box-h"><span class="tag">ポイント</span>適切な指導の4つのポイント</div><ol><li><strong>事実を確認する</strong>：思い込みで決めつけず、本人の話も聞く</li><li><strong>人格ではなく行動に焦点を当てる</strong>：「あなたはダメだ」ではなく「この手順が抜けていた」</li><li><strong>改善方法を具体的に伝える</strong>：次にどうすればよいかを一緒に確認する</li><li><strong>場所と時間に配慮する</strong>：原則として他の職員・保護者・子どもの前を避け、必要以上に長くしない</li></ol></div>
+<h3>5つの場面で比べてみましょう</h3>
+<p><strong>場面1　送迎ミスをした職員への指導</strong>（送迎ルートを間違え、保護者の待つ場所への到着が20分遅れた）</p>
+<div class="cmp"><div class="cmp-ng"><div class="cmp-l">NG</div><p>他の職員の前で「何回目？　やる気あるの？　子どもの命を預かっている自覚がない」と10分以上責め続ける。</p></div><div class="cmp-ok"><div class="cmp-l">OK</div><p>個室で「何が起きたか教えてください」と事実を確認し、「出発前に送迎表とルートを二人で読み合わせる手順を追加しましょう」と具体的な改善策を一緒に決める。</p></div></div>
+<p><strong>場面2　記録の不備を繰り返す職員への指導</strong></p>
+<div class="cmp"><div class="cmp-ng"><div class="cmp-l">NG</div><p>「何度言ってもできないね。もう書かなくていい」と記録の仕事を取り上げ、他の職員に「あの人には任せられない」と話す。</p></div><div class="cmp-ok"><div class="cmp-l">OK</div><p>「先週の記録で、活動内容と子どもの様子の欄が空いていました」と具体的に示し、記入例を渡して、1週間後に一緒に見直す日を決める。</p></div></div>
+<p><strong>場面3　児童への不適切な対応をした職員への注意</strong>（子どもに強い口調で「早くしなさい」と腕を引っ張った）</p>
+<div class="cmp"><div class="cmp-ng"><div class="cmp-l">NG</div><p>「虐待だ」と大声で他の職員の前で責め、言い分を聞かずに「明日から来なくていい」と言う。</p></div><div class="cmp-ok"><div class="cmp-l">OK</div><p>その場では子どもの安全を確保し、落ち着いてから個別に事実を確認する。「腕を引っ張る対応は、子どもの安全と権利の点から行ってはいけない」と理由を説明し、代わりの関わり方（予告・視覚支援など）を一緒に考える。必要に応じて虐待防止の手順に沿って管理者へ報告する。</p></div></div>
+<p><strong>場面4　新人職員への業務指導</strong></p>
+<div class="cmp"><div class="cmp-ng"><div class="cmp-l">NG</div><p>「見て覚えて」と説明せず、できないと「前の人はすぐできた」と比較して責める。</p></div><div class="cmp-ok"><div class="cmp-l">OK</div><p>手順を言葉と見本で示し、やってみてもらい、できた点を認めたうえで直す点を一つずつ伝える。質問しやすい時間を決めておく。</p></div></div>
+<p><strong>場面5　会議中に職員の意見を否定する場面</strong></p>
+<div class="cmp"><div class="cmp-ng"><div class="cmp-l">NG</div><p>「そんなの意味がない」「経験もないのに口を出さないで」と発言をさえぎる。</p></div><div class="cmp-ok"><div class="cmp-l">OK</div><p>「その案の良い点は○○ですね。△△の点が心配なので、どうしたら解決できるか考えましょう」と、人ではなく案について議論する。</p></div></div>
+<div class="box box-warn"><div class="box-h"><span class="tag">重要</span>管理監督者の「黙認」も禁止されています【法人規程 第3条2項】</div><p>管理者・リーダーは、部下がハラスメントを受けている事実を知りながら黙認してはいけません。</p></div>
+  </section>
+<section id="s6" class="sec" data-title="セクシュアルハラスメント">
+  <div class="sec-h"><span class="no">第6章</span><h2>セクシュアルハラスメント</h2><span class="time">5分</span></div>
+  
+  <p>職場におけるセクシュアルハラスメントとは、<strong>職場での性的な言動に対する職員の対応により労働条件で不利益を受けること（対価型）</strong>、または<strong>性的な言動により就業環境が害されること（環境型）</strong>をいいます【法人規程 第2条2項】。</p>
+<h3>職場で起こり得るセクハラの例【法人規程 第5条】</h3>
+<div class="tw"><table><thead><tr><th>言動</th><th>具体例</th></tr></thead><tbody><tr><th scope="row">性的な冗談</th><td>休憩室で性的な話題や下ネタで盛り上がる。「冗談なのに」と言って本人の反応を笑う</td></tr><tr><th scope="row">容姿や身体についての不必要な発言</th><td>「太った？」「その服、色っぽいね」「女性らしく／男らしくしなさい」</td></tr><tr><th scope="row">恋愛・交際関係への過度な質問</th><td>「彼氏（彼女）いるの？」「結婚はまだ？」「子どもは作らないの？」としつこく聞く</td></tr><tr><th scope="row">不必要な身体接触</th><td>肩や腰に触れる、送迎車内で必要以上に近づく、懇親会で隣に座らせる</td></tr><tr><th scope="row">性的な噂の拡散</th><td>「あの二人は付き合っている」などの噂を広める</td></tr><tr><th scope="row">私的な連絡の強要</th><td>業務と関係ない個人LINEを何度も送る、休日の誘いを断っても繰り返す</td></tr><tr><th scope="row">拒否したことへの不利益取扱い</th><td>誘いを断った職員のシフトを減らす、評価を下げる、仕事から外す</td></tr></tbody></table></div>
+<div class="box box-point"><div class="box-h"><span class="tag">ポイント</span>性別・性的指向・性自認にかかわらず問題になります</div><ul><li><strong>同性間でも</strong>セクハラは成立します（例：男性職員同士で、一人をからかう性的な冗談を繰り返す）。</li><li><strong>性的指向や性自認をからかう言動</strong>、本人の了解なく性的指向や性自認を他の人に暴露すること（アウティング）も、ハラスメントにあたり得ます。</li><li>「男性だから力仕事」「女性だからお茶くみ」などの性別役割の押しつけも、セクハラの原因になりやすい言動です。</li></ul></div>
+<div class="box box-note"><div class="box-h"><span class="tag">確認</span>送迎・家庭訪問の場面でも</div><p>送迎車内や利用児童の家庭も「職場」です。保護者や関係機関の方から職員への性的な言動は、第8章のカスタマーハラスメントとして対応します。</p></div>
+  </section>
+<section id="s7" class="sec" data-title="妊娠・出産・育児・介護に関するハラスメント">
+  <div class="sec-h"><span class="no">第7章</span><h2>妊娠・出産・育児・介護に関するハラスメント</h2><span class="time">5分</span></div>
+  
+  <p>上司や同僚が、職員の妊娠・出産や、育児・介護に関する制度の利用について、就業環境を害する言動をすることです【法人規程 第2条5項・第6条】。制度を利用することは、職員の正当な権利です。</p>
+<h3>「必要な業務調整」と「ハラスメント」の違い</h3>
+<p>法人規程では、<strong>業務分担や安全配慮の観点から、客観的に見て業務上の必要性に基づく言動はハラスメントに該当しない</strong>と定めています。違いは、「本人の意向を尊重し、業務上の理由を説明しているか」「制度の利用そのものを否定していないか」です。</p>
+<div class="tw"><table><thead><tr><th>場面</th><th>ハラスメントにあたり得る言動</th><th>必要な業務調整の例</th></tr></thead><tbody><tr><th scope="row">育児休業の取得希望</th><td>「男性が育休なんて」「取るなら戻る場所はないと思って」</td><td>取得時期を確認し、引き継ぎ計画を一緒に立てる</td></tr><tr><th scope="row">子どもの急病による休暇</th><td>「また休み？　みんなの迷惑を考えて」とため息をつく</td><td>急な休みに備えて、支援記録や業務の共有方法をチームで決めておく</td></tr><tr><th scope="row">妊娠中の業務調整</th><td>「妊娠したなら辞めれば？」「重いものは持てないなら来なくていい」</td><td>体調を確認し、抱っこや送迎時の介助など身体的負担の大きい業務の分担を本人と相談して決める</td></tr><tr><th scope="row">介護休業の相談</th><td>「親の介護は家族の問題。仕事に持ち込まないで」</td><td>休業や短時間勤務などの制度を説明し、管理者が勤務調整を検討する</td></tr><tr><th scope="row">時短勤務の利用</th><td>「時短の人はいいよね、楽で」と繰り返し嫌味を言う、重要な会議から外す</td><td>情報共有の時間を勤務時間内に設定する</td></tr><tr><th scope="row">制度利用者への不利益</th><td>制度を利用したことを理由に、評価を下げる、雇止めを示唆する</td><td>評価は勤務時間内の仕事の内容で公平に行う</td></tr></tbody></table></div>
+<div class="box box-point"><div class="box-h"><span class="tag">ポイント</span>チームで支える職場は、全員が働きやすい職場</div><p>誰でも、自分や家族の病気、出産、育児、介護に直面する可能性があります。「お互いさま」の職場は、長く働き続けられる職場です。</p></div>
+  </section>
+<section id="s8" class="sec" data-title="【改正重点①】カスタマーハラスメント">
+  <div class="sec-h"><span class="no">第8章</span><h2>【改正重点①】カスタマーハラスメント</h2><span class="time">15分</span></div>
+  
+  <h3>カスタマーハラスメントとは</h3>
+<p>法令・法人規程では、次の3つの要素を満たすものをカスタマーハラスメント（カスハラ）としています【法令】【法人規程 第2条4項・第7条】。</p>
+<div class="tw"><table><thead><tr><th>要素</th><th>意味</th><th>当法人での「顧客等」の例</th></tr></thead><tbody><tr><th scope="row">① 顧客等の言動であること</th><td>職員以外の、サービスの利用者側や取引の相手方などによる言動</td><td>利用児童の保護者・家族、見学者、関係機関の関係者等</td></tr><tr><th scope="row">② 業務の性質等に照らし、社会通念上許容される範囲を超えていること</th><td>要求の内容が妥当性を欠く、または要求の手段・態様が不相当であること</td><td></td></tr><tr><th scope="row">③ 労働者の就業環境が害されること</th><td>職員が身体的・精神的な苦痛を受け、働く環境が悪くなること</td><td></td></tr></tbody></table></div>
+<div class="box box-warn"><div class="box-h"><span class="tag">重要</span>保護者からの苦情が、すべてカスハラになるわけではありません</div><p>保護者からの意見・要望・苦情の多くは、子どもを大切に思う気持ちや不安から出てくるものです。<strong>サービスの不備や説明不足への正当な指摘は、カスハラに該当しません。会社は誠実に対応します</strong>【法人規程 第7条3項】。</p><p>また、障害者差別解消法に基づき、障害を理由とする不当な差別的取扱いの禁止と、合理的配慮の提供が求められています。保護者自身に障害や特性がある場合もあります。意見・要望が正当なものであれば、ハラスメントと安易に判断せず、誠実な対話・説明で解決を図ります【事業所指針 2-3】。</p></div>
+<h3>障害児通所支援での具体例</h3>
+<div class="tw"><table><thead><tr><th>言動</th><th>具体的な場面の例</th></tr></thead><tbody><tr><th scope="row">長時間・繰り返しの威圧的な苦情</th><td>同じ内容について、毎日のように1時間以上の電話が続き、説明しても大声で怒鳴り続ける</td></tr><tr><th scope="row">特定職員への人格否定</th><td>「あんたみたいな無能に子どもを任せられない」「辞めろ」と名指しで繰り返す</td></tr><tr><th scope="row">職員への脅迫</th><td>「訴えるぞ」「この事業所を潰してやる」「家を知っているぞ」</td></tr><tr><th scope="row">SNSでの職員個人への攻撃</th><td>職員の実名や写真を載せて誹謗中傷する。「動画をネットに上げる」と予告する</td></tr><tr><th scope="row">開所時間外の不当な対応要求</th><td>深夜・早朝に何度も電話し、すぐに折り返すよう要求する</td></tr><tr><th scope="row">契約内容を超えるサービスの強要</th><td>「うちの子だけ毎回○○先生が担当して」「計画にない個別送迎をしろ」と強く要求し続ける</td></tr><tr><th scope="row">送迎中の危険な運転の強要</th><td>「遅れているんだから信号なんて無視して」「スピードを出せ」と要求する</td></tr><tr><th scope="row">職員への不必要な性的言動</th><td>送迎時に職員の容姿について性的な発言をする、身体接触を求める</td></tr><tr><th scope="row">過度な謝罪や土下座の要求</th><td>「土下座しろ」「謝罪文を家に持ってこい」と要求する</td></tr></tbody></table></div>
+<div class="box box-note"><div class="box-h"><span class="tag">確認</span>具体例に当てはまっても、状況や経緯を確認してから判断します</div><p>例えば長時間の電話でも、事業所側の重大なミスがきっかけで、保護者が強い不安を感じている場合もあります。一つの言動だけで決めつけず、「何がきっかけか」「事業所側に説明不足はなかったか」「どのくらいの時間・頻度か」を確認したうえで、組織として判断します。<strong>判断に迷ったら、まず上長・相談窓口へ報告</strong>してください。</p></div>
+<h3>正当な苦情とカスハラの違い</h3>
+<div class="cmp"><div class="cmp-ng"><div class="cmp-l">例A：正当な苦情</div><p>「送迎時間が予定と違っていました。理由を説明してください。」<br>→ 事業所側の不備を指摘し、説明を求める正当な申し入れです。誠実に事実を確認し、説明・謝罪・改善策の提示を行います。</p></div><div class="cmp-ok"><div class="cmp-l">例B：カスハラに該当する可能性がある言動</div><p>職員を長時間怒鳴り続け、「無能」「辞めろ」と人格を否定し、職員が対応を終えようとしても終わらせない。<br>→ 要求の内容に一部正当性があったとしても、手段・態様が社会通念上許容される範囲を超えています。</p></div></div>
+<div class="tw"><table><thead><tr><th>見るポイント</th><th>正当な苦情</th><th>カスハラの可能性</th></tr></thead><tbody><tr><th scope="row">要求の内容</th><td>サービスの不備・説明不足への指摘、改善の要望</td><td>契約内容を超える要求、金銭の要求、職員の処分の要求など妥当性を欠く要求</td></tr><tr><th scope="row">手段・態様</th><td>冷静に、または強い口調でも、説明を聞く姿勢がある</td><td>暴力、脅迫、人格否定、大声での威圧、長時間の拘束、土下座の要求</td></tr><tr><th scope="row">頻度・時間</th><td>必要な範囲の問い合わせ</td><td>回答済みの事項を繰り返す、説明を尽くした後もおおむね1時間を超えて要求し続ける</td></tr></tbody></table></div>
+<p>職員には、<strong>正当な苦情に誠実に対応する姿勢</strong>が求められます。一方で、<strong>暴力や脅迫、人格否定などを我慢し続ける必要はありません。</strong> 会社はカスハラを一切許容せず、職員個人の問題とせず、組織として対応します【法人規程 第8条】。</p>
+<h3>特に悪質なカスハラへの対処【法人規程 第10条】</h3>
+<p>次のような言動は「特に悪質」として、会社が警告、対応の打切り、サービス提供の停止、立入禁止、警察への通報、弁護士への相談などの措置をとることができます。措置はあらかじめ会社の承認を得て行います（緊急時は事後報告）。</p>
+<ul><li>暴行・傷害などの身体的な攻撃</li><li>脅迫・恐喝、金銭などの不当な要求</li><li>同一の事案について、会社が説明を尽くした後も<strong>おおむね1時間を超えて</strong>対応を要求する</li><li>会社が対応終了を通知した後も、繰り返し連絡・来訪する</li><li>職員個人を特定した中傷、映像・音声・氏名等をインターネットに公開する旨の予告</li><li>土下座など社会的相当性を欠く行為の要求</li></ul>
+<h3>カスハラが発生したときの対応</h3>
+<ol class="flow"><li><b>① 自分と周囲の安全を確保する</b><span>子どもや他の職員を含め、まず安全を確保する。暴力や脅迫など危険がある場合は、その場を離れてよい</span></li><li><b>② 一人で抱え込まず報告する</b><span>速やかに直属の上長・相談窓口へ報告する【法人規程 第9条1項】</span></li><li><b>③ 複数名対応・担当者交代</b><span>会社は可能な限り一人で対応させず、複数名対応、担当者交代、上長への引継ぎを行う【法人規程 第9条2項】</span></li><li><b>④ 客観的に記録する</b><span>日時、場所、相手、言動（できるだけそのままの言葉）、対応者、対応状況を記録する。SNSは画面保存（日時・URL）</span></li><li><b>⑤ 組織として事実確認</b><span>対応した職員からの聞き取り、記録の確認などを行う</span></li><li><b>⑥ 対応方針の決定</b><span>軽度：管理者による対話・説明／中度：複数名対応・対応者変更／重度：弁護士相談・警察通報・契約解除の検討【事業所指針 6-1】</span></li><li><b>⑦ 被害を受けた職員を支援</b><span>対応者の変更、配置の配慮、面談や休養などのメンタルヘルスへの配慮</span></li><li><b>⑧ 再発防止</b><span>発生の背景（説明不足や対応の一貫性など）を分析し、手順・説明資料を見直し、全職員へ再周知する</span></li></ol>
+<div class="box box-warn"><div class="box-h"><span class="tag">重要</span>危険があるときは、対応を中断・退避してよい</div><p>職員は、カスハラに該当すると判断した場合、<strong>上長の判断を待たずに対応を一時中断し、退避することができます。会社はこれを理由に不利益な取扱いをしません</strong>【法人規程 第9条3項】。</p><p>暴力・凶器・「家に行く」などの具体的な脅迫など緊急性が高い場合は、<strong>ためらわずに110番通報</strong>し、子どもと職員の安全確保を最優先にしてください。</p></div>
+<h3>実践ワーク：強い口調の苦情を受けたら</h3>
+<p>場面：お迎えに来た保護者が玄関で「今日、子どもが転んで膝をすりむいたって？　なんで連絡帳に一言しか書いてないの！　どういう管理をしているの！」と強い口調で話し始めました。あなたは一人で玄関対応をしています。</p>
+<label class="work"><span>最初にどのような言葉をかけますか。</span><textarea data-k="w8a" rows="4"></textarea></label>
+<label class="work"><span>事実確認をどう進めますか。</span><textarea data-k="w8b" rows="4"></textarea></label>
+<label class="work"><span>どの時点で上長へ報告しますか。</span><textarea data-k="w8c" rows="3"></textarea></label>
+<label class="work"><span>一人で対応しないために何をしますか。</span><textarea data-k="w8d" rows="3"></textarea></label>
+<label class="work"><span>どのように記録しますか。</span><textarea data-k="w8e" rows="3"></textarea></label>
+<div class="box box-point"><div class="box-h"><span class="tag">ポイント</span>ワークの考え方（例）</div><ul><li>最初の一言は、相手の気持ちを受け止める言葉から。「ご心配をおかけして申し訳ありません。詳しくお話を伺わせてください」（事実が確定する前に、過失を全面的に認めるような約束はしない）</li><li>けがの状況・時間・その場の対応・記録内容を確認し、分からないことは「確認してご連絡します」と伝える</li><li>保護者が強い不満を示した時点で、軽いうちに上長へ報告する。声が大きくなる、要求が広がるなどの変化があればすぐに交代を依頼する</li><li>他の職員に声をかけて同席してもらう。子どもの前を避け、落ち着いて話せる場所に移る</li><li>日時、相手の言葉（できるだけそのまま）、自分の説明、対応者を事実と推測を分けて記録する</li></ul></div>
+  </section>
+<section id="s9" class="sec" data-title="【改正重点②】求職者等へのセクシュアルハラスメント">
+  <div class="sec-h"><span class="no">第9章</span><h2>【改正重点②】求職者等へのセクシュアルハラスメント</h2><span class="time">10分</span></div>
+  
+  <h3>求職者等へのセクハラとは</h3>
+<p>採用活動や職業選択に関する活動の場面で、<strong>事業主が雇用する職員による性的な言動によって、求職者等の求職活動等が妨げられること</strong>です【法令】【法人規程 第2条3項】。いわゆる「就活セクハラ」と呼ばれます。</p>
+<ul><li>対象は、求人に応募した人だけでなく、法令・指針で対象とされる<strong>実習生（保育・福祉系の学生実習など）や、採用に関係する活動（見学会、職場体験など）の参加者等</strong>も含まれ得ます。具体的な範囲は厚生労働省の指針（令和8年告示第52号）に基づき、迷う場合は管理者へ確認してください。</li><li>対面の面接だけでなく、<strong>オンライン面接、電話、メール、SNS、採用イベント、事業所見学</strong>での言動も対象です。</li><li>面接担当者だけの問題ではありません。見学に来た学生に、現場の職員が声をかける場面でも起こり得ます。</li></ul>
+<p>求職者は、「採用してもらう立場」のため、不快な言動を受けても抗議しにくく、相談もしにくい状況にあります。一度の言動で、その人の職業選択や、福祉の仕事そのものへの印象を大きく損なうこともあります。</p>
+<h3>禁止する言動【事業所指針 3-2】【法人規程 第5条】</h3>
+<div class="tw"><table><thead><tr><th>禁止する言動</th><th>例</th></tr></thead><tbody><tr><th scope="row">結婚・出産・交際関係について不必要に質問する</th><td>「結婚の予定は？」「彼氏はいるの？」「子どもは何人ほしい？」</td></tr><tr><th scope="row">容姿や身体的特徴を評価する</th><td>「美人だから保護者受けがいいね」「もう少しやせたら」</td></tr><tr><th scope="row">採用を条件に私的な食事へ誘う</th><td>「採用の件、食事しながら話そうか」</td></tr><tr><th scope="row">個人的なSNSの交換を強要する</th><td>「連絡はこっちの個人LINEで」</td></tr><tr><th scope="row">採用や待遇を引き合いに性的な関係を求める</th><td>「言うことを聞けば、時給を上げてあげる」</td></tr><tr><th scope="row">面接後に業務と関係のない私的な連絡を繰り返す</th><td>面接後に「今度遊びに行こう」と何度も連絡する</td></tr></tbody></table></div>
+<h3>株式会社常笑の面接ルール</h3>
+<p>LSJ KUMAの指針で定めた面接ルールを、全事業所共通の運用として学びます。ここでは、<strong>法令上の義務</strong>と、<strong>それを具体化した法人の運用ルール</strong>を区別して理解しましょう。</p>
+<div class="tw"><table><thead><tr><th>ルール</th><th>位置づけ</th><th>理由・ポイント</th></tr></thead><tbody><tr><th scope="row">① 面接は原則2名以上で対応する</th><td>法人の運用ルール【事業所指針 3-3】</td><td>密室性をなくし、言動を互いに確認できる。小規模事業所のため管理者＋児発管等の体制が基本</td></tr><tr><th scope="row">② 単独対応となる場合は面接記録を残す</th><td>法人の運用ルール【事業所指針 3-3】</td><td>人員上やむを得ない場合も、質問内容・やりとりを記録に残す</td></tr><tr><th scope="row">③ 面接場所は事業所内の見通しのよい場所</th><td>法人の運用ルール【事業所指針 3-3】</td><td>個室にこもらず、周囲から見える場所で実施する</td></tr><tr><th scope="row">④ 私的な連絡先の交換を行わない</th><td>法人の運用ルール【事業所指針 3-3】</td><td>連絡は事業所・法人の電話やメールに限る</td></tr><tr><th scope="row">⑤ 採用に必要な事項を中心に質問する</th><td>法人の運用ルール（公正な採用選考の考え方に沿う）</td><td>経験、資格、勤務可能な日時など、職務に関係することだけを聞く</td></tr><tr><th scope="row">⑥ 求職者が相談できる窓口を周知する</th><td>法令上の義務（相談体制の整備）に対応</td><td>面接時や求人情報で、困ったときの相談先を案内する</td></tr></tbody></table></div>
+<div class="box box-law"><div class="box-h"><span class="tag">法令</span>法令が事業主に求めていること（求職者等セクハラ）</div><p>方針の明確化と周知・啓発、相談体制の整備、発生時の迅速かつ適切な対応、プライバシー保護と不利益取扱いの禁止などです。面接の人数や場所までは法令で決められていませんが、常笑ではこれらの義務を確実に果たすため、①〜⑤の運用ルールを設けています。</p><p>求職者が相談したことや事実確認に協力したことを理由に、<strong>不採用など選考上の不利益な取扱いをしてはいけません</strong>【事業所指針 第8章】。</p></div>
+<h3>面接担当者向けケーススタディ</h3>
+<div class="case"><div class="case-h">求職者の結婚予定を質問した</div><p class="scene">面接の終盤、雑談のつもりで「結婚の予定はありますか？　すぐに辞められると困るので」と質問した。</p>
+      <label class="work"><span>何が問題でしょうか。</span><textarea data-k="c9a_0" rows="2"></textarea></label><label class="work"><span>どう改善すればよいでしょうか。</span><textarea data-k="c9a_1" rows="2"></textarea></label>
+      <details><summary>回答例と解説を見る</summary><div class="ans"><p>結婚の予定は職務と関係がなく、性別による差別や、求職者のプライバシーへの不必要な立ち入りにつながります。「長く勤めてほしい」という確認が目的なら、「長期的にどのように働きたいとお考えですか」「勤務可能な曜日・時間帯を教えてください」と、職務に関係する質問に置き換えます。質問してしまった場合は、回答を求めず撤回し、管理者に報告します。</p></div></details></div>
+<div class="case"><div class="case-h">面接後に個人LINEを聞いた</div><p class="scene">面接後に「何かあったらこっちに連絡して」と、自分の個人LINEのQRコードを見せて交換した。</p>
+      <label class="work"><span>何が問題でしょうか。</span><textarea data-k="c9b_0" rows="2"></textarea></label><label class="work"><span>どう改善すればよいでしょうか。</span><textarea data-k="c9b_1" rows="2"></textarea></label>
+      <details><summary>回答例と解説を見る</summary><div class="ans"><p>私的な連絡先の交換は法人の運用ルールで禁止しています。求職者は断りにくく、その後の私的な連絡につながる危険があります。連絡は事業所・法人の電話やメールに限ります。交換してしまった場合は、管理者に報告し、事業所の連絡先を改めて案内したうえで、個人の連絡先は削除します。</p></div></details></div>
+<div class="case"><div class="case-h">求職者を個人的な食事に誘った</div><p class="scene">面接の帰りに「採用のこと、ご飯でも食べながらゆっくり話そう」と誘った。</p>
+      <label class="work"><span>何が問題でしょうか。</span><textarea data-k="c9c_0" rows="2"></textarea></label><label class="work"><span>どう改善すればよいでしょうか。</span><textarea data-k="c9c_1" rows="2"></textarea></label>
+      <details><summary>回答例と解説を見る</summary><div class="ans"><p>採用を引き合いにした私的な誘いは、禁止している言動にあたります。求職者は採否への影響を恐れて断りにくい立場です。採用に関する説明は、業務時間内に、事業所内で、複数名で行います。</p></div></details></div>
+<div class="case"><div class="case-h">オンライン面接で容姿について発言した</div><p class="scene">オンライン面接の冒頭で「画面越しでも美人ですね。子どもに人気が出そう」と言った。</p>
+      <label class="work"><span>何が問題でしょうか。</span><textarea data-k="c9d_0" rows="2"></textarea></label><label class="work"><span>どう改善すればよいでしょうか。</span><textarea data-k="c9d_1" rows="2"></textarea></label>
+      <details><summary>回答例と解説を見る</summary><div class="ans"><p>ほめ言葉のつもりでも、容姿の評価は禁止している言動です。オンラインでも同じルールが適用されます。面接では容姿や身体に触れず、経験・資格・支援への考え方など職務に関係することだけを話題にします。</p></div></details></div>
+<div class="case"><div class="case-h">求職者から面接担当者の言動について相談があった</div><p class="scene">不採用通知の後、求職者から「面接で交際相手のことをしつこく聞かれ、不快だった」とメールが届いた。</p>
+      <label class="work"><span>受け取った職員はどう対応すべきでしょうか。</span><textarea data-k="c9e_0" rows="2"></textarea></label>
+      <details><summary>回答例と解説を見る</summary><div class="ans"><p>一人で判断したり、言い訳をしたりせず、速やかに相談窓口・管理者へ報告します。相談窓口は求職者の話を丁寧に受け止め、管理者へ報告し、法人本部と連携して面接担当者からの聞き取りなど事実確認を行います。事実が確認された場合は、行為者への厳正な対応、求職者への謝罪・説明、面接体制の見直しを行います【事業所指針 6-2】。相談したことを理由に、今後の応募などで不利益に扱ってはいけません。</p></div></details></div>
+  </section>
+<section id="s10" class="sec" data-title="相談窓口と報告体制">
+  <div class="sec-h"><span class="no">第10章</span><h2>相談窓口と報告体制</h2><span class="time">10分</span></div>
+  
+  <h3>相談窓口の役割【法人規程 第11条〜第15条】【事業所指針 第5章】</h3>
+<div class="tw"><table><thead><tr><th>役割</th><th>内容</th></tr></thead><tbody><tr><th scope="row">相談の受付</th><td>対面・電話・メールなど、相談者が選べる方法で受け付ける。書面でも口頭でもよい</td></tr><tr><th scope="row">話を丁寧に聞く</th><td>相談内容にかかわらず、まずは相談者の話を最後まで聞く</td></tr><tr><th scope="row">事実関係の確認</th><td>相談者・行為者・目撃者などから、必要な範囲で事実を確認する</td></tr><tr><th scope="row">関係者との連携</th><td>管理者、法人本部、必要に応じて外部の専門家（社会保険労務士、弁護士等）と連携する</td></tr><tr><th scope="row">安全確保と被害者への配慮</th><td>相談者の安全と心身の状態を最優先にする</td></tr><tr><th scope="row">記録の作成・保管</th><td>口頭のみで終わらせず、相談記録として残す</td></tr><tr><th scope="row">再発防止</th><td>方針の再周知、手順の見直しなどにつなげる</td></tr><tr><th scope="row">プライバシー保護</th><td>相談者・行為者・関係者の情報は、対応に必要な範囲だけで共有する</td></tr><tr><th scope="row">不利益取扱いの禁止</th><td>相談したこと、事実確認に協力したことを理由とする不利益な取扱いは行わない</td></tr></tbody></table></div>
+<div class="box box-point"><div class="box-h"><span class="tag">ポイント</span>ハラスメントと断定してから相談する必要はありません</div><ul><li>ハラスメントを<strong>受けた人</strong>だけでなく、<strong>目撃した人</strong>も相談できます【法人規程 第12条1項】。</li><li>現実に起きている場合だけでなく、<strong>発生のおそれがある場合</strong>も相談できます【法人規程 第12条2項】。</li><li>「ハラスメントに該当するか微妙」「判断に迷う」という段階でも、広く相談を受け付けます【事業所指針 5-2】。</li></ul></div>
+<h3>ハラスメントを見聞きしたとき</h3>
+<ol><li>その場で可能なら、さりげなく間に入る（「○○さん、ちょっと手を貸してください」と声をかけて場を離す）</li><li>後で、受けた人に「大丈夫？」と声をかける。話を否定せずに聞く</li><li>本人の意向を尊重しながら、相談窓口があることを伝える。一緒に相談に行くことを提案する</li><li>自分が見聞きした事実（日時・場所・言動）をメモしておき、相談窓口に伝える</li><li>噂として他の職員に広めない</li></ol>
+<h3>相談記録と秘密保持</h3>
+<p>相談記録には、<strong>日時、相談者、相談内容、関係者、確認できた事実、対応経過</strong>などを記載します（様式「常笑-H01 ハラスメント相談受付記録」）。</p>
+<ul><li><strong>事実と推測を区別</strong>して書く（例：「大声で『辞めろ』と言った（目撃者2名）」は事実、「以前から嫌っていたようだ」は推測）</li><li>情報は<strong>対応に必要な範囲の関係者だけ</strong>で共有する。職員全体のLINEグループや雑談で話題にしない</li><li>記録は<strong>施錠できる場所、またはアクセス制限のある電子データ</strong>で保管する（LSJ KUMA指針では保管期間は原則2年間）【事業所指針 第9章】</li><li>事案を社内で共有する場合は、氏名を伏せるなど個人が特定されないように配慮する</li><li>保護者会やSNSなど外部への公表は、管理者の判断・承認を経てのみ行う</li></ul>
+<h3>各事業所の相談窓口確認ワーク</h3>
+<p>自分の事業所の現任者を、管理者に確認して記入してください。<strong>他の事業所の担当者名をそのまま書かないでください。</strong> 担当者が変わったときは、管理者が更新します（様式「常笑-H05」）。</p>
+<div class="fields"><label><span>事業所名</span><select data-k="f10_0"><option value="">選択してください</option><option>LSJ</option><option>LSJ江越</option><option>LSJ KUMAMOTO SI</option><option>LSJ KUMA</option><option>LSJ nikori</option><option>LSJ GLEE</option><option>LSJ TARAGI</option></select></label><label><span>管理者</span><input data-k="f10_1" type="text"></label><label><span>児童発達支援管理責任者</span><input data-k="f10_2" type="text"></label><label><span>ハラスメント相談窓口担当者</span><input data-k="f10_3" type="text"></label><label><span>副窓口・代替窓口担当者</span><input data-k="f10_4" type="text"></label><label><span>法人本部の相談先</span><input data-k="f10_5" type="text"></label><label><span>外部相談先</span><input data-k="f10_6" type="text"></label><label><span>相談方法（対面・電話・メール等）</span><input data-k="f10_7" type="text"></label><label><span>相談先が当事者だった場合の連絡先</span><input data-k="f10_8" type="text"></label></div>
+<label class="work"><span>自分がハラスメントを受けたとき、誰に、どのような方法で相談しますか。</span><textarea data-k="w10a" rows="4"></textarea></label>
+<label class="work"><span>同僚から「つらいことがある」と相談されたとき、あなたはどのように対応しますか。</span><textarea data-k="w10b" rows="4"></textarea></label>
+  </section>
+<section id="s11" class="sec" data-title="株式会社常笑 ハラスメント防止5原則">
+  <div class="sec-h"><span class="no">第11章</span><h2>株式会社常笑 ハラスメント防止5原則</h2><span class="time">3分</span></div>
+  
+  <div class="tw"><table><thead><tr><th>5原則</th><th>具体的な行動例</th></tr></thead><tbody><tr><th scope="row">① 相手の人格と尊厳を尊重する</th><td>名前で呼び、あいさつをする／ミスを指摘するときは行動に焦点を当て、人格を否定しない／容姿・性別・家庭の事情をからかわない</td></tr><tr><th scope="row">② 自分の言動を振り返る</th><td>「冗談のつもり」でも相手の受け止めを想像する／相手の表情が曇ったら「今の言い方、きつかったね」と言い直す／月に一度、自分の指導の仕方をふり返る</td></tr><tr><th scope="row">③ 問題を一人で抱え込まない</th><td>保護者対応で不安を感じたら早めに上長へ報告する／判断に迷ったら相談窓口へ相談する／一人での長時間対応を避け、交代を依頼する</td></tr><tr><th scope="row">④ 相談者を守り、秘密を守る</th><td>相談された内容を噂にしない／相談したことを理由に態度を変えない／必要な人にだけ、必要な範囲で伝える</td></tr><tr><th scope="row">⑤ 職員・保護者・求職者と誠実に向き合う</th><td>正当な苦情には事実を確認して誠実に説明する／保護者の不安や障害特性に配慮する／求職者には職務に関係することだけを質問し、私的な連絡先を使わない</td></tr></tbody></table></div>
+  </section>
+<section id="s12" class="sec" data-title="ケーススタディ（全職員向け8ケース）">
+  <div class="sec-h"><span class="no">第12章</span><h2>ケーススタディ（全職員向け8ケース）</h2><span class="time">15分</span></div>
+  
+  <p>各ケースについて、①何が問題か　②ハラスメントに該当する可能性があるか　③どのような対応が適切か　④誰に相談するか　⑤再発防止のために何が必要か、を考えてください。考えを書いてから回答例を確認しましょう。</p>
+<p>※ケースはすべて研修用に作成した架空の事例です。</p>
+<div class="case"><div class="case-h">ケース1　上司が新人職員を皆の前で繰り返し叱責する</div><p class="scene">入職2か月の新人職員Aさん。リーダーのBさんは、Aさんが記録の書き方や活動の準備でミスをするたびに、終礼で他の職員がいる前で「まだできないの？」「前にも言ったよね」と5分以上叱責しています。最近、Aさんは質問をしなくなり、表情が暗くなっています。</p>
+      <label class="work"><span>何が問題か</span><textarea data-k="k1_0" rows="2"></textarea></label><label class="work"><span>ハラスメントに該当する可能性があるか</span><textarea data-k="k1_1" rows="2"></textarea></label><label class="work"><span>どのような対応が適切か</span><textarea data-k="k1_2" rows="2"></textarea></label><label class="work"><span>誰に相談するか</span><textarea data-k="k1_3" rows="2"></textarea></label><label class="work"><span>再発防止のために何が必要か</span><textarea data-k="k1_4" rows="2"></textarea></label>
+      <details><summary>回答例と解説を見る</summary><div class="ans"><ul><li><strong>何が問題か</strong>：指導の内容ではなく、場所（皆の前）・方法（繰り返し・長時間）・言葉（人格に向かう言い方）に問題がある。新人が萎縮し、質問や報告ができなくなっている。</li><li><strong>該当の可能性</strong>：経験の差という優越的関係があり、業務上相当な範囲を超えた精神的な攻撃として、パワハラに該当する可能性がある。</li><li><strong>適切な対応</strong>：Bさんは個別の場で、具体的なミスと改善方法を伝える。記入例や手順書を用意し、質問しやすい時間を設ける。周囲の職員は、Aさんに声をかけ、相談窓口があることを伝える。</li><li><strong>相談先</strong>：Aさん・目撃した職員は事業所の相談窓口へ。Bさんの指導方法については管理者が把握し、助言する。</li><li><strong>再発防止</strong>：新人指導の手順（OJT計画）をチームで共有する。リーダー向けに適切な指導の方法を研修する。</li></ul></div></details></div>
+<div class="case"><div class="case-h">ケース2　職員間で容姿について冗談を言う</div><p class="scene">休憩中、数名の職員が「Cさん、最近太ったよね」「その服、若作りじゃない？」と笑いながら話しています。Cさんも笑っていますが、その後、休憩室に来なくなりました。</p>
+      <label class="work"><span>何が問題か</span><textarea data-k="k2_0" rows="2"></textarea></label><label class="work"><span>ハラスメントに該当する可能性があるか</span><textarea data-k="k2_1" rows="2"></textarea></label><label class="work"><span>どのような対応が適切か</span><textarea data-k="k2_2" rows="2"></textarea></label><label class="work"><span>誰に相談するか</span><textarea data-k="k2_3" rows="2"></textarea></label><label class="work"><span>再発防止のために何が必要か</span><textarea data-k="k2_4" rows="2"></textarea></label>
+      <details><summary>回答例と解説を見る</summary><div class="ans"><ul><li><strong>何が問題か</strong>：容姿や身体についての不必要な発言を、冗談として繰り返している。本人が笑っていても、本心とは限らない。</li><li><strong>該当の可能性</strong>：身体上の事柄に関する不必要な発言としてセクハラに該当する可能性がある。集団での言動は個の侵害にもつながる。</li><li><strong>適切な対応</strong>：その場にいた職員は話題を変える。後でCさんに声をかけ、気持ちを聞く。言った職員は、自分の言動を振り返り、謝罪する。</li><li><strong>相談先</strong>：Cさん・周囲の職員は事業所の相談窓口へ。</li><li><strong>再発防止</strong>：容姿・体型を話題にしないことを職場のルールとして確認する。「笑っていても嫌かもしれない」という視点を共有する。</li></ul></div></details></div>
+<div class="case"><div class="case-h">ケース3　育児休業を取得する職員への嫌味</div><p class="scene">男性職員Dさんが、来月から2か月の育児休業を取ることになりました。同僚から「男が育休とか、いい身分だね」「その間の送迎、誰がやると思ってるの」と何度も言われています。</p>
+      <label class="work"><span>何が問題か</span><textarea data-k="k3_0" rows="2"></textarea></label><label class="work"><span>ハラスメントに該当する可能性があるか</span><textarea data-k="k3_1" rows="2"></textarea></label><label class="work"><span>どのような対応が適切か</span><textarea data-k="k3_2" rows="2"></textarea></label><label class="work"><span>誰に相談するか</span><textarea data-k="k3_3" rows="2"></textarea></label><label class="work"><span>再発防止のために何が必要か</span><textarea data-k="k3_4" rows="2"></textarea></label>
+      <details><summary>回答例と解説を見る</summary><div class="ans"><ul><li><strong>何が問題か</strong>：制度の利用を否定し、繰り返し嫌味を言っている。性別による役割の押しつけも含まれる。</li><li><strong>該当の可能性</strong>：育児休業等に関するハラスメントに該当する可能性がある。</li><li><strong>適切な対応</strong>：業務の負担の問題は、管理者が勤務調整・人員配置で解決すべき課題であり、Dさん個人に向けるものではない。同僚は不満を管理者に伝える。管理者は引き継ぎ計画を作成する。</li><li><strong>相談先</strong>：Dさんは事業所の相談窓口へ。業務負担の不安がある職員は管理者へ。</li><li><strong>再発防止</strong>：制度の利用は権利であることを周知する。休業者が出ても回る業務分担を平常時から準備する。</li></ul></div></details></div>
+<div class="case"><div class="case-h">ケース4　保護者から長時間の威圧的な電話</div><p class="scene">保護者Eさんから、個別支援計画の内容について毎日電話があります。児発管が説明を尽くしましたが、電話は1回1時間以上に及び、「あんたじゃ話にならない」「無能」と大声で繰り返し、電話を切ろうとすると「切ったら訴える」と言います。</p>
+      <label class="work"><span>何が問題か</span><textarea data-k="k4_0" rows="2"></textarea></label><label class="work"><span>ハラスメントに該当する可能性があるか</span><textarea data-k="k4_1" rows="2"></textarea></label><label class="work"><span>どのような対応が適切か</span><textarea data-k="k4_2" rows="2"></textarea></label><label class="work"><span>誰に相談するか</span><textarea data-k="k4_3" rows="2"></textarea></label><label class="work"><span>再発防止のために何が必要か</span><textarea data-k="k4_4" rows="2"></textarea></label>
+      <details><summary>回答例と解説を見る</summary><div class="ans"><ul><li><strong>何が問題か</strong>：要求のきっかけ（計画への不安）には正当性があり得るが、説明を尽くした後もおおむね1時間を超えて対応を要求し、人格否定や脅迫的な発言を繰り返している。</li><li><strong>該当の可能性</strong>：カスハラに該当する可能性が高く、法人規程第10条の「特に悪質」な類型（1時間超の要求）にあたり得る。</li><li><strong>適切な対応</strong>：一人で対応を続けず、管理者に報告し、担当者交代・複数名対応に切り替える。「この件について、これ以上のご説明は○日の面談で行います」と対応時間・方法を区切って伝える。会話の日時・内容を記録する。会社の承認を得て、警告や対応の打切りなどを検討する。</li><li><strong>相談先</strong>：直属の上長・相談窓口。悪質な場合は法人本部・弁護士と連携する。</li><li><strong>再発防止</strong>：計画の説明方法・説明資料を見直す。電話対応の時間の目安と、交代のルールを事業所で決めておく。</li></ul></div></details></div>
+<div class="case"><div class="case-h">ケース5　送迎担当者に危険な運転を要求する保護者</div><p class="scene">送迎中、同乗した保護者Fさん（兄弟児の都合で同乗）が「病院の予約に遅れる。黄色信号なんて止まらないで。もっと飛ばして」と強く要求し、運転席の背もたれを何度も叩きました。</p>
+      <label class="work"><span>何が問題か</span><textarea data-k="k5_0" rows="2"></textarea></label><label class="work"><span>ハラスメントに該当する可能性があるか</span><textarea data-k="k5_1" rows="2"></textarea></label><label class="work"><span>どのような対応が適切か</span><textarea data-k="k5_2" rows="2"></textarea></label><label class="work"><span>誰に相談するか</span><textarea data-k="k5_3" rows="2"></textarea></label><label class="work"><span>再発防止のために何が必要か</span><textarea data-k="k5_4" rows="2"></textarea></label>
+      <details><summary>回答例と解説を見る</summary><div class="ans"><ul><li><strong>何が問題か</strong>：子どもと職員の安全を脅かす要求で、運転への妨害行為もある。</li><li><strong>該当の可能性</strong>：危険な運転の強要として、カスハラに該当する可能性がある。</li><li><strong>適切な対応</strong>：要求には応じず、安全運転を続ける。「安全のため、法定速度で運転します」と落ち着いて伝える。危険を感じたら安全な場所に停車し、事業所へ連絡する。帰着後すぐに上長へ報告し、記録する。</li><li><strong>相談先</strong>：直属の上長・相談窓口。</li><li><strong>再発防止</strong>：保護者の同乗ルールを確認・説明する。送迎の安全方針を利用契約時の説明資料などで保護者に周知する。</li></ul></div></details></div>
+<div class="case"><div class="case-h">ケース6　SNSで職員個人への攻撃が行われた</div><p class="scene">職員Gさんが、地域の保護者が見る匿名SNSに「LSJの○○先生（実名）は子どもを放置している」と写真付きで投稿されているのを見つけました。</p>
+      <label class="work"><span>何が問題か</span><textarea data-k="k6_0" rows="2"></textarea></label><label class="work"><span>ハラスメントに該当する可能性があるか</span><textarea data-k="k6_1" rows="2"></textarea></label><label class="work"><span>どのような対応が適切か</span><textarea data-k="k6_2" rows="2"></textarea></label><label class="work"><span>誰に相談するか</span><textarea data-k="k6_3" rows="2"></textarea></label><label class="work"><span>再発防止のために何が必要か</span><textarea data-k="k6_4" rows="2"></textarea></label>
+      <details><summary>回答例と解説を見る</summary><div class="ans"><ul><li><strong>何が問題か</strong>：職員個人を特定した中傷で、写真が公開されている。</li><li><strong>該当の可能性</strong>：カスハラに該当する可能性が高く、「特に悪質」な類型（職員個人を特定した中傷）にあたり得る。投稿者が特定できない場合もあるため、事実確認は組織で行う。</li><li><strong>適切な対応</strong>：本人や同僚が自分で反論・書き込みをしない。投稿の画面を保存（日時・URL・投稿者名）し、上長・相談窓口へ報告する。会社が削除依頼や弁護士への相談などを判断する。投稿内容に関係する支援の事実確認も行う。Gさんの心身のケアを行う。</li><li><strong>相談先</strong>：直属の上長・相談窓口・法人本部。</li><li><strong>再発防止</strong>：SNSへの対応手順を周知する。職員の写真や氏名の取り扱いを確認する。</li></ul></div></details></div>
+<div class="case"><div class="case-h">ケース7　面接で求職者の交際関係を質問した</div><p class="scene">支援員の採用面接で、面接担当者Hさんが「彼氏はいるの？　結婚したら辞めちゃう？」と質問しました。もう一人の面接担当者は何も言いませんでした。</p>
+      <label class="work"><span>何が問題か</span><textarea data-k="k7_0" rows="2"></textarea></label><label class="work"><span>ハラスメントに該当する可能性があるか</span><textarea data-k="k7_1" rows="2"></textarea></label><label class="work"><span>どのような対応が適切か</span><textarea data-k="k7_2" rows="2"></textarea></label><label class="work"><span>誰に相談するか</span><textarea data-k="k7_3" rows="2"></textarea></label><label class="work"><span>再発防止のために何が必要か</span><textarea data-k="k7_4" rows="2"></textarea></label>
+      <details><summary>回答例と解説を見る</summary><div class="ans"><ul><li><strong>何が問題か</strong>：職務に関係のない交際・結婚についての質問。同席者が止めなかった。</li><li><strong>該当の可能性</strong>：求職者等へのセクハラに該当する可能性がある。</li><li><strong>適切な対応</strong>：同席者はその場で「その質問は結構です」と撤回し、回答を求めない。面接後に管理者へ報告する。面接記録に残す。</li><li><strong>相談先</strong>：管理者・相談窓口。求職者から相談があれば相談窓口が受け付ける。</li><li><strong>再発防止</strong>：面接前に質問項目を確認する（様式「常笑-H06」）。面接担当者向けの研修を採用選考の前に行う。</li></ul></div></details></div>
+<div class="case"><div class="case-h">ケース8　相談窓口担当者自身がハラスメントの当事者</div><p class="scene">職員Iさんは、事業所の相談窓口担当者である職員から、繰り返し人格を否定する発言を受けています。「相談窓口に相談しても意味がない」と悩んでいます。</p>
+      <label class="work"><span>何が問題か</span><textarea data-k="k8_0" rows="2"></textarea></label><label class="work"><span>ハラスメントに該当する可能性があるか</span><textarea data-k="k8_1" rows="2"></textarea></label><label class="work"><span>どのような対応が適切か</span><textarea data-k="k8_2" rows="2"></textarea></label><label class="work"><span>誰に相談するか</span><textarea data-k="k8_3" rows="2"></textarea></label><label class="work"><span>再発防止のために何が必要か</span><textarea data-k="k8_4" rows="2"></textarea></label>
+      <details><summary>回答例と解説を見る</summary><div class="ans"><ul><li><strong>何が問題か</strong>：相談窓口担当者が行為者であるため、通常の窓口が機能しない。</li><li><strong>該当の可能性</strong>：パワハラに該当する可能性がある。</li><li><strong>適切な対応</strong>：事業所の副窓口・代替窓口担当者、法人本部、または外部相談窓口へ相談する。周囲の職員も、Iさんに別の相談先があることを伝える。</li><li><strong>相談先</strong>：副窓口・代替窓口、法人本部、外部相談窓口（第10章のワークで記入した「当事者だった場合の連絡先」）。</li><li><strong>再発防止</strong>：窓口が当事者の場合の連絡先を、全職員が分かる場所に掲示する。窓口担当者も研修を受ける。</li></ul></div></details></div>
+  </section>
+<section id="s13" class="sec" data-title="個人ワーク　自分の言動を振り返る">
+  <div class="sec-h"><span class="no">第13章</span><h2>個人ワーク　自分の言動を振り返る</h2><span class="time">10分</span></div>
+  
+  <div class="box box-note"><div class="box-h"><span class="tag">確認</span>記入にあたって</div><p>このワークは、これからの行動を考えるためのものです。<strong>ご自身の過去の被害経験を書く必要はありません。</strong> もし研修中につらい気持ちになったら、無理をせず、信頼できる人や相談窓口に相談してください。</p></div>
+<label class="work"><span>① ハラスメントについて、この研修で新たに知ったこと</span><textarea data-k="p1" rows="4"></textarea></label>
+<label class="work"><span>② 自分が無意識に行っているかもしれない言動</span><textarea data-k="p2" rows="4"></textarea></label>
+<label class="work"><span>③ 適切な業務指導で意識したいこと</span><textarea data-k="p3" rows="4"></textarea></label>
+<label class="work"><span>④ 保護者対応で気を付けたいこと</span><textarea data-k="p4" rows="4"></textarea></label>
+<label class="work"><span>⑤ 求職者へのセクハラ防止で重要だと思うこと</span><textarea data-k="p5" rows="4"></textarea></label>
+<label class="work"><span>⑥ 自分の事業所の相談窓口（担当者・副窓口・相談方法）</span><textarea data-k="p6" rows="3"></textarea></label>
+<label class="work"><span>⑦ 職場で改善したいこと</span><textarea data-k="p7" rows="4"></textarea></label>
+<label class="work"><span>⑧ 明日から実践すること</span><textarea data-k="p8" rows="3"></textarea></label>
+  </section>
+<section id="s14" class="sec" data-title="理解度テスト">
+<div class="sec-h"><span class="no">第14章</span><h2>理解度テスト（全15問）</h2><span class="time">10分</span></div>
+<p>○×問題5問・選択問題5問・ケース問題3問は自動採点されます（13問中11問以上で合格の目安）。記述問題2問は管理者が評価します。解答・解説は管理者用資料にあります。</p>
+<form id="test">
+<div class="qbox" data-q="1"><div class="q-h"><span class="qn">問1</span><span class="qt">○×</span></div><p class="q">保護者からの苦情は、すべてカスタマーハラスメントに該当する。</p><label class="opt ox"><input type="radio" name="q1" value="○"> ○</label><label class="opt ox"><input type="radio" name="q1" value="×"> ×</label><div class="res"></div></div>
+<div class="qbox" data-q="2"><div class="q-h"><span class="qn">問2</span><span class="qt">○×</span></div><p class="q">同性間の性的な言動も、セクシュアルハラスメントになり得る。</p><label class="opt ox"><input type="radio" name="q2" value="○"> ○</label><label class="opt ox"><input type="radio" name="q2" value="×"> ×</label><div class="res"></div></div>
+<div class="qbox" data-q="3"><div class="q-h"><span class="qn">問3</span><span class="qt">○×</span></div><p class="q">ハラスメントに該当するかどうか分からない段階でも、相談窓口に相談することができる。</p><label class="opt ox"><input type="radio" name="q3" value="○"> ○</label><label class="opt ox"><input type="radio" name="q3" value="×"> ×</label><div class="res"></div></div>
+<div class="qbox" data-q="4"><div class="q-h"><span class="qn">問4</span><span class="qt">○×</span></div><p class="q">ハラスメントを相談した職員のシフトを減らすことは、管理者の業務判断であれば認められる。</p><label class="opt ox"><input type="radio" name="q4" value="○"> ○</label><label class="opt ox"><input type="radio" name="q4" value="×"> ×</label><div class="res"></div></div>
+<div class="qbox" data-q="5"><div class="q-h"><span class="qn">問5</span><span class="qt">○×</span></div><p class="q">妊娠中の職員の体調を確認し、本人と相談のうえで身体的負担の大きい業務の分担を調整することは、ハラスメントには該当しない。</p><label class="opt ox"><input type="radio" name="q5" value="○"> ○</label><label class="opt ox"><input type="radio" name="q5" value="×"> ×</label><div class="res"></div></div>
+<div class="qbox" data-q="6"><div class="q-h"><span class="qn">問6</span><span class="qt">選択</span></div><p class="q">パワーハラスメントの3要素に含まれないものはどれですか。</p><label class="opt"><input type="radio" name="q6" value="0"> A．優越的な関係を背景とした言動であること</label><label class="opt"><input type="radio" name="q6" value="1"> B．業務上必要かつ相当な範囲を超えた言動であること</label><label class="opt"><input type="radio" name="q6" value="2"> C．労働者の就業環境が害されること</label><label class="opt"><input type="radio" name="q6" value="3"> D．行為者に相手を傷つける悪意があること</label><div class="res"></div></div>
+<div class="qbox" data-q="7"><div class="q-h"><span class="qn">問7</span><span class="qt">選択</span></div><p class="q">記録の不備を繰り返す職員への指導として、最も適切なものはどれですか。</p><label class="opt"><input type="radio" name="q7" value="0"> A．終礼で他の職員の前で「何度言ったらわかるの」と注意する</label><label class="opt"><input type="radio" name="q7" value="1"> B．空欄になっていた箇所を具体的に示し、記入例を渡して、見直す日を一緒に決める</label><label class="opt"><input type="radio" name="q7" value="2"> C．パワハラと言われないよう、何も言わずに自分で書き直しておく</label><label class="opt"><input type="radio" name="q7" value="3"> D．「もう任せられない」と記録の仕事をすべて外す</label><div class="res"></div></div>
+<div class="qbox" data-q="8"><div class="q-h"><span class="qn">問8</span><span class="qt">選択</span></div><p class="q">法人規程第10条で「特に悪質なカスタマーハラスメント」として定められている言動はどれですか。</p><label class="opt"><input type="radio" name="q8" value="0"> A．送迎時間が変わった理由の説明を求める</label><label class="opt"><input type="radio" name="q8" value="1"> B．個別支援計画の内容について質問する</label><label class="opt"><input type="radio" name="q8" value="2"> C．同一の事案について、会社が説明を尽くした後も、おおむね1時間を超えて対応を要求し続ける</label><label class="opt"><input type="radio" name="q8" value="3"> D．連絡帳で活動内容への要望を伝える</label><div class="res"></div></div>
+<div class="qbox" data-q="9"><div class="q-h"><span class="qn">問9</span><span class="qt">選択</span></div><p class="q">採用面接での質問として、適切なものはどれですか。</p><label class="opt"><input type="radio" name="q9" value="0"> A．「結婚の予定はありますか」</label><label class="opt"><input type="radio" name="q9" value="1"> B．「お付き合いしている人はいますか」</label><label class="opt"><input type="radio" name="q9" value="2"> C．「これまでの支援の経験と、勤務可能な曜日・時間帯を教えてください」</label><label class="opt"><input type="radio" name="q9" value="3"> D．「写真より実物の方がきれいですね」</label><div class="res"></div></div>
+<div class="qbox" data-q="10"><div class="q-h"><span class="qn">問10</span><span class="qt">選択</span></div><p class="q">ハラスメント相談記録の扱いとして、適切なものはどれですか。</p><label class="opt"><input type="radio" name="q10" value="0"> A．対応を早くするため、職員全体のLINEグループで内容を共有する</label><label class="opt"><input type="radio" name="q10" value="1"> B．事実と推測を分けて記録し、施錠できる場所かアクセス制限のある電子データで保管する</label><label class="opt"><input type="radio" name="q10" value="2"> C．記録に残すと大ごとになるので、口頭で聞くだけにする</label><label class="opt"><input type="radio" name="q10" value="3"> D．再発防止のため、相談者と行為者の氏名を休憩室に掲示する</label><div class="res"></div></div>
+<div class="qbox" data-q="11"><div class="q-h"><span class="qn">問11</span><span class="qt">ケース</span></div><p class="q">【ケース】送迎中、同乗した保護者から「急いでいるから信号なんて無視して、もっと飛ばして」と強く要求されました。最も適切な対応はどれですか。</p><label class="opt"><input type="radio" name="q11" value="0"> A．保護者の機嫌を損ねないよう、少しスピードを上げる</label><label class="opt"><input type="radio" name="q11" value="1"> B．要求には応じず「安全のため法定速度で運転します」と伝えて安全運転を続け、帰着後に上長へ報告・記録する</label><label class="opt"><input type="radio" name="q11" value="2"> C．保護者と言い争いになっても、その場で納得してもらうまで説得する</label><label class="opt"><input type="radio" name="q11" value="3"> D．黙って運転し、特に報告はしない</label><div class="res"></div></div>
+<div class="qbox" data-q="12"><div class="q-h"><span class="qn">問12</span><span class="qt">ケース</span></div><p class="q">【ケース】匿名SNSに、同僚の実名と写真付きで「子どもを放置している」と投稿されているのを見つけました。最も適切な対応はどれですか。</p><label class="opt"><input type="radio" name="q12" value="0"> A．すぐに投稿に反論のコメントを書き込む</label><label class="opt"><input type="radio" name="q12" value="1"> B．同僚を守るため、見なかったことにする</label><label class="opt"><input type="radio" name="q12" value="2"> C．画面を保存（日時・URL）し、上長・相談窓口へ報告して、組織として対応を判断してもらう</label><label class="opt"><input type="radio" name="q12" value="3"> D．職員のLINEグループに投稿のスクリーンショットを流して注意喚起する</label><div class="res"></div></div>
+<div class="qbox" data-q="13"><div class="q-h"><span class="qn">問13</span><span class="qt">ケース</span></div><p class="q">【ケース】相談窓口担当者から、繰り返し人格を否定する発言を受けています。どこに相談するのが適切ですか。</p><label class="opt"><input type="radio" name="q13" value="0"> A．相談窓口担当者本人に直接相談するしかない</label><label class="opt"><input type="radio" name="q13" value="1"> B．副窓口・代替窓口、法人本部、または外部相談窓口に相談する</label><label class="opt"><input type="radio" name="q13" value="2"> C．相談先がないので、我慢して様子を見る</label><label class="opt"><input type="radio" name="q13" value="3"> D．保護者に相談して味方になってもらう</label><div class="res"></div></div>
+<div class="qbox" data-q="14"><div class="q-h"><span class="qn">問14</span><span class="qt">記述</span></div><p class="q">「正当な苦情」と「カスタマーハラスメント」の違いを、障害児通所支援の場面の例を挙げて、自分の言葉で説明してください。</p><textarea data-k="q14" rows="5" placeholder="自分の言葉で記述してください"></textarea><div class="res"></div></div>
+<div class="qbox" data-q="15"><div class="q-h"><span class="qn">問15</span><span class="qt">記述</span></div><p class="q">同僚から「上司の言動がつらい」と相談されたとき、あなたが取る行動を3つ以上挙げ、その理由も書いてください。</p><textarea data-k="q15" rows="5" placeholder="自分の言葉で記述してください"></textarea><div class="res"></div></div>
+<div class="btns"><button type="button" id="grade">採点する</button><button type="button" id="retry" class="sub">もう一度解く</button></div>
+<div id="score" class="score" hidden></div>
+</form></section>
+<section id="s15" class="sec" data-title="提出レポート・修了確認">
+<div class="sec-h"><span class="no">第15章</span><h2>研修提出レポート・修了確認</h2><span class="time">7分</span></div>
+<p>記入後、「印刷・PDF保存」ボタンで出力し、管理者へ提出してください。入力内容はこの端末のブラウザに一時保存されます。</p>
+<div class="fields">
+<label><span>事業所名</span><select data-k="r_fac"><option value="">選択してください</option><option>LSJ</option><option>LSJ江越</option><option>LSJ KUMAMOTO SI</option><option>LSJ KUMA</option><option>LSJ nikori</option><option>LSJ GLEE</option><option>LSJ TARAGI</option></select></label>
+<label><span>氏名</span><input data-k="r_name" type="text"></label>
+<label><span>研修実施日</span><input data-k="r_date" type="date"></label>
+</div>
+<label class="work"><span>今日学んだこと</span><textarea data-k="r_0" rows="3"></textarea></label><label class="work"><span>印象に残った内容</span><textarea data-k="r_1" rows="3"></textarea></label><label class="work"><span>自分の言動で改善したいこと</span><textarea data-k="r_2" rows="3"></textarea></label><label class="work"><span>保護者対応で意識したいこと</span><textarea data-k="r_3" rows="3"></textarea></label><label class="work"><span>相談窓口について確認したこと</span><textarea data-k="r_4" rows="3"></textarea></label><label class="work"><span>明日から実践すること</span><textarea data-k="r_5" rows="3"></textarea></label>
+<div class="decl"><div class="decl-h">行動宣言</div><p>私は、誰もが安心して働ける職場をつくるため、明日から</p><input data-k="r_decl" type="text" placeholder="例：相手の表情を見て言葉を選ぶこと"><p>を実践します。</p></div>
+<h3>修了チェックシート（管理者記入）</h3>
+<ul class="checks"><li><label><input type="checkbox" data-k="cp_0"> ハラスメントの基本を理解した</label></li><li><label><input type="checkbox" data-k="cp_1"> 主な種類を理解した</label></li><li><label><input type="checkbox" data-k="cp_2"> 適切な指導との違いを理解した</label></li><li><label><input type="checkbox" data-k="cp_3"> カスタマーハラスメントを理解した</label></li><li><label><input type="checkbox" data-k="cp_4"> 正当な苦情との違いを理解した</label></li><li><label><input type="checkbox" data-k="cp_5"> 求職者等へのセクハラ防止を理解した</label></li><li><label><input type="checkbox" data-k="cp_6"> 自分の事業所の相談窓口を確認した</label></li><li><label><input type="checkbox" data-k="cp_7"> ケーススタディを実施した</label></li><li><label><input type="checkbox" data-k="cp_8"> 理解度テストを受けた</label></li><li><label><input type="checkbox" data-k="cp_9"> 個人ワークを提出した</label></li><li><label><input type="checkbox" data-k="cp_10"> 明日から実践することを記入した</label></li></ul>
+<div class="fields"><label class="wide"><span>管理者コメント</span><textarea data-k="cp_comment" rows="3"></textarea></label>
+<label><span>管理者氏名</span><input data-k="cp_mgr" type="text"></label><label><span>修了確認日</span><input data-k="cp_date" type="date"></label></div>
+<div class="btns"><button type="button" onclick="window.print()">印刷・PDF保存</button></div>
+</section>
+<section id="s16a" class="sec mgr" data-title="【追加】管理者の役割">
+  <div class="sec-h"><span class="no">第16章-1</span><h2>【追加】管理者の役割</h2><span class="time">10分</span></div>
+  <p class="aud">対象：管理者・相談窓口担当者・採用担当者</p>
+  <p>管理者は、ハラスメントを「起こさせない」「起きたら一人にさせない」「同じことを繰り返させない」の3つの役割を担います。会社および管理監督者には、職員の指導・啓発に努める責任があります【法人規程 第18条】。</p>
+<div class="tw"><table><thead><tr><th>役割</th><th>具体的に行うこと</th><th>根拠</th></tr></thead><tbody><tr><th scope="row">防止方針の周知</th><td>法人規程・事業所指針を全職員に配布・説明する。新規採用時にも説明する。カスハラの基本方針を事業所内に掲示し、保護者にも周知する</td><td>法人規程 第8条3項／事業所指針 附則</td></tr><tr><th scope="row">職員からの相談受付</th><td>相談窓口と連携し、相談しやすい雰囲気をつくる。「相談してくれてありがとう」と受け止める</td><td>法人規程 第11条・第12条</td></tr><tr><th scope="row">事実確認</th><td>相談者・行為者・目撃者から、中立の立場で聞き取る。事実と推測を区別する</td><td>法人規程 第11条2項(2)</td></tr><tr><th scope="row">被害を受けた職員への配慮</th><td>対応者の変更、勤務・配置の配慮、面談や休養の付与などメンタルヘルスに配慮する</td><td>事業所指針 6-1⑤</td></tr><tr><th scope="row">行為者への適切な対応</th><td>職員が行為者の場合：事実確認の結果を法人本部へ報告（最終的な事実認定は取締役会）。顧客等が行為者の場合：会社の承認を得て警告・対応打切り等を検討</td><td>法人規程 第10条・第16条・第17条</td></tr><tr><th scope="row">法人本部との連携</th><td>重度のカスハラ、職員間のハラスメント、求職者からの相談は、法人本部へ速やかに報告する</td><td>事業所指針 1-3・6-2</td></tr><tr><th scope="row">再発防止</th><td>発生の背景を分析し、手順・説明資料を見直す。事実が確認できなかった場合も方針を再周知する。年1回以上マニュアルを見直す</td><td>法人規程 第19条／事業所指針 第7章</td></tr><tr><th scope="row">記録管理</th><td>相談・対応記録を施錠またはアクセス制限のある方法で保管する</td><td>事業所指針 第9章</td></tr><tr><th scope="row">相談窓口担当者の変更時の更新</th><td>人事異動・退職時に、掲示物・指針・相談窓口確認シートを更新し、全職員へ周知する（様式「常笑-H05」）</td><td>事業所指針 5-1</td></tr></tbody></table></div>
+<div class="box box-warn"><div class="box-h"><span class="tag">重要</span>管理者が避けるべき対応</div><ul><li>「そのくらい我慢して」「あなたにも原因がある」と相談を退ける</li><li>事実確認の前に、行為者に相談者の名前を伝えて「話し合って」と任せる</li><li>相談したことを理由に、相談者の配置やシフトを不利益に変更する</li><li>カスハラを受けた職員に「あなたの対応が悪かったから」と責任を負わせる</li><li>ハラスメントを知りながら黙認する（法人規程 第3条2項で禁止）</li></ul></div>
+  </section>
+<section id="s16b" class="sec mgr" data-title="【追加】相談窓口担当者の対応演習">
+  <div class="sec-h"><span class="no">第16章-2</span><h2>【追加】相談窓口担当者の対応演習</h2><span class="time">10分</span></div>
+  <p class="aud">対象：管理者・相談窓口担当者・採用担当者</p>
+  <h3>相談対応の7ステップ</h3>
+<div class="tw"><table><thead><tr><th>ステップ</th><th>ポイント</th><th>声かけ・行動の例</th></tr></thead><tbody><tr><th scope="row">① 安心して話せる環境を整える</th><td>個室など、他の人に聞かれない場所と十分な時間を確保する。相談方法（対面・電話・メール）は相談者が選べる</td><td>「ここで話したことは、あなたの了解なく広げません。対応に必要な範囲で共有する場合は、事前に相談します」</td></tr><tr><th scope="row">② 相談内容を丁寧に聞く</th><td>途中でさえぎらず、評価・否定をしない。最後まで聞く</td><td>「話してくれてありがとうございます」「それはつらかったですね」</td></tr><tr><th scope="row">③ 事実と推測を区別する</th><td>いつ・どこで・誰が・何を言った／したか、目撃者はいるかを確認する。相談者の受け止め（気持ち）も大切に記録する</td><td>「そのとき、相手は具体的にどんな言葉を使いましたか」</td></tr><tr><th scope="row">④ 必要な情報を記録する</th><td>様式「常笑-H01」に記録する。相談者の言葉はできるだけそのまま書く</td><td>「記録を確認してもらってもいいですか」</td></tr><tr><th scope="row">⑤ 安全とプライバシーに配慮する</th><td>心身の状態、緊急性（暴力・脅迫・体調不良）を確認する。共有範囲と方法を本人と確認する</td><td>「今、体調や眠れているかはどうですか」「どこまでの人に伝えてよいか一緒に決めましょう」</td></tr><tr><th scope="row">⑥ 必要な担当者・法人本部へ共有する</th><td>管理者、法人本部へ、必要な範囲で報告する。窓口自身が判断・認定しない</td><td>「管理者と法人本部に報告し、事実確認の進め方を相談します」</td></tr><tr><th scope="row">⑦ 継続的な支援につなげる</th><td>対応経過を相談者に伝え、定期的に様子を確認する。不利益取扱いがないか見守る</td><td>「来週、もう一度お話を聞かせてください」</td></tr></tbody></table></div>
+<div class="box box-warn"><div class="box-h"><span class="tag">重要</span>相談窓口でのNG対応</div><ul><li>「それはハラスメントではないですね」とその場で判断する（判断・認定は組織で行う）</li><li>「あの人はそういう人だから」「気にしすぎ」と相談を軽く扱う</li><li>相談者の了解なく、行為者に相談内容を伝える</li><li>相談内容を雑談や引き継ぎで不必要に話す</li><li>自分が当事者・関係者なのに相談を受け続ける（副窓口・法人本部へ引き継ぐ）</li></ul></div>
+<h3>ロールプレイ演習</h3>
+<p>2人1組で、相談者役・窓口担当者役を交代しながら行います（各5分）。</p>
+<p><strong>場面</strong>：支援員Jさんが「送迎のたびに、保護者のKさんから容姿について性的なことを言われる。冗談だと思って笑ってきたが、もう送迎に行くのがつらい」と相談に来た。</p>
+<label class="work"><span>窓口担当者として、最初にかける言葉</span><textarea data-k="m16a" rows="3"></textarea></label>
+<label class="work"><span>確認すべき事実（5W1H）</span><textarea data-k="m16b" rows="4"></textarea></label>
+<label class="work"><span>Jさんの安全のために、すぐに検討すること</span><textarea data-k="m16c" rows="3"></textarea></label>
+<label class="work"><span>誰に、何を、どこまで共有するか</span><textarea data-k="m16d" rows="3"></textarea></label>
+<div class="box box-point"><div class="box-h"><span class="tag">ポイント</span>演習のふり返りポイント</div><ul><li>保護者からの性的な言動は、カスハラとして組織で対応する（事業所指針 2-2(5)）</li><li>すぐに検討すること：送迎担当の交代・複数名対応、Jさんの心身の状態の確認</li><li>「笑って受け流していた」ことは、Jさんの落ち度ではないと伝える</li><li>管理者へ報告し、対応方針（保護者への説明・警告など）は組織で決める</li></ul></div>
+  </section>
+<section id="s16c" class="sec mgr" data-title="【追加】採用担当者向け　面接の進め方とチェック">
+  <div class="sec-h"><span class="no">第16章-3</span><h2>【追加】採用担当者向け　面接の進め方とチェック</h2><span class="time">10分</span></div>
+  <p class="aud">対象：管理者・相談窓口担当者・採用担当者</p>
+  <h3>採用選考の流れと注意点</h3>
+<ol class="flow"><li><b>募集</b><span>求人票・採用ページに、ハラスメント防止方針と相談窓口（事業所・法人の連絡先）を記載する</span></li><li><b>日程調整・連絡</b><span>事業所・法人の電話・メールのみを使う。個人の携帯・SNSは使わない</span></li><li><b>面接前</b><span>面接担当者（原則2名以上）・場所（見通しのよい場所）・質問項目を確認する</span></li><li><b>面接</b><span>採用に必要な事項を中心に質問する。オンライン面接でも同じルール</span></li><li><b>面接後</b><span>面接記録を作成する（単独対応の場合は必須）。私的な連絡はしない</span></li><li><b>結果通知</b><span>事業所・法人の連絡手段で通知する。相談があった求職者を不利益に扱わない</span></li></ol>
+<h3>質問してよいこと・避けること</h3>
+<div class="tw"><table><thead><tr><th>質問してよいこと（職務に関係する事項）</th><th>避けること（職務に関係しない事項）</th></tr></thead><tbody><tr><th scope="row">これまでの職歴・支援の経験</th><td>結婚・出産の予定、交際相手の有無</td></tr><tr><th scope="row">保有資格（保育士、児童指導員任用資格など）</th><td>容姿・体型・服装への評価</td></tr><tr><th scope="row">勤務可能な曜日・時間帯、通勤方法</th><td>家族の職業・収入、本籍・出生地</td></tr><tr><th scope="row">送迎業務の可否（運転免許の有無など、業務上必要な場合）</th><td>宗教・支持政党・思想</td></tr><tr><th scope="row">子どもの支援についての考え方</th><td>性的指向・性自認に関すること</td></tr></tbody></table></div>
+<div class="box box-note"><div class="box-h"><span class="tag">確認</span>公正な採用選考の考え方</div><p>厚生労働省は、本人の適性・能力に関係のない事項（家族・本籍・思想信条など）で採否を判断しないよう求めています。結婚・出産に関する質問は、男女雇用機会均等法上の性別による差別の観点からも避けます。</p></div>
+<h3>採用担当者向け面接チェック</h3>
+<ul class="checks"><li><label><input type="checkbox" data-k="mchk_0"> 面接担当者を確認した（原則2名以上）</label></li><li><label><input type="checkbox" data-k="mchk_1"> 面接場所を確認した（事業所内の見通しのよい場所）</label></li><li><label><input type="checkbox" data-k="mchk_2"> 質問内容が採用目的に適切である</label></li><li><label><input type="checkbox" data-k="mchk_3"> 私的な連絡先を使用しない</label></li><li><label><input type="checkbox" data-k="mchk_4"> 求職者の人格を尊重する</label></li><li><label><input type="checkbox" data-k="mchk_5"> 面接記録を作成する</label></li><li><label><input type="checkbox" data-k="mchk_6"> 相談先を案内できる</label></li></ul>
+<h3>求職者から相談を受けたら</h3>
+<ol class="flow"><li><b>① 相談窓口が受理</b><span>求職者の話を丁寧に聞き、記録する（様式「常笑-H01」）</span></li><li><b>② 管理者へ報告、法人本部と連携</b><span>面接担当者が管理者自身の場合は、法人本部へ直接報告する</span></li><li><b>③ 行為者へのヒアリング</b><span>面接記録、同席者の証言などで事実を確認する</span></li><li><b>④ 事実が確認された場合</b><span>行為者への厳正な対応（就業規則に基づく懲戒その他の措置）、求職者への謝罪・説明</span></li><li><b>⑤ 再発防止</b><span>面接体制・質問項目の見直し、採用担当者への研修</span></li></ol>
+  </section>
+<section id="s17" class="sec closing" data-title="最後のメッセージ">
+<div class="close-card"><p>良い支援は、安心して働ける職場から生まれます。</p><p>相手の人格を尊重すること、自分の言動を振り返ること、困ったときに相談できること。</p><p>その一つひとつの積み重ねが、職員の笑顔をつくり、子どもたちの笑顔につながります。</p><p>株式会社常笑は、職員・保護者・求職者の誰もが尊重される環境を大切にします。</p></div></section>
+<footer>株式会社常笑教育システム　Level1 基礎研修⑧ ハラスメント防止研修（2026年10月版）</footer>
+</main></div>
+<script>
+(function(){
+var K='josho_harassment_v1',st={},vis={};
+function load(){try{st=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){st={}}vis=st._vis||{}}
+function save(){st._vis=vis;try{localStorage.setItem(K,JSON.stringify(st))}catch(e){}}
+load();
+document.querySelectorAll('[data-k]').forEach(function(el){var k=el.dataset.k;if(st[k]!==undefined){if(el.type==='checkbox')el.checked=!!st[k];else el.value=st[k]}
+ el.addEventListener(el.type==='checkbox'||el.tagName==='SELECT'?'change':'input',function(){st[k]=el.type==='checkbox'?el.checked:el.value;save()})});
+document.querySelectorAll('#test input[type=radio]').forEach(function(el){if(st['t_'+el.name]===el.value)el.checked=true;el.addEventListener('change',function(){st['t_'+el.name]=el.value;save()})});
+var secs=[].slice.call(document.querySelectorAll('section.sec')),links={};
+document.querySelectorAll('nav a').forEach(function(a){links[a.dataset.id]=a;a.addEventListener('click',function(e){e.preventDefault();goTo(a.dataset.id)})});
+function upd(){var n=0;secs.forEach(function(s){if(vis[s.id]){n++;links[s.id]&&links[s.id].classList.add('v')}});var p=Math.round(n/secs.length*100);document.getElementById('pbar').style.width=p+'%';document.getElementById('ptxt').textContent=p+'%'}
+function markVisited(id){if(!vis[id]){vis[id]=1;save();upd()}}
+function goTo(id){var el=document.getElementById(id);if(el){el.scrollIntoView({behavior:'smooth'});markVisited(id);history.replaceState(null,'','#'+id)}document.getElementById('nav').classList.remove('open')}
+window.goTo=goTo;
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){markVisited(e.target.id);Object.keys(links).forEach(function(k){links[k].classList.remove('cur')});links[e.target.id]&&links[e.target.id].classList.add('cur')}})},{threshold:0,rootMargin:'-10% 0px -60% 0px'});secs.forEach(function(s){io.observe(s)})}
+upd();
+document.getElementById('menu').addEventListener('click',function(){document.getElementById('nav').classList.toggle('open')});
+var A={"1":"×","2":"○","3":"○","4":"×","5":"○","6":"3","7":"1","8":"2","9":"2","10":"1","11":"1","12":"2","13":"1"};
+document.getElementById('grade').addEventListener('click',function(){var ok=0,tot=0,un=0;
+ Object.keys(A).forEach(function(n){tot++;var box=document.querySelector('.qbox[data-q="'+n+'"]'),r=box.querySelector('.res'),c=box.querySelector('input:checked');
+  if(!c){un++;r.className='res ng';r.textContent='未回答';return}
+  if(c.value===A[n]){ok++;r.className='res ok';r.textContent='○ 正解'}else{r.className='res ng';r.textContent='× 不正解（本文を読み返しましょう）'}});
+ var s=document.getElementById('score');s.hidden=false;
+ s.innerHTML='<b>自動採点：'+ok+' / '+tot+' 問正解</b>（'+(ok>=11?'合格の目安に達しています':'11問以上で合格の目安です。不正解の問題に関係する章を読み返しましょう')+'）'+(un?'<br>未回答が '+un+' 問あります。':'')+'<br>記述問題（問14・問15）は管理者が評価します。';
+ st.t_score=ok+'/'+tot;save();markVisited('s14')});
+document.getElementById('retry').addEventListener('click',function(){document.querySelectorAll('#test input[type=radio]').forEach(function(el){el.checked=false;delete st['t_'+el.name]});document.querySelectorAll('.res').forEach(function(r){r.textContent=''});document.getElementById('score').hidden=true;save()});
+})();
+</script>
+</body></html>
